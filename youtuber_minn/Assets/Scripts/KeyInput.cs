@@ -14,10 +14,10 @@ public class KeyInput : MonoBehaviour
 
     //제목 컨셉 광고
     public string conceptText = "";
-    public string titleText = "";
+    public static string titleText = "g";
     public string adsText = "";
     
-    public Text conceptTextButton;
+    public Text conceptTextButton; //컨셉 _____________ text
     private TouchScreenKeyboard keyboard_t; //제목 키보드
     private TouchScreenKeyboard keyboard_a; //광고 숫자 키보드
     private TouchScreenKeyboardType type; //키보드 타입
