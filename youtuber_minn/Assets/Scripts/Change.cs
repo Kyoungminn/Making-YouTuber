@@ -5,12 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Change : MonoBehaviour
 {
-
-    /* MainChange추가했습니다!*/
-    public void MainChange()
-    {
-        SceneManager.LoadScene("Main_scene");
-    }
     public void StoreChange()
     {
         SceneManager.LoadScene("Store_scene");
