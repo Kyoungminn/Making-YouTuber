@@ -10,10 +10,12 @@ public class Shop : MonoBehaviour
     public string ItemName, strPrice;
 
     // Start is called before the first frame update
+
+   
     void Start()
     {
         money = 1000;
-        string str = "" + money;
+        string str = money.ToString();
         moneyTxt.text = (str);
     }
 
