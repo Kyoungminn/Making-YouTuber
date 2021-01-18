@@ -30,8 +30,8 @@ public class CameraFix : MonoBehaviour
             rt.x = (1f - scale_width) / 2f;
         } 
         
-        cam.rect = rt;
-
+        cam.rect = rt; 
+    
     }
 
     
