@@ -10,7 +10,9 @@ public class KeyInput : MonoBehaviour
     private float ScreenWidth = 1080.0f;
     private float ScreenHeight = 1920.0f;
     private Vector3 scale = Vector2.zero;
+    private Vector3 createPoint;
     private Matrix4x4 svMat = Matrix4x4.identity;
+
 
     //제목 컨셉 광고
     public string conceptText = "";
@@ -30,24 +32,40 @@ public class KeyInput : MonoBehaviour
 
     void Start()
     {
-        
+        if (((float)Screen.width / Screen.height) > (ScreenWidth / ScreenHeight)) // 가로여백
+        {
+            Debug.Log("가로");
+            createPoint.x = (Screen.width - (Screen.height * ScreenWidth / ScreenHeight)) / 2.0f;
+            createPoint.y = createPoint.z = 0.0f;
+
+            scale.x = (Screen.height * ScreenWidth / ScreenHeight) / ScreenWidth;
+            scale.y = Screen.height / ScreenHeight;
+            scale.z = 1.0f;
+        }
+        else
+        {
+            createPoint.y = (Screen.height - (Screen.width * ScreenHeight / ScreenWidth)) / 2.0f;
+            createPoint.x = createPoint.z = 0.0f;
+
+            scale.x = Screen.width / ScreenWidth;
+            scale.y = (Screen.width * ScreenHeight / ScreenWidth) / ScreenHeight;
+            scale.z = 1.0f;
+        }
+
     }
     private void OnGUI()
     {
-        scale.x = Screen.width / ScreenWidth;
-        scale.y = Screen.height / ScreenHeight;
-        scale.z = 1.0f;
 
         svMat = GUI.matrix;
-        GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, scale);
+        GUI.matrix = Matrix4x4.TRS(createPoint, Quaternion.identity, scale);
         GUI.skin = GUISkin;
-        if (GUI.Button(new Rect(160, 1010, 750, 100), titleText))
+        if (GUI.Button(new Rect(160.0f, 1010.0f, 750.0f, 100.0f), titleText))
         {
             keyboard_t = TouchScreenKeyboard.Open(titleText);
             chk = 1;
         }
         
-        else if (GUI.Button(new Rect(400, 1275, 500, 100), adsText))
+        else if (GUI.Button(new Rect(390.0f, 1275.0f, 500.0f, 100.0f), adsText))
         {
             type = TouchScreenKeyboardType.NumberPad;
             keyboard_a = TouchScreenKeyboard.Open(adsText, type);
