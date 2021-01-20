@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static int subscriber; //구독자수
+    public static string button_name; //브론즈,실버,골드,다이아
     public GameObject UploadPanel;
 
     void Start()
@@ -15,15 +17,5 @@ public class GameManager : MonoBehaviour
     void Update()
     {
     
-    }
-
-    public void OpenPanel()
-    {
-        UploadPanel.SetActive(true);
-    }
-
-    public void ExitPanel()
-    {
-        UploadPanel.SetActive(false);
     }
 }
