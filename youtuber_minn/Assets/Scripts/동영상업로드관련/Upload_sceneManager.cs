@@ -7,7 +7,6 @@ public class Upload_sceneManager : MonoBehaviour
 {
     public static Upload_sceneManager inst = null;
 
-
     //한 동영상에 저장되는 정보
     public static List<Image> uploadThumnail = new List<Image>(); //썸네일 배경
     public static List<Image> uploadThumnailImage = new List<Image>();//썸네일
