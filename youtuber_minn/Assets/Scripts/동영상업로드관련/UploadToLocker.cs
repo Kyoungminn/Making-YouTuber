@@ -15,7 +15,7 @@ public class UploadToLocker : MonoBehaviour
         videoNum = Upload_sceneManager.uploadTitles.Count;
         for(int i=0;i<videoNum;i++)
         {
-            Upload_sceneManager.uploadChkLocker = false;
+            GameManager.uploadChkLocker = false;
             GameObject child = Instantiate(videoPrefab) as GameObject;
             child.transform.SetParent(scrollVideo.transform);
             child.transform.SetAsFirstSibling();
@@ -27,7 +27,7 @@ public class UploadToLocker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Upload_sceneManager.uploadChkLocker)
+        if(GameManager.uploadChkLocker)
         {
             
         }

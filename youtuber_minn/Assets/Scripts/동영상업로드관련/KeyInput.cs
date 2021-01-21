@@ -104,7 +104,7 @@ public class KeyInput : MonoBehaviour
             adsText = keyboard_a.text;
             adsCnt = int.Parse(adsText);
 
-            string youtubaButton = Upload_sceneManager.inst.youtubeButton;
+            string youtubaButton = GameManager.youtubaButton;
 
             if (youtubaButton == "노버튼")
             {

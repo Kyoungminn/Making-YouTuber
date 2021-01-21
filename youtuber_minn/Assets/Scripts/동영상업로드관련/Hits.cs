@@ -28,10 +28,10 @@ public class Hits : MonoBehaviour
             hits_P = Random.Range(1.0f, 5.0f);
         }
         Debug.Log(hits_P);
-        hits = (int)((float)Upload_sceneManager.inst.subscribers * hits_P);
+        hits = (int)((float)GameManager.subscriber * hits_P);
 
-        Upload_sceneManager.uploadChkLocker = true;
-        Upload_sceneManager.uploadChkMain = true;
+        GameManager.uploadChkLocker = true;
+        GameManager.uploadChkMain = true;
        
 
         //업로드 완료 시 동영상들 정보 List에 저장
@@ -49,18 +49,18 @@ public class Hits : MonoBehaviour
 
 
         //업로드 완료 시 컨셉개수카운트
-        if (!Upload_sceneManager.conceptCnt.ContainsKey(concept))
+        if (!GameManager.conceptCnt.ContainsKey(concept))
         {
-            Upload_sceneManager.conceptCnt[concept] = 1;
+            GameManager.conceptCnt[concept] = 1;
         }
         else
         {
-            Upload_sceneManager.conceptCnt[concept] += 1;
+            GameManager.conceptCnt[concept] += 1;
         }
 
         Debug.Log("조회수: " + hits);
-        Debug.Log(concept + ": " + Upload_sceneManager.conceptCnt[concept]);
-        Debug.Log(Upload_sceneManager.conceptCnt.Count);
+        Debug.Log(concept + ": " + GameManager.conceptCnt[concept]);
+        Debug.Log(GameManager.conceptCnt.Count);
     }
 
     // Update is called once per frame
