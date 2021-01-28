@@ -21,7 +21,6 @@ public class VideoUpload : MonoBehaviour
 
     public void UploadClick()
     {
-        GameManager.uploadChkMain = true;
         deleteButton.enabled = false;
         conceptButton.enabled = false;
         uploadButton.gameObject.SetActive(false);

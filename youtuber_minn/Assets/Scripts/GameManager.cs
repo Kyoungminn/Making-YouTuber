@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static float game_time = 0.0f;
+
     public static string human_name; //사람이름
     public static string channel_name; //채널이름
 
