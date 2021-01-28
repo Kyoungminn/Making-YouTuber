@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static float game_time = 0.0f;
+
     public static string human_name; //사람이름
     public static string channel_name; //채널이름
 
     public static int money; //돈
-    public static int health; //건강
+    public static int health = 21; //건강
     public static int charm; //매력
     public static int edit; //편집
 

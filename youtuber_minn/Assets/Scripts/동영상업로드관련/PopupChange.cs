@@ -10,7 +10,6 @@ public class PopupChange : MonoBehaviour
     public GameObject canvas, prefabConcept;
     public void ConceptChange()
     {
-        gameMangager.GetComponent<KeyInput>().chk2 = true;
         gameMangager.GetComponent<KeyInput>().enabled = false;
         Vector3 creatingpoint = canvas.transform.localPosition;
         conceptBox = Instantiate(prefabConcept, creatingpoint, Quaternion.identity) as GameObject;

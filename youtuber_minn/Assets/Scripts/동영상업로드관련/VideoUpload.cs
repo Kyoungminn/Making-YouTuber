@@ -21,7 +21,6 @@ public class VideoUpload : MonoBehaviour
 
     public void UploadClick()
     {
-        GameManager.uploadChkMain = true;
         deleteButton.enabled = false;
         conceptButton.enabled = false;
         uploadButton.gameObject.SetActive(false);
@@ -46,6 +45,11 @@ public class VideoUpload : MonoBehaviour
                 uploading.gameObject.SetActive(false);
                 uploadDonetxt.SetActive(true);
                 deleteButton.enabled = true;
+                
+                VideoUploadTime.afterUploadTime = 180.0f;
+                GameManager.uploadChkLocker = true;
+                GameManager.uploadChkMain = true;
+
                 break;
             }
         }
