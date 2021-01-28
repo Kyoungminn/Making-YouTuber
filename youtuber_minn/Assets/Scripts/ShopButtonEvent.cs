@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class ShopButtonEvent : MonoBehaviour
 {
-    public GameObject item, parent, button;
-    public int index;
+    public GameObject item, parent, button, itemCollection; //아이템이미지, 상위카테고리, 구매버튼, 최상위카테고리
+    public int index;    
+   
 
-    public void itemActive()    //아이템 입혀보기
+public void itemActive()    //아이템 입혀보기
     {
-        GameObject child;
+        GameObject child, child2;
+        bool boolean = false;
         for (int i = 0; i < parent.transform.childCount; i++)
         {
             child = parent.transform.GetChild(i).gameObject;
@@ -24,12 +26,24 @@ public class ShopButtonEvent : MonoBehaviour
                 else
                 {
                     item.SetActive(false);
-                    button.GetComponent<Button>().interactable = false;
                 }                    
             }                
             else
                 child.SetActive(false);
         }
+        for (int i = 0; i < itemCollection.transform.childCount; i++)   //활성화된 아이템이 없으면 button false
+        {
+            child = itemCollection.transform.GetChild(i).gameObject;
+            for(int j = 0; j < child.transform.childCount; j++)
+            {
+                child2 = child.transform.GetChild(j).gameObject;
+                if (child2.activeSelf == true)
+                    boolean = true;
+            }
+
+        }
+        if(boolean == false)
+            button.GetComponent<Button>().interactable = false;
     }
 
     // Start is called before the first frame update
