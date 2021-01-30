@@ -19,6 +19,8 @@ public class LockerVideo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        VideoInfomation.hitChk = false;
+
         int videoNum = Upload_sceneManager.uploadTitles.Count;
         int indexNum = gameObject.transform.GetSiblingIndex();
         int id = videoNum - 1 - indexNum;
@@ -32,6 +34,7 @@ public class LockerVideo : MonoBehaviour
 
         if ((videoNum - 1) == id && GameManager.uploadChkLocker)
         {
+            VideoInfomation.hitChk = true;
             GameManager.uploadChkLocker = false;
             StartCoroutine(CountHit());
         }
@@ -82,6 +85,8 @@ public class LockerVideo : MonoBehaviour
         {
             info.text = "제목: " + title + "\n조회수: " + ((int)current).ToString();
         }
+
+        VideoInfomation.hitChk = false;
 
     }
 

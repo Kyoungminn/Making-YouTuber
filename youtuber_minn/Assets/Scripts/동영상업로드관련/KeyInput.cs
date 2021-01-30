@@ -107,13 +107,13 @@ public class KeyInput : MonoBehaviour
         svMat = GUI.matrix;
         GUI.matrix = Matrix4x4.TRS(createPoint, Quaternion.identity, scale);
         GUI.skin = GUISkin;
-        if (GUI.Button(new Rect(160.0f, 1010.0f, 750.0f, 100.0f), titleText))
+        if (GUI.Button(new Rect(160.0f, 1050.0f, 750.0f, 100.0f), titleText))
         {
             keyboard_t = TouchScreenKeyboard.Open(titleText);
             chk = 1;
         }
         
-        else if (GUI.Button(new Rect(390.0f, 1275.0f, 300.0f, 100.0f), adsText))
+        else if (GUI.Button(new Rect(390.0f, 1320.0f, 300.0f, 100.0f), adsText))
         {
             type = TouchScreenKeyboardType.NumberPad;
             keyboard_a = TouchScreenKeyboard.Open(adsText, type);

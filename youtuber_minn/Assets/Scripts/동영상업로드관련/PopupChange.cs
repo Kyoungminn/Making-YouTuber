@@ -5,7 +5,7 @@ using UnityEngine;
 public class PopupChange : MonoBehaviour
 {
     GameObject uploadbutton;
-    public GameObject gameMangager;
+    GameObject gameMangager;
     public GameObject conceptBox;
     public GameObject canvas, prefabConcept;
     public void ConceptChange()
@@ -17,13 +17,13 @@ public class PopupChange : MonoBehaviour
 
     public void ConceptDelete()
     {
-        GameObject.Find("GameManager").GetComponent<KeyInput>().enabled = true;
+        gameMangager.GetComponent<KeyInput>().enabled = true;
         Destroy(prefabConcept);
     }
 
     public void ConceptBoxDelete()
     {
-        GameObject.Find("GameManager").GetComponent<KeyInput>().enabled = true;
+        gameMangager.GetComponent<KeyInput>().enabled = true;
         Destroy(conceptBox);
     }
 

@@ -18,7 +18,7 @@ public class VideoUploadTime : MonoBehaviour
         if (afterUploadTime > 0.0f)
         {
             afterUploadTime -= Time.deltaTime;
-            Debug.Log("동영상 후 시간: " + afterUploadTime);
+            //Debug.Log("동영상 후 시간: " + afterUploadTime);
         }
 
         else afterUploadTime = 0.0f;
@@ -26,7 +26,7 @@ public class VideoUploadTime : MonoBehaviour
         if (afterLiveTime > 0.0f)
         {
             afterLiveTime -= Time.deltaTime;
-            Debug.Log("라이브 후 시간: " + afterLiveTime);
+            //Debug.Log("라이브 후 시간: " + afterLiveTime);
         }
 
         else afterLiveTime = 0.0f;
