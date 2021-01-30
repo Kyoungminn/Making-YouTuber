@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class VideoInfomation : MonoBehaviour
 {
     public GameObject video;
+    public GameObject hitting;
     public static int indexNumber;
     public static bool videoChk = false;
+    public static bool hitChk = true;
     public Image thum, thumnail;
     public Text infoma;
     void Start()
@@ -17,7 +19,13 @@ public class VideoInfomation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (videoChk)
+        if (videoChk && hitChk)
+        {
+            videoChk = false;
+            StartCoroutine(Hit_ing());
+        }
+
+        if (videoChk && !hitChk)
         {
             videoChk = false;
             video.SetActive(true);
@@ -40,5 +48,12 @@ public class VideoInfomation : MonoBehaviour
                      + "\n광고개수: " + ads.ToString()
                      + "\n총수익: " + payoff.ToString();
         }
+    }
+
+    IEnumerator Hit_ing()
+    {
+        hitting.SetActive(true);
+        yield return new WaitForSeconds(2.0f);
+        hitting.SetActive(false);
     }
 }

@@ -10,6 +10,8 @@ public class VideoUpload : MonoBehaviour
     public Button uploadButton;
     public Slider uploading;
 
+    public GameObject noConcept; //컨셉 미선택시 뜨는 팝업
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,12 +23,21 @@ public class VideoUpload : MonoBehaviour
 
     public void UploadClick()
     {
-        deleteButton.enabled = false;
-        conceptButton.enabled = false;
-        uploadButton.gameObject.SetActive(false);
-        uploading.gameObject.SetActive(true);
+        if (GameObject.Find("GameManager").GetComponent<KeyInput>().conceptText != "")
+        {
+            deleteButton.enabled = false;
+            conceptButton.enabled = false;
+            uploadButton.gameObject.SetActive(false);
+            uploading.gameObject.SetActive(true);
 
-        StartCoroutine(Loading());
+            StartCoroutine(Loading());
+        }
+
+        else
+        {
+            GameObject.Find("GameManager").GetComponent<KeyInput>().enabled = false;
+            noConcept.SetActive(true);
+        }
    
     }
 
