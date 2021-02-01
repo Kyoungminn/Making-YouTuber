@@ -15,7 +15,7 @@ public class TutorialKeyInput : MonoBehaviour
     private Matrix4x4 svMat = Matrix4x4.identity;
 
 
-    //이름 채널명
+    //이름 채널명, 키보드에 입력한 것이 저장될 string 변수
     public string nameText = "";
     public string channelText = "";
 
@@ -26,6 +26,7 @@ public class TutorialKeyInput : MonoBehaviour
 
     void Start()
     {
+        //GUI 해상도 맞추는 부분
         if (((float)Screen.width / Screen.height) > (ScreenWidth / ScreenHeight)) // 가로여백
         {
             Debug.Log("가로");
@@ -45,20 +46,25 @@ public class TutorialKeyInput : MonoBehaviour
             scale.y = (Screen.width * ScreenHeight / ScreenWidth) / ScreenHeight;
             scale.z = 1.0f;
         }
+        //
 
     }
     private void OnGUI()
     {
-
+        //GUI 해상도 맞추는 부분
         svMat = GUI.matrix;
         GUI.matrix = Matrix4x4.TRS(createPoint, Quaternion.identity, scale);
         GUI.skin = GUISkin;
+        //
+
+        //이름 버튼
         if (GUI.Button(new Rect(430.0f,770.0f, 350.0f, 90.0f), nameText))
         {
             keyboard_n = TouchScreenKeyboard.Open(nameText);
-            chk = 1;
+            chk = 1; //키보드가 2개 이상이라서 chk변수가 필요했습니다 키보드가 1개라면 필요 없을 것 같아요!
         }
 
+        //채널명 버튼
         else if (GUI.Button(new Rect(430.0f, 900.0f, 350.0f, 90.0f), channelText))
         {
             //type = TouchScreenKeyboardType.NumberPad;
@@ -71,11 +77,11 @@ public class TutorialKeyInput : MonoBehaviour
 
         if (keyboard_n != null && chk == 1)
         {
-            if (keyboard_n.text.Length > 10)
+            if (keyboard_n.text.Length > 10) //글자 수에 10글자 제한이 있어서 추가한 if문
             {
                 nameText = keyboard_n.text.Substring(0,9);
             }
-            else nameText = keyboard_n.text;
+            else nameText = keyboard_n.text; //글자 수 제한 없으면 이 부분만 필요해요
         }
         else if (keyboard_c != null && chk == 2)
         {
