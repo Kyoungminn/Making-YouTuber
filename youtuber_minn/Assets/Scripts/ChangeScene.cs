@@ -26,6 +26,10 @@ public class ChangeScene : MonoBehaviour
         SceneManager.LoadScene("Main_scene");
     }
 
+    public void ScheduleChange()
+    {
+        SceneManager.LoadScene("Schedule_scene");
+    }
 
 
 }

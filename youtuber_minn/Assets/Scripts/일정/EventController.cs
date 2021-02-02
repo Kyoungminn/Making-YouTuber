@@ -6,15 +6,23 @@ using UnityEngine.UI;
 
 public class EventController : MonoBehaviour
 {
+    public CalendarController calControll;
+
     public List<List<string>> monthEvent = new List<List<string>>();
 
     public GameObject _events;
+    public List<GameObject> eventsObject = new List<GameObject>();
 
     public static EventController _eventInstance;
 
+    private void Awake()
+    {
+        calControll = GameObject.Find("CalendarController").GetComponent<CalendarController>();        
+    }
     // Start is called before the first frame update
     void Start()
     {
+        _eventInstance = this;
         for (int i = 0; i <= 12; i++)
         {
             monthEvent.Add(new List<string>());
@@ -37,30 +45,58 @@ public class EventController : MonoBehaviour
         monthEvent[11].Add("행사게스트");
         monthEvent[12].Add("유투바 대회");
 
-        createEvent();
-    }
-
-    public void createEvent()
-    {
-        int now_month = int.Parse(CalendarController._calendarInstance.bottomMonth.text);
-        _events.GetComponent<Text>().text = monthEvent[now_month][0];
         Vector3 startPos = _events.transform.localPosition;
+        eventsObject.Clear();
+        eventsObject.Add(_events);
 
-        for (int i = 1; i < monthEvent[now_month].Count; i++)
+        for (int i = 1; i < 4; i++)
         {
             GameObject events = GameObject.Instantiate(_events) as GameObject;
             events.name = "events" + (i + 1).ToString();
             events.transform.SetParent(_events.transform.parent);
             events.transform.localScale = Vector3.one;
             events.transform.localRotation = Quaternion.identity;
-            events.transform.localPosition = new Vector3(startPos.x, startPos.y - (i % 3) * 80, startPos.z);
-            events.GetComponent<Text>().text = monthEvent[now_month][i];
+            events.transform.localPosition = new Vector3(startPos.x, startPos.y - (i % 4) * 70, startPos.z);
+
+            eventsObject.Add(events);
         }
+
+        StartCoroutine(createEvent());
+    }
+
+    public IEnumerator createEvent()
+    {
+        int now_month = int.Parse(calControll.bottomMonth.text);
+
+        for(int i = 0 ; i < monthEvent[now_month].Count ; i++)
+        {
+            eventsObject[i].SetActive(true);
+            Text eventText = eventsObject[i].GetComponent<Text>();
+            eventText.text = "- " + monthEvent[now_month][i];
+        }
+
+        for(int i = monthEvent[now_month].Count; i < 4; i++)
+        {
+            eventsObject[i].SetActive(false);
+        }
+
+        yield return null;
+
+        GameTime.monthChange = false;
+
+    }
+
+    public void nextMonth()
+    {
+        StartCoroutine(createEvent());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (GameTime.monthChange)
+        {
+            StartCoroutine(createEvent());
+        }
     }
 }

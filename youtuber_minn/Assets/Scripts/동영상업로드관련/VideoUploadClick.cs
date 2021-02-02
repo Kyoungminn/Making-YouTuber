@@ -32,7 +32,6 @@ public class VideoUploadClick : MonoBehaviour
     {
         if (GameManager.health > 50 && VideoUploadTime.afterLiveTime == 0.0f)
         {
-            VideoUploadTime.afterLiveTime = 600.0f;
             SceneManager.LoadScene("Live_scene");
         }
         else if (GameManager.health <= 50)
@@ -56,13 +55,13 @@ public class VideoUploadClick : MonoBehaviour
         if (impossiblePopup[1])
         {
             float time = VideoUploadTime.afterUploadTime;
-            impossibleUploadTime.text = ((int)time / 60).ToString() + " : " + ((int)time % 60).ToString();
+            impossibleUploadTime.text = ((int)time / 60).ToString() + " : " + ((int)time % 60).ToString("D2");
         }
         
         if (impossibleLive[1])
         {
             float time = VideoUploadTime.afterLiveTime;
-            impossibleLiveTime.text = ((int)time / 60).ToString() + " : " + ((int)time % 60).ToString();
+            impossibleLiveTime.text = ((int)time / 60).ToString() + " : " + ((int)time % 60).ToString("D2");
         }
 
         
