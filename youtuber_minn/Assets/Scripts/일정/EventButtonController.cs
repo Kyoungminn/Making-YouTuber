@@ -41,7 +41,7 @@ public class EventButtonController : MonoBehaviour
         //createEventButton();
     }
 
-    public void createEventButton()
+    public void createEventButton() //eventBt에 이벤트 글씨 입힐 함수
     {
         for(int i = 0 ; i <= 31 ; i++)
         {
@@ -49,6 +49,7 @@ public class EventButtonController : MonoBehaviour
             calControll.dayEventClone[i] = GameTime.dayEvent[i].ToList();
         }
         calControll.eventDayClone = new Dictionary<string, int>(GameTime.eventDay);
+        calControll.cummunityClone = GameTime.cummunity.ToList();
 
         int now_month = int.Parse(calControll._monthNumText.text);
 
@@ -58,26 +59,60 @@ public class EventButtonController : MonoBehaviour
             Text eventButtonText = eventButtons[i].GetComponentInChildren<Text>();
             eventButtonText.text = EventController._eventInstance.monthEvent[now_month][i];
 
-            if (GameTime.eventDay.ContainsKey(eventButtonText.text))
+            if (eventButtonText.text == "팬페스트") //팬페스트는 9/1 고정일정
             {
-                if (GameTime.eventDay[eventButtonText.text] == int.Parse(calControll.currentDay))
+                eventButtons[i].GetComponent<Image>().color = new Color(186f / 255f, 186f / 255f, 186f / 255f);
+                eventButtons[i].GetComponent<Button>().enabled = false;
+            }
+
+            else if (eventButtonText.text == "커뮤니티 글 작성")
+            {
+                if(GameTime.cummunity.Contains(int.Parse(calControll.currentDay))) //빨강
                 {
                     eventButtons[i].GetComponent<Image>().color = new Color(255f / 255f, 88f / 255f, 88f / 255f);
                     eventButtons[i].GetComponent<Button>().enabled = true;
                 }
-
                 else
                 {
-                    eventButtons[i].GetComponent<Image>().color = new Color(186f / 255f, 186f / 255f, 186f / 255f);
-                    eventButtons[i].GetComponent<Button>().enabled = false;
+                    if(GameTime.cummunity.Count == 4) //회색, 사용불가
+                    {
+                        eventButtons[i].GetComponent<Image>().color = new Color(186f / 255f, 186f / 255f, 186f / 255f);
+                        eventButtons[i].GetComponent<Button>().enabled = false;
+                    }
+                    else //하양, 선택가능
+                    {
+                        eventButtons[i].GetComponent<Image>().color = new Color(1f, 1f, 1f);
+                        eventButtons[i].GetComponent<Button>().enabled = true;
+                    }
                 }
             }
 
             else
             {
-                eventButtons[i].GetComponent<Image>().color = new Color(1f, 1f, 1f);
-                eventButtons[i].GetComponent<Button>().enabled = true;
+                if (GameTime.eventDay.ContainsKey(eventButtonText.text))
+                {
+                    if (GameTime.eventDay[eventButtonText.text] == int.Parse(calControll.currentDay))
+                    {
+                        //빨강
+                        eventButtons[i].GetComponent<Image>().color = new Color(255f / 255f, 88f / 255f, 88f / 255f);
+                        eventButtons[i].GetComponent<Button>().enabled = true;
+                    }
+
+                    else
+                    {
+                        //회색
+                        eventButtons[i].GetComponent<Image>().color = new Color(186f / 255f, 186f / 255f, 186f / 255f);
+                        eventButtons[i].GetComponent<Button>().enabled = false;
+                    }
+                }
+
+                else //하양
+                {
+                    eventButtons[i].GetComponent<Image>().color = new Color(1f, 1f, 1f);
+                    eventButtons[i].GetComponent<Button>().enabled = true;
+                }
             }
+            
         }
 
         for (int i = EventController._eventInstance.monthEvent[now_month].Count; i < 4; i++)

@@ -60,7 +60,7 @@ public class LiveBroadcast : MonoBehaviour
 
     IEnumerator Live_ing()
     {
-        for(int i = 0 ; i < 30 ; i++)
+        for(int i = 0 ; i < 29 ; i++)
         {
             int rand = Random.Range(0, liveComments.Count);
             _comment.text = liveComments[rand];

@@ -79,7 +79,7 @@ public class TutorialKeyInput : MonoBehaviour
         {
             if (keyboard_n.text.Length > 10) //글자 수에 10글자 제한이 있어서 추가한 if문
             {
-                nameText = keyboard_n.text.Substring(0,9);
+                nameText = keyboard_n.text.Substring(0,10);
             }
             else nameText = keyboard_n.text; //글자 수 제한 없으면 이 부분만 필요해요
         }
@@ -87,7 +87,7 @@ public class TutorialKeyInput : MonoBehaviour
         {
             if (keyboard_c.text.Length > 10)
             {
-                channelText = keyboard_c.text.Substring(0,9);
+                channelText = keyboard_c.text.Substring(0,10);
             }
             else channelText = keyboard_c.text;
         }

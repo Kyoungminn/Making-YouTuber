@@ -30,8 +30,9 @@ public class CalendarController : MonoBehaviour
     public bool selectChk;
     public string evt;
 
-    public List<List<string>> dayEventClone = new List<List<string>>();
-    public Dictionary<string, int> eventDayClone = new Dictionary<string, int>();
+    public List<List<string>> dayEventClone = new List<List<string>>(); //저장 누르기 전까진 복제해서 변경할 dayEvent복제
+    public Dictionary<string, int> eventDayClone = new Dictionary<string, int>(); //저장 누르기 전까진 복제해서 변경할 eventDay 복제
+    public List<int> cummunityClone = new List<int>(); //저장 누르기 전까진 복제해서 변경할 cummunity 복제
 
     void Start()
     {
@@ -133,10 +134,11 @@ public class CalendarController : MonoBehaviour
     {
         GameTime.dayEvent = dayEventClone.ToList();
         GameTime.eventDay = new Dictionary<string, int>(eventDayClone);
+        GameTime.cummunity = cummunityClone.ToList();
         createEventTextAdd();
     }
 
-    public void createEventTextAdd()
+    public void createEventTextAdd() //달력에 일정 표시
     {
         for(int i = startDayId; i < startDayId + lengthDay; i++)
         {
@@ -156,18 +158,47 @@ public class CalendarController : MonoBehaviour
     public void OnEventButtonClick(GameObject evt, string evtText)
     {
         int cutDay = int.Parse(currentDay);
-        if(eventDayClone.ContainsKey(evtText))
+
+        if (evtText == "커뮤니티 글 작성")
         {
-            evt.GetComponent<Image>().color = new Color(1f, 1f, 1f);
-            dayEventClone[cutDay].Remove(evtText);
-            eventDayClone.Remove(evtText);
+            if (cummunityClone.Contains(cutDay)) //빨강->하양
+            {
+                evt.GetComponent<Image>().color = new Color(1f, 1f, 1f);
+                dayEventClone[cutDay].Remove(evtText);
+                cummunityClone.Remove(cutDay);
+            }
+            else //하양 -> 빨강
+            {
+                if(dayEventClone[cutDay].Count == 0)
+                {
+                    evt.GetComponent<Image>().color = new Color(255f / 255f, 88f / 255f, 88f / 255f);
+                    dayEventClone[cutDay].Add(evtText);
+                    cummunityClone.Add(cutDay);
+                }
+                
+            }
         }
+
         else
         {
-            evt.GetComponent<Image>().color = new Color(255f / 255f, 88f / 255f, 88f / 255f);
-            dayEventClone[cutDay].Add(evtText);
-            eventDayClone.Add(evtText, cutDay);
+            if(eventDayClone.ContainsKey(evtText)) //빨강 -> 하양
+            {
+                evt.GetComponent<Image>().color = new Color(1f, 1f, 1f);
+                dayEventClone[cutDay].Remove(evtText);
+                eventDayClone.Remove(evtText);
+            }
+            else //하양 -> 빨강
+            {
+                if(dayEventClone[cutDay].Count == 0)
+                {
+                    evt.GetComponent<Image>().color = new Color(255f / 255f, 88f / 255f, 88f / 255f);
+                    dayEventClone[cutDay].Add(evtText);
+                    eventDayClone.Add(evtText, cutDay);
+                }
+                
+            }
         }
+        
     }
     void Update()
     {

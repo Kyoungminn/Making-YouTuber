@@ -20,7 +20,7 @@ public class FinalChannel : MonoBehaviour
         channelName = tutorialKey.channelText;
         humanName = tutorialKey.nameText;
 
-        channelCheck.text = channelName + "이라는\n\n채널을 생성하시겠습니까?";
+        channelCheck.text = channelName + " (이)라는\n\n채널을 생성하시겠습니까?";
     }
 
     public void OnClickChannelOk()

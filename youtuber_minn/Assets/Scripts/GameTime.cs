@@ -33,6 +33,15 @@ public class GameTime : MonoBehaviour
         int month = GameManager.game_month;
         float day = GameManager.game_day;
 
+        if (GameManager.game_month == 9 && EventController._eventInstance.monthEvent[9].Contains("팬페스트"))
+        {
+            if(!dayEvent[1].Contains("팬페스트"))
+            {
+                dayEvent[1].Add("팬페스트");
+                eventDay.Add("팬페스트", 1);
+            }
+        }
+
         if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
         {
             if (day >= 32.0f)
@@ -44,14 +53,7 @@ public class GameTime : MonoBehaviour
                 cummunity = new List<int>();
                 GameManager.game_day = 1.0f;
                 GameManager.game_month++;
-
-                if(GameManager.game_month == 9)
-                {
-                    dayEvent[1].Add("팬페스트");
-                    eventDay.Add("팬페스트", 1);
-                }
-
-                else if (GameManager.game_month > 12)
+                if (GameManager.game_month > 12)
                 {
                     GameManager.game_year++;
                     GameManager.game_month = 1;
