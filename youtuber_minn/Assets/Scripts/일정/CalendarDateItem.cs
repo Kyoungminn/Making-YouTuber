@@ -8,7 +8,14 @@ public class CalendarDateItem : MonoBehaviour {
 
     public void OnDateItemClick()
     {
-        CalendarController._calendarInstance.OnDateItemClick(gameObject.GetComponentInChildren<Text>().text);
-        _dayPopup.SetActive(true);
+        string calDay = gameObject.GetComponentInChildren<Text>().text;
+
+        if ((int)GameManager.game_day < int.Parse(calDay))
+        {
+            CalendarController._calendarInstance.OnDateItemClick(calDay);
+            _dayPopup.SetActive(true);
+            EventButtonController._eventButtonController.createEventButton();
+        }
+        
     }
 }
