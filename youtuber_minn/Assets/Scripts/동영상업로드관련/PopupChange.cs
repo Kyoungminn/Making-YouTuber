@@ -5,12 +5,11 @@ using UnityEngine;
 public class PopupChange : MonoBehaviour
 {
     GameObject uploadbutton;
-    public GameObject gameMangager;
+    GameObject gameMangager;
     public GameObject conceptBox;
     public GameObject canvas, prefabConcept;
     public void ConceptChange()
     {
-        gameMangager.GetComponent<KeyInput>().chk2 = true;
         gameMangager.GetComponent<KeyInput>().enabled = false;
         Vector3 creatingpoint = canvas.transform.localPosition;
         conceptBox = Instantiate(prefabConcept, creatingpoint, Quaternion.identity) as GameObject;
@@ -18,13 +17,13 @@ public class PopupChange : MonoBehaviour
 
     public void ConceptDelete()
     {
-        GameObject.Find("GameManager").GetComponent<KeyInput>().enabled = true;
+        gameMangager.GetComponent<KeyInput>().enabled = true;
         Destroy(prefabConcept);
     }
 
     public void ConceptBoxDelete()
     {
-        GameObject.Find("GameManager").GetComponent<KeyInput>().enabled = true;
+        gameMangager.GetComponent<KeyInput>().enabled = true;
         Destroy(conceptBox);
     }
 

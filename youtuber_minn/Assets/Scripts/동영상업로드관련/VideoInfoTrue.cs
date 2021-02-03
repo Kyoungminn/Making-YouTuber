@@ -1,29 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VideoInfoTrue : MonoBehaviour
 {
-    public GameObject video;
-
-    public void OnVideoInfo()
+    public void OnClickVideoInfo()
     {
-        video.SetActive(true);
+        VideoInfomation.indexNumber = gameObject.transform.GetSiblingIndex();
+        VideoInfomation.videoChk = true;
     }
 
     private void Awake()
     {
-        video = GameObject.Find("VideoInfo");
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
         
     }
 
+    void Start()
+    {
+
+    }
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

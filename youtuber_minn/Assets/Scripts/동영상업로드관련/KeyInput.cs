@@ -7,6 +7,8 @@ public class KeyInput : MonoBehaviour
     public GameObject uploadtxt;
     Hits hits;
 
+    string youtubaButton; //현재 유튜브 버튼
+
     private int chk = 1; //키보드 구분
     public bool chk2 = true; //썸네일 이미지 관련
 
@@ -24,6 +26,7 @@ public class KeyInput : MonoBehaviour
     public string adsText = "";
     
     public Text conceptTextButton; //컨셉 _____________ text
+    public Text adsNumMax; //(최대 개)
     private TouchScreenKeyboard keyboard_t; //제목 키보드
     private TouchScreenKeyboard keyboard_a; //광고 숫자 키보드
     private TouchScreenKeyboardType type; //키보드 타입
@@ -72,6 +75,31 @@ public class KeyInput : MonoBehaviour
             scale.z = 1.0f;
         }
 
+        youtubaButton = GameManager.youtubaButton;
+
+        if (youtubaButton == "노버튼")
+        {
+            adsMaxCnt = 2;
+        }
+        else if (youtubaButton == "브론즈")
+        {
+            adsMaxCnt = 6;
+        }
+        else if (youtubaButton == "실버")
+        {
+            adsMaxCnt = 10;
+        }
+        else if (youtubaButton == "골드")
+        {
+            adsMaxCnt = 14;
+        }
+        else if (youtubaButton == "다이아")
+        {
+            adsMaxCnt = 20;
+        }
+
+        adsNumMax.text = "(최대  " + adsMaxCnt.ToString() + "개)";
+
     }
     private void OnGUI()
     {
@@ -79,13 +107,13 @@ public class KeyInput : MonoBehaviour
         svMat = GUI.matrix;
         GUI.matrix = Matrix4x4.TRS(createPoint, Quaternion.identity, scale);
         GUI.skin = GUISkin;
-        if (GUI.Button(new Rect(160.0f, 1010.0f, 750.0f, 100.0f), titleText))
+        if (GUI.Button(new Rect(160.0f, 1050.0f, 750.0f, 100.0f), titleText))
         {
             keyboard_t = TouchScreenKeyboard.Open(titleText);
             chk = 1;
         }
         
-        else if (GUI.Button(new Rect(390.0f, 1275.0f, 500.0f, 100.0f), adsText))
+        else if (GUI.Button(new Rect(390.0f, 1320.0f, 300.0f, 100.0f), adsText))
         {
             type = TouchScreenKeyboardType.NumberPad;
             keyboard_a = TouchScreenKeyboard.Open(adsText, type);
@@ -103,29 +131,6 @@ public class KeyInput : MonoBehaviour
         {
             adsText = keyboard_a.text;
             adsCnt = int.Parse(adsText);
-
-            string youtubaButton = GameManager.youtubaButton;
-
-            if (youtubaButton == "노버튼")
-            {
-                adsMaxCnt = 2;
-            }
-            else if(youtubaButton == "브론즈")
-            {
-                adsMaxCnt = 6;
-            }
-            else if(youtubaButton == "실버")
-            {
-                adsMaxCnt = 10;
-            }
-            else if(youtubaButton == "골드")
-            {
-                adsMaxCnt = 14;
-            }
-            else if(youtubaButton == "다이아")
-            {
-                adsMaxCnt = 20;
-            }
 
             if (adsCnt > adsMaxCnt)
             {

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2682379489703963155}
   - component: {fileID: 2682379489703963152}
   - component: {fileID: 2519807047386465851}
-  - component: {fileID: 6477536912250451510}
+  - component: {fileID: 6451679557753168824}
   m_Layer: 5
   m_Name: VideoUploadPrefab
   m_TagString: Untagged
@@ -100,10 +100,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
-    m_PressedColor: {r: 0.19, g: 0.19, b: 0.19, a: 0.28235295}
-    m_SelectedColor: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0.4}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
+    m_HighlightedColor: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 0.28235295}
+    m_PressedColor: {r: 0.2, g: 0.2, b: 0.2, a: 0.28235295}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 0}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -122,8 +122,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6477536912250451510}
-        m_MethodName: OnVideoInfo
+      - m_Target: {fileID: 6451679557753168824}
+        m_MethodName: OnClickVideoInfo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -148,19 +148,18 @@ MonoBehaviour:
   info: {fileID: 2682379489971413245}
   thumnail: {fileID: 2682379490699319266}
   thumnailImage: {fileID: 1119215517653217678}
---- !u!114 &6477536912250451510
+--- !u!114 &6451679557753168824
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2682379489703963182}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8f965bca206b26478e70aa7ab8256a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  video: {fileID: 0}
 --- !u!1 &2682379489971413243
 GameObject:
   m_ObjectHideFlags: 0
