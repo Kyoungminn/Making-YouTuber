@@ -67,8 +67,9 @@
     <Compile Include="Assets\Scripts\CameraFix.cs" />
     <Compile Include="Assets\Scripts\CameraResolution.cs" />
     <Compile Include="Assets\Scripts\ChangeScene.cs" />
-    <Compile Include="Assets\Scripts\EndingComment.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\GameTime.cs" />
+    <Compile Include="Assets\Scripts\ItemLocker.cs" />
     <Compile Include="Assets\Scripts\Shop.cs" />
     <Compile Include="Assets\Scripts\ShopButtonEvent.cs" />
     <Compile Include="Assets\Scripts\Upload.cs" />
@@ -77,13 +78,26 @@
     <Compile Include="Assets\Scripts\동영상업로드관련\KeyInput.cs" />
     <Compile Include="Assets\Scripts\동영상업로드관련\LockerVideo.cs" />
     <Compile Include="Assets\Scripts\동영상업로드관련\PopupChange.cs" />
+    <Compile Include="Assets\Scripts\동영상업로드관련\ThumbnailColor.cs" />
     <Compile Include="Assets\Scripts\동영상업로드관련\UploadToLocker.cs" />
     <Compile Include="Assets\Scripts\동영상업로드관련\Upload_sceneManager.cs" />
     <Compile Include="Assets\Scripts\동영상업로드관련\VideoInfoTrue.cs" />
     <Compile Include="Assets\Scripts\동영상업로드관련\VideoInfomation.cs" />
     <Compile Include="Assets\Scripts\동영상업로드관련\VideoUpload.cs" />
+    <Compile Include="Assets\Scripts\동영상업로드관련\VideoUploadClick.cs" />
+    <Compile Include="Assets\Scripts\동영상업로드관련\VideoUploadTime.cs" />
+    <Compile Include="Assets\Scripts\랜덤이벤트\ImpossibleButton.cs" />
     <Compile Include="Assets\Scripts\랜덤이벤트\RandomEvent.cs" />
     <Compile Include="Assets\Scripts\랜덤이벤트\RandomEvent_appear.cs" />
+    <Compile Include="Assets\Scripts\엔딩\EndingComment.cs" />
+    <Compile Include="Assets\Scripts\일정\CalendarController.cs" />
+    <Compile Include="Assets\Scripts\일정\CalendarDateItem.cs" />
+    <Compile Include="Assets\Scripts\일정\Calender.cs" />
+    <Compile Include="Assets\Scripts\일정\EventController.cs" />
+    <Compile Include="Assets\Scripts\튜토리얼\FinalChannel.cs" />
+    <Compile Include="Assets\Scripts\튜토리얼\TextTwinkle.cs" />
+    <Compile Include="Assets\Scripts\튜토리얼\TextTyping.cs" />
+    <Compile Include="Assets\Scripts\튜토리얼\TutorialKeyInput.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Users/user/Desktop/2019.4.17f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

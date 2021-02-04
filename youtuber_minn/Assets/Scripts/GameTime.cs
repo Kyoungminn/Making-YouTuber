@@ -13,7 +13,7 @@ public class GameTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameManager.game_time += (Time.deltaTime / 60.0f);
+        GameManager.game_time += (Time.deltaTime/60.0f);
         GameManager.game_day += (Time.deltaTime / 60.0f);
 
         int month = GameManager.game_month;

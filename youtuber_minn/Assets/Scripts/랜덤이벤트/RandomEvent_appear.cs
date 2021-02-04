@@ -7,20 +7,8 @@ public class RandomEvent_appear : MonoBehaviour
     private IEnumerator coroutine;
     public List<GameObject> QuestionAppear = new List<GameObject>();
 
-    private void Awake()
-    {
-        StartCoroutine(RandomAppear());
-    }
+    public static int Time_before = 0;
 
-    private IEnumerator RandomAppear()
-    {
-
-        while (true)
-        {
-            Appear();
-            yield return new WaitForSeconds(30f);
-        }
-    }
     public void Appear()
     {
         int rand;
@@ -49,16 +37,28 @@ public class RandomEvent_appear : MonoBehaviour
             case 19: QuestionAppear[19].SetActive(true); break;
         }
 
-     
-        // Start is called before the first frame update
-        void Start()
-        {
-      
-        }
 
-        // Update is called once per frame
-        void Update()
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Debug.Log(GameManager.game_time);
+        if ((int)(GameManager.game_time - (float)Time_before) == 10)
         {
+            int rand = Random.Range(0, 10);
+
+            switch (rand) { case 0:case 1: case 2: case 3: case 4: case 5: case 6: Appear(); break;
+                default: break;
+            }
+            
+            Time_before = (int)GameManager.game_time;
+            Debug.Log(Time_before);
         }
     }
 }
