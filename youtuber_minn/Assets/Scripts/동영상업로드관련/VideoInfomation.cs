@@ -36,7 +36,7 @@ public class VideoInfomation : MonoBehaviour
             int hit = Upload_sceneManager.uploadHits[id];
             string concept = Upload_sceneManager.uploadConcepts[id];
             int ads = Upload_sceneManager.uploadAds[id];
-            float payoff = Upload_sceneManager.uploadPayoffs[id];
+            int payoff = Upload_sceneManager.uploadPayoffs[id];
 
             thum.sprite = Upload_sceneManager.uploadThumnail[id].sprite;
             thum.color = Upload_sceneManager.uploadThumnail[id].color;

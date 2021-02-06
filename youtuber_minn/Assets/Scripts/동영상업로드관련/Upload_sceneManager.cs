@@ -14,9 +14,8 @@ public class Upload_sceneManager : MonoBehaviour
     public static List<int> uploadHits = new List<int>(); //동영상조회수
     public static List<string> uploadConcepts = new List<string>(); //동영상 컨셉
     public static List<int> uploadAds = new List<int>(); //동영상 광고개수
-    public static List<float> uploadPayoffs = new List<float>(); //동영상 총수익
+    public static List<int> uploadPayoffs = new List<int>(); //동영상 총수익
     //
-
 
     void Awake()
     {
