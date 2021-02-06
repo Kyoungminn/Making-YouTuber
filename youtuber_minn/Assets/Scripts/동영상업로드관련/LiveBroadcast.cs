@@ -13,6 +13,7 @@ public class LiveBroadcast : MonoBehaviour
     public List<string> liveComments = new List<string>();
     public GameObject live, liveEnd;
 
+    public bool firstLive = true;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +59,23 @@ public class LiveBroadcast : MonoBehaviour
     {
         VideoUploadTime.afterLiveTime = 600.0f;
         GameManager.health -= 30;
+
+        //라이브방송 수익 계산
+        int live_viewer;//라이브방송 시청자수
+        if (firstLive) //첫 라이브면 무조건 구독자의 50%시청자
+        {
+            firstLive = false;
+            live_viewer = (int)((float)GameManager.subscriber * 0.5f);
+        }
+        else
+        {
+            float rand = Random.Range(1.0f, 5.0f);
+            live_viewer = (int)((float)GameManager.subscriber * rand);
+        }
+        float pay = (float)live_viewer * 0.03f * 1000f * 0.7f; //라이브방송 수익
+        GameManager.money += (int)pay;
+        //
+
         live.SetActive(false);
         liveEnd.SetActive(true);
     }

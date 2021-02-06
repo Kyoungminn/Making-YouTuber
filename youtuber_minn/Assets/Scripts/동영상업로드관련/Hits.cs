@@ -10,9 +10,6 @@ public class Hits : MonoBehaviour
     private int hits;
     private float hits_P;
 
-    string youtubaButton;
-    int adsProper;
-
     private void Awake()
     {
         keyinput = GameObject.Find("GameManager").GetComponent<KeyInput>();
@@ -21,9 +18,9 @@ public class Hits : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        youtubaButton = GameManager.youtubaButton;
+        //string youtubaButton = GameManager.youtubaButton;
 
-        adsProper = keyinput.adsMaxCnt / 2;
+        int adsProper = keyinput.adsMaxCnt / 2;
 
         int rand = Random.Range(0, 100);
         if (rand <= 80)
@@ -41,12 +38,12 @@ public class Hits : MonoBehaviour
         if (keyinput.adsCnt > adsProper)
         {
             float rd = Random.Range(0.1f, 1.0f);
-            hits = (int)(hits * rd);
+            hits = (int)((float)hits * rd);
         }
 
         //업로드 완료 시 동영상들 정보 List에 저장
         string concept = keyinput.conceptText;
-        float pay = keyinput.adsCnt * hits * 0.3f;
+        float pay = (float)keyinput.adsCnt * (float)hits * 0.3f;
 
         Upload_sceneManager.uploadThumnail.Add(thumnail);
         Upload_sceneManager.uploadThumnailImage.Add(thumnailImage);
@@ -54,9 +51,11 @@ public class Hits : MonoBehaviour
         Upload_sceneManager.uploadHits.Add(hits);
         Upload_sceneManager.uploadConcepts.Add(concept);
         Upload_sceneManager.uploadAds.Add(keyinput.adsCnt);
-        Upload_sceneManager.uploadPayoffs.Add(pay);
+        Upload_sceneManager.uploadPayoffs.Add((int)pay);
         //
 
+        //광고수익 게임머니에 저장
+        GameManager.money += (int)pay;
 
         //업로드 완료 시 컨셉개수카운트
         if (!GameManager.conceptCnt.ContainsKey(concept))
