@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class KeyInput : MonoBehaviour
 {
+    public bool tutorialKeyboardChk = true;
     public GameObject uploadtxt;
     Hits hits;
 
@@ -103,22 +104,26 @@ public class KeyInput : MonoBehaviour
     }
     private void OnGUI()
     {
-
         svMat = GUI.matrix;
         GUI.matrix = Matrix4x4.TRS(createPoint, Quaternion.identity, scale);
         GUI.skin = GUISkin;
-        if (GUI.Button(new Rect(160.0f, 1050.0f, 750.0f, 100.0f), titleText))
+        if (GUI.Button(new Rect(170.0f, 1060.0f, 750.0f, 100.0f), titleText))
         {
             keyboard_t = TouchScreenKeyboard.Open(titleText);
             chk = 1;
         }
         
-        else if (GUI.Button(new Rect(390.0f, 1320.0f, 300.0f, 100.0f), adsText))
+        else if(GUI.Button(new Rect(370.0f, 1320.0f, 300.0f, 100.0f), adsText) && !GameTime.tutorialChk)
         {
             type = TouchScreenKeyboardType.NumberPad;
             keyboard_a = TouchScreenKeyboard.Open(adsText, type);
             chk = 2;
-           
+        }
+        
+        if (keyboard_t != null)
+        {
+            if (keyboard_t.active) tutorialKeyboardChk = false;
+            else tutorialKeyboardChk = true;
         }
 
         GUI.matrix = svMat;
@@ -150,7 +155,7 @@ public class KeyInput : MonoBehaviour
     {
         if (conceptText == "")
         {
-            conceptTextButton.text = "컨셉 ______________________";
+            conceptTextButton.text = "컨셉 ________________________";
         }
         else
         {

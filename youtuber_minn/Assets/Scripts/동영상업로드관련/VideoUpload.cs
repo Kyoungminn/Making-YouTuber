@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class VideoUpload : MonoBehaviour
 {
+    KeyInput keyinput;
+
     public GameObject uploadDonetxt;  
     public Button deleteButton;
     public Button conceptButton;
@@ -11,11 +13,14 @@ public class VideoUpload : MonoBehaviour
     public Slider uploading;
 
     public GameObject noConcept; //컨셉 미선택시 뜨는 팝업
+    public GameObject noTitle; //제목 미정시 뜨는 팝업
+    public GameObject noAds; //광고 미정시 뜨는 팝업
 
 
     // Start is called before the first frame update
     void Start()
     {
+        keyinput = GameObject.Find("GameManager").GetComponent<KeyInput>();
         conceptButton.enabled = true;
         uploading.gameObject.SetActive(false);
         uploadDonetxt.SetActive(false);
@@ -23,7 +28,25 @@ public class VideoUpload : MonoBehaviour
 
     public void UploadClick()
     {
-        if (GameObject.Find("GameManager").GetComponent<KeyInput>().conceptText != "")
+        if (keyinput.titleText == "")
+        {
+            keyinput.enabled = false;
+            noTitle.SetActive(true);
+        }
+
+        else if (keyinput.conceptText == "")
+        {
+            keyinput.enabled = false;
+            noConcept.SetActive(true);
+        }
+
+        else if (keyinput.adsText == "")
+        {
+            keyinput.enabled = false;
+            noAds.SetActive(true);
+        }
+
+        else
         {
             deleteButton.enabled = false;
             conceptButton.enabled = false;
@@ -31,12 +54,6 @@ public class VideoUpload : MonoBehaviour
             uploading.gameObject.SetActive(true);
 
             StartCoroutine(Loading());
-        }
-
-        else
-        {
-            GameObject.Find("GameManager").GetComponent<KeyInput>().enabled = false;
-            noConcept.SetActive(true);
         }
    
     }

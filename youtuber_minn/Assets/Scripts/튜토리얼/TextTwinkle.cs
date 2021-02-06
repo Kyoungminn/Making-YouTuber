@@ -20,9 +20,9 @@ public class TextTwinkle : MonoBehaviour
         while (true) 
         { 
             flashingText.text = ""; 
-            yield return new WaitForSeconds (.5f); 
+            yield return new WaitForSeconds (0.5f); 
             flashingText.text = ogText;
-            yield return new WaitForSeconds (.5f); 
+            yield return new WaitForSeconds (0.5f); 
         } 
     }
 

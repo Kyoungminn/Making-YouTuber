@@ -3940,7 +3940,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1255789717}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1800879674}
+        m_MethodName: ScheduleChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1255789717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4048,7 +4059,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\uB77C\uC774\uBE0C \uBC29\uC1A1\uC744 \uD560 \uC218 \n\n\uC5C6\uC2B5\uB2C8\uB2E4.\n\n(\uB0A8\uC740
-    \uC2DC\uAC04 :               )"
+    \uC2DC\uAC04                )"
 --- !u!222 &1263980653
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5379,7 +5390,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\uB3D9\uC601\uC0C1\uC744 \uC5C5\uB85C\uB4DC \uD560 \uC218 \n\n\uC5C6\uC2B5\uB2C8\uB2E4.\n\n(\uB0A8\uC740
-    \uC2DC\uAC04 :               )"
+    \uC2DC\uAC04                )"
 --- !u!222 &1855178939
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5972,7 +5983,7 @@ RectTransform:
   m_GameObject: {fileID: 2085474776}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.00032, y: 1.00032, z: 1.00032}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1231327754}
   - {fileID: 631699469}
@@ -5982,8 +5993,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0025024004, y: -690}
-  m_SizeDelta: {x: 1079.995, y: 423.88928}
+  m_AnchoredPosition: {x: 0, y: -690}
+  m_SizeDelta: {x: 1080, y: 423.88928}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2085474778
 MonoBehaviour:

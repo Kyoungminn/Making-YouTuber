@@ -4,10 +4,28 @@ using UnityEngine;
 
 public class GameTime : MonoBehaviour
 {
+    public static bool tutorialChk = true;
+    public static bool monthChange;
+
+    public static List<List<string>> dayEvent = new List<List<string>>(); //매달 일에 들어가는 일정
+    public static Dictionary<string, int> eventDay = new Dictionary<string, int>(); //매달에 대한 이벤트 존재 여부 및 몇 일에 있는지 저장
+    public static List<int> cummunity = new List<int>(); //커뮤니티는 매 달 4개씩 가능하므로 그거 처리
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        resetDayEvent();
+    }
+
+    void resetDayEvent()
+    {
+        if(dayEvent.Count == 0)
+        {
+            for (int i = 0; i <= 31; i++)
+            {
+                dayEvent.Add(new List<string>());
+            }
+        }
     }
 
     // Update is called once per frame
@@ -18,13 +36,32 @@ public class GameTime : MonoBehaviour
 
         int month = GameManager.game_month;
         float day = GameManager.game_day;
+
+        if (GameManager.game_month == 9 && EventController._eventInstance.monthEvent[9].Contains("팬페스트"))
+        {
+            if (!dayEvent[1].Contains("팬페스트"))
+            {
+                dayEvent[1].Add("팬페스트");
+                eventDay.Add("팬페스트", 1);
+            }
+        }
+
         if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
         {
             if (day >= 32.0f)
             {
+                monthChange = true;
+                dayEvent = new List<List<string>>();
+                resetDayEvent();
+                eventDay = new Dictionary<string, int>();
+                cummunity = new List<int>();
                 GameManager.game_day = 1.0f;
                 GameManager.game_month++;
-                if (GameManager.game_month > 12) GameManager.game_month = 1; 
+                if (GameManager.game_month > 12)
+                {
+                    GameManager.game_year++;
+                    GameManager.game_month = 1;
+                }
             }
         }
 
@@ -32,6 +69,11 @@ public class GameTime : MonoBehaviour
         {
             if (day >= 29.0f)
             {
+                monthChange = true;
+                dayEvent = new List<List<string>>();
+                resetDayEvent();
+                eventDay = new Dictionary<string, int>();
+                cummunity = new List<int>();
                 GameManager.game_day = 1.0f;
                 GameManager.game_month++;
             }
@@ -41,12 +83,17 @@ public class GameTime : MonoBehaviour
         {
             if (day >= 31.0f)
             {
+                monthChange = true;
+                dayEvent = new List<List<string>>();
+                resetDayEvent();
+                eventDay = new Dictionary<string, int>();
+                cummunity = new List<int>();
                 GameManager.game_day = 1.0f;
                 GameManager.game_month++;
             }
         }
 
         //Debug.Log("현재시간: " + (int)GameManager.game_time);
-        Debug.Log(GameManager.game_month + "월" + (int)GameManager.game_day + "일");
-    }
+        //Debug.Log(GameManager.game_month + "월" + (int)GameManager.game_day + "일");
+    }   
 }

@@ -1,8 +1,9 @@
-Ôªøusing System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class CalendarController : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class CalendarController : MonoBehaviour
 
     public Text _target;
 
-
     public GameObject _item;
 
     public List<GameObject> _dateItems = new List<GameObject>();
@@ -23,6 +23,16 @@ public class CalendarController : MonoBehaviour
 
     private DateTime _dateTime;
     public static CalendarController _calendarInstance;
+
+    private int startDayId, lengthDay;
+    public string currentDay;
+
+    public bool selectChk;
+    public string evt;
+
+    public List<List<string>> dayEventClone = new List<List<string>>(); //¿˙¿Â ¥©∏£±‚ ¿¸±Ó¡¯ ∫π¡¶«ÿº≠ ∫Ø∞Ê«“ dayEvent∫π¡¶
+    public Dictionary<string, int> eventDayClone = new Dictionary<string, int>(); //¿˙¿Â ¥©∏£±‚ ¿¸±Ó¡¯ ∫π¡¶«ÿº≠ ∫Ø∞Ê«“ eventDay ∫π¡¶
+    public List<int> cummunityClone = new List<int>(); //¿˙¿Â ¥©∏£±‚ ¿¸±Ó¡¯ ∫π¡¶«ÿº≠ ∫Ø∞Ê«“ cummunity ∫π¡¶
 
     void Start()
     {
@@ -42,16 +52,19 @@ public class CalendarController : MonoBehaviour
 
             _dateItems.Add(item);
         }
-
-        _dateTime = DateTime.Now;
-
-        CreateCalendar();
+        
+        StartCoroutine(CreateCalendar());
+        
     }
 
-    void CreateCalendar()
+    IEnumerator CreateCalendar()
     {
+        _dateTime = new DateTime(GameManager.game_year, GameManager.game_month, (int)GameManager.game_day);
+
         DateTime firstDay = _dateTime.AddDays(-(_dateTime.Day - 1));
         int index = GetDays(firstDay.DayOfWeek);
+
+        startDayId = index;
 
         int date = 0;
         for (int i = 0; i < _totalDateNum; i++)
@@ -71,8 +84,19 @@ public class CalendarController : MonoBehaviour
                 }
             }
         }
+
+        lengthDay = date;
+
+        Debug.Log(startDayId);
+        Debug.Log(lengthDay);
+
         _yearNumText.text = bottomYear.text = _dateTime.Year.ToString();
         _monthNumText.text = bottomMonth.text = _dateTime.Month.ToString("D2");
+
+        StartCoroutine(EventController._eventInstance.createEvent());
+
+        yield return null;
+
     }
 
     int GetDays(DayOfWeek day)
@@ -90,37 +114,101 @@ public class CalendarController : MonoBehaviour
 
         return 0;
     }
-    public void YearPrev()
-    {
-        _dateTime = _dateTime.AddYears(-1);
-        CreateCalendar();
-        EventController._eventInstance.createEvent();
-    }
-
-    public void YearNext()
-    {
-        _dateTime = _dateTime.AddYears(1);
-        CreateCalendar();
-        EventController._eventInstance.createEvent();
-    }
-
-    public void MonthPrev()
-    {
-        _dateTime = _dateTime.AddMonths(-1);
-        CreateCalendar();
-        EventController._eventInstance.createEvent();
-    }
-
+   
     public void MonthNext()
     {
-        _dateTime = _dateTime.AddMonths(1);
-        CreateCalendar();
-        EventController._eventInstance.createEvent();
+        Debug.Log("nextMonth");
+        GameManager.game_month++;
+        GameManager.game_day = 1.0f;
+        StartCoroutine(CreateCalendar());
     }
 
-    //Item ÌÅ¥Î¶≠ÌñàÏùÑ Í≤ΩÏö∞ TextÏóê ÌëúÏãú.
+    //Item ≈¨∏Ø«ﬂ¿ª ∞ÊøÏ Textø° «•Ω√.
     public void OnDateItemClick(string day)
     {
-        _target.text = _yearNumText.text + "-" + _monthNumText.text + "-" + int.Parse(day).ToString("D2");
+        _target.text = _yearNumText.text + "≥‚" + _monthNumText.text + "ø˘" + int.Parse(day).ToString("D2") + "¿œ";
+        currentDay = day;
+    }
+
+    public void AfterEventSaveClick()
+    {
+        GameTime.dayEvent = dayEventClone.ToList();
+        GameTime.eventDay = new Dictionary<string, int>(eventDayClone);
+        GameTime.cummunity = cummunityClone.ToList();
+        createEventTextAdd();
+    }
+
+    public void createEventTextAdd() //¥ﬁ∑¬ø° ¿œ¡§ «•Ω√
+    {
+        for(int i = startDayId; i < startDayId + lengthDay; i++)
+        {
+            int idx = i - startDayId + 1;
+            _dateItems[i].transform.GetChild(1).gameObject.GetComponent<Text>().text = "";
+            if (GameTime.dayEvent[idx].Count > 0)
+            { 
+                for (int j = 0; j < GameTime.dayEvent[idx].Count; j++)
+                {
+                    _dateItems[i].transform.GetChild(1).gameObject.GetComponent<Text>().text += GameTime.dayEvent[idx][j] + "\n";
+                    Debug.Log(GameTime.dayEvent[idx][j]);
+                }
+            }
+        }
+    }
+
+    public void OnEventButtonClick(GameObject evt, string evtText)
+    {
+        int cutDay = int.Parse(currentDay);
+
+        if (evtText == "ƒøπ¬¥œ∆º ±€ ¿€º∫")
+        {
+            if (cummunityClone.Contains(cutDay)) //ª°∞≠->«œæÁ
+            {
+                evt.GetComponent<Image>().color = new Color(1f, 1f, 1f);
+                dayEventClone[cutDay].Remove(evtText);
+                cummunityClone.Remove(cutDay);
+            }
+            else //«œæÁ -> ª°∞≠
+            {
+                if(dayEventClone[cutDay].Count == 0)
+                {
+                    evt.GetComponent<Image>().color = new Color(255f / 255f, 88f / 255f, 88f / 255f);
+                    dayEventClone[cutDay].Add(evtText);
+                    cummunityClone.Add(cutDay);
+                }
+                
+            }
+        }
+
+        else
+        {
+            if(eventDayClone.ContainsKey(evtText)) //ª°∞≠ -> «œæÁ
+            {
+                evt.GetComponent<Image>().color = new Color(1f, 1f, 1f);
+                dayEventClone[cutDay].Remove(evtText);
+                eventDayClone.Remove(evtText);
+            }
+            else //«œæÁ -> ª°∞≠
+            {
+                if(dayEventClone[cutDay].Count == 0)
+                {
+                    evt.GetComponent<Image>().color = new Color(255f / 255f, 88f / 255f, 88f / 255f);
+                    dayEventClone[cutDay].Add(evtText);
+                    eventDayClone.Add(evtText, cutDay);
+                }
+                
+            }
+        }
+        
+    }
+    void Update()
+    {
+        //Debug.Log(GameTime.monthChange);
+        if (GameTime.monthChange)
+        {
+            Debug.Log("¿œ¡§¥ŸΩ√∏∏µÈ±‚");
+            StartCoroutine(CreateCalendar());
+
+            GameTime.monthChange = false;
+        }
     }
 }
