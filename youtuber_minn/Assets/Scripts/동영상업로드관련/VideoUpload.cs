@@ -75,6 +75,7 @@ public class VideoUpload : MonoBehaviour
                 deleteButton.enabled = true;
                 
                 VideoUploadTime.afterUploadTime = 180.0f;
+                GameManager.health -= 15;
                 GameManager.uploadChkLocker = true;
                 GameManager.uploadChkMain = true;
 

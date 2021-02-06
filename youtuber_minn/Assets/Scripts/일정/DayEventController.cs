@@ -101,6 +101,8 @@ public class DayEventController : MonoBehaviour
         int _charm = GameManager.charm; //매력
         int _subscriber = GameManager.subscriber; //구독자
 
+        GameManager.health -= 5;
+
         if (_event == "합방")
         {
             //편집 + 1%
