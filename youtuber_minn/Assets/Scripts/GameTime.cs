@@ -14,6 +14,6 @@ public class GameTime : MonoBehaviour
     void Update()
     {
         GameManager.game_time += Time.deltaTime;
-        Debug.Log("현재시간: " + GameManager.game_time);
+         //Debug.Log("현재시간: " + GameManager.game_time);
     }
 }
