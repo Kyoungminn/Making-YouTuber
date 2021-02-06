@@ -31,6 +31,19 @@ public class ItemLocker : MonoBehaviour
         GameManager.edit += stat;
     }
 
+    public void GetName_Beauty()
+    {
+        string ItemName;
+        if (itemTxt.text.Equals(this.gameObject.name))
+        {
+            itemTxt.text = "";
+        }
+        else
+        {
+            ItemName = this.gameObject.name;
+            itemTxt.text = ItemName;
+        }
+    }
     public void GetName()       //건강 아이템 클릭시 이름 가져오기
     {
         string str;
@@ -91,6 +104,9 @@ public class ItemLocker : MonoBehaviour
             }
         }
         GameManager.charm = charming;
+        GameObject go2;
+        go2 = GameObject.Find("MyGMCharmStat");
+        go2.GetComponentInChildren<Text>().text = "현재 매력 : " + GameManager.charm;
     }
     public void itemActive()    //아이템 입혀보기
     {
@@ -188,17 +204,9 @@ public class ItemLocker : MonoBehaviour
         }
 
 
-        GameObject go2,go;
-        go2 = GameObject.Find("MyGMCharmStat");
-        go2.GetComponentInChildren<Text>().text = "현재 GMCharm : " + GameManager.charm;
-        go = GameObject.Find("MyGMHealthStat");
-        go.GetComponentInChildren<Text>().text = "현재 GMCHealth : " + GameManager.health;
+        /*go = GameObject.Find("MyGMHealthStat");
+        go.GetComponentInChildren<Text>().text = "현재 GMCHealth : " + GameManager.health;*/
 
     }
 
-    void FixedUpdate()
-    {
-
-
-    }
 }

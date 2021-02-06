@@ -135,29 +135,13 @@ public class Shop : MonoBehaviour
         GameObject go1 = GameObject.Find("편집items");    //각각 편집, 건강 items구분 해주는 변수
         GameObject go2 = GameObject.Find("건강itmes");
         GameObject PR = GameObject.Find("ItemPrice");
-        if(go1 != null)
-        {
-            Debug.Log("go1(편집items)찾음");
-        }
-        else
-        {
-            Debug.Log("go1(편집items)못 찾음");
-        }
-        if (go2 == null)
-        {
-            Debug.Log("go2(건강items)못 찾음");
-        }
-        else
-        {
-            Debug.Log("go2(건강items)찾음");
-        }
         string str = PR.GetComponent<Text>().text;
         price = int.Parse(str);
         money -= price;
         if (money < 0)
         {
-            money += price;
-            //돈 부족하다고 팝업
+            money += price; 
+            GameObject.Find("Canvas").transform.Find("구매불가능").gameObject.SetActive(true);
         }
         else
         {
