@@ -57,6 +57,7 @@ public class LiveBroadcast : MonoBehaviour
     void Live_end()
     {
         VideoUploadTime.afterLiveTime = 600.0f;
+        GameManager.health -= 30;
         live.SetActive(false);
         liveEnd.SetActive(true);
     }
