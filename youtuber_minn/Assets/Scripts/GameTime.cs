@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameTime : MonoBehaviour
 {
+    public static bool tutorialChk = true;
     public static bool monthChange;
 
     public static List<List<string>> dayEvent = new List<List<string>>(); //매달 일에 들어가는 일정
@@ -18,9 +19,12 @@ public class GameTime : MonoBehaviour
 
     void resetDayEvent()
     {
-        for (int i = 0; i <= 31; i++)
+        if(dayEvent.Count == 0)
         {
-            dayEvent.Add(new List<string>());
+            for (int i = 0; i <= 31; i++)
+            {
+                dayEvent.Add(new List<string>());
+            }
         }
     }
 
@@ -35,7 +39,7 @@ public class GameTime : MonoBehaviour
 
         if (GameManager.game_month == 9 && EventController._eventInstance.monthEvent[9].Contains("팬페스트"))
         {
-            if(!dayEvent[1].Contains("팬페스트"))
+            if (!dayEvent[1].Contains("팬페스트"))
             {
                 dayEvent[1].Add("팬페스트");
                 eventDay.Add("팬페스트", 1);
@@ -47,7 +51,7 @@ public class GameTime : MonoBehaviour
             if (day >= 32.0f)
             {
                 monthChange = true;
-                dayEvent = new List<List<string>>(); 
+                dayEvent = new List<List<string>>();
                 resetDayEvent();
                 eventDay = new Dictionary<string, int>();
                 cummunity = new List<int>();
@@ -91,5 +95,5 @@ public class GameTime : MonoBehaviour
 
         //Debug.Log("현재시간: " + (int)GameManager.game_time);
         //Debug.Log(GameManager.game_month + "월" + (int)GameManager.game_day + "일");
-    }
+    }   
 }

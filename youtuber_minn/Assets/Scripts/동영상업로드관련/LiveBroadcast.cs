@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class LiveBroadcast : MonoBehaviour
 {
+    public Sprite[] spriteArray; //구독자그래픽
+
     public Text _comment;
+    public Image subscriberImage;
     string live_comment;
     public List<string> liveComments = new List<string>();
     public GameObject live, liveEnd;
@@ -63,7 +66,15 @@ public class LiveBroadcast : MonoBehaviour
         for(int i = 0 ; i < 29 ; i++)
         {
             int rand = Random.Range(0, liveComments.Count);
+            int rand2 = Random.Range(0, spriteArray.Length);
+
+            int r1 = Random.Range(0, 256);
+            int r2 = Random.Range(0, 256);
+            int r3 = Random.Range(0, 256);
+            
             _comment.text = liveComments[rand];
+            subscriberImage.color = new Color(r1 / 255f, r2 / 255f, r3 / 255f);
+            //subscriberImage.sprite = spriteArray[rand2];
             yield return new WaitForSeconds(2.0f);
         }
 

@@ -93,9 +93,9 @@ public class CalendarController : MonoBehaviour
         _yearNumText.text = bottomYear.text = _dateTime.Year.ToString();
         _monthNumText.text = bottomMonth.text = _dateTime.Month.ToString("D2");
 
-        yield return null;
+        StartCoroutine(EventController._eventInstance.createEvent());
 
-        createEventTextAdd();
+        yield return null;
 
     }
 
@@ -149,7 +149,7 @@ public class CalendarController : MonoBehaviour
                 for (int j = 0; j < GameTime.dayEvent[idx].Count; j++)
                 {
                     _dateItems[i].transform.GetChild(1).gameObject.GetComponent<Text>().text += GameTime.dayEvent[idx][j] + "\n";
-                    //Debug.Log(GameTime.dayEvent[idx][j]);
+                    Debug.Log(GameTime.dayEvent[idx][j]);
                 }
             }
         }
@@ -207,6 +207,8 @@ public class CalendarController : MonoBehaviour
         {
             Debug.Log("일정다시만들기");
             StartCoroutine(CreateCalendar());
+
+            GameTime.monthChange = false;
         }
     }
 }

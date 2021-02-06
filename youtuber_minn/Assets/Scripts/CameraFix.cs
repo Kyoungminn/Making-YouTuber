@@ -10,7 +10,7 @@ public class CameraFix : MonoBehaviour
     /// </summary> 
     private void Awake() 
     {
-        Screen.SetResolution(Screen.width, (Screen.width * 16) / 9, true);
+        //Screen.SetResolution(Screen.width, (Screen.width * 16) / 9, true);
         Camera cam = GetComponent<Camera>(); 
         // 카메라 컴포넌트의 Viewport Rect 
         Rect rt = cam.rect; 

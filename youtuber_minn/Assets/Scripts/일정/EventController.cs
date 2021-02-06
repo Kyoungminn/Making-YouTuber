@@ -62,7 +62,7 @@ public class EventController : MonoBehaviour
             eventsObject.Add(events);
         }
 
-        StartCoroutine(createEvent());
+        //StartCoroutine(createEvent());
     }
 
     public IEnumerator createEvent()
@@ -84,11 +84,9 @@ public class EventController : MonoBehaviour
             eventsObject[i].SetActive(false);
         }
         
-        yield return null;
-
-        GameTime.monthChange = false;
-
         CalendarController._calendarInstance.createEventTextAdd();
+        
+        yield return null;
     }
 
     public void nextMonth()
@@ -99,11 +97,6 @@ public class EventController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameTime.monthChange)
-        {
-            StartCoroutine(createEvent());
-        }
-
         int now_month = int.Parse(calControll.bottomMonth.text);
 
         if (GameManager.subscriber >= 10000)

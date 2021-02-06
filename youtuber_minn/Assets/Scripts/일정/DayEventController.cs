@@ -8,8 +8,8 @@ public class DayEventController : MonoBehaviour
     public GameObject eventPopup;
     public Text popupText;
 
-    int prevDay = 0;
-    int prevMonth = 0;
+    public static int prevDay = 0;
+    public static int prevMonth = 0;
     bool dayChk = false;
 
     string _event;
@@ -17,8 +17,7 @@ public class DayEventController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        prevMonth = 0;
-        prevDay = 0;
+
     }
 
     // Update is called once per frame
