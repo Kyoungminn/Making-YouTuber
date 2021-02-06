@@ -25,7 +25,6 @@ public class ChangeScene : MonoBehaviour
     {
         SceneManager.LoadScene("Main_scene");
     }
-
     public void ItemLockerChange()
     {
         SceneManager.LoadScene("ItemLocker_scene");
