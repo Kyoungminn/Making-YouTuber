@@ -15,6 +15,7 @@ public class TutorialMainController : MonoBehaviour
     public void coinAdd()
     {
         GameTime.tutorialChk = false;
+        GameManager.health = 51;
         GameManager.subscriber = 100;
         GameManager.money = 1000;
     }

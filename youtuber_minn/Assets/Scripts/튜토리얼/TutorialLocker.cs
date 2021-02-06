@@ -16,7 +16,7 @@ public class TutorialLocker : MonoBehaviour
         thumb1.sprite = Upload_sceneManager.uploadThumnail[0].sprite;
         thumb1.color = Upload_sceneManager.uploadThumnail[0].color;
         thumb2.sprite = Upload_sceneManager.uploadThumnailImage[0].sprite;
-        thumbText.text = "제목: " + Upload_sceneManager.uploadTitles[0] + "\n조회수: " + Upload_sceneManager.uploadHits[0].ToString();
+        thumbText.text = "제목: " + Upload_sceneManager.uploadTitles[0] + "\n\n조회수: " + Upload_sceneManager.uploadHits[0].ToString();
     }
 
     public void MainToLocker()
