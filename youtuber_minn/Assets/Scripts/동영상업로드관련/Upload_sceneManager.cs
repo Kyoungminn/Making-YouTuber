@@ -8,8 +8,10 @@ public class Upload_sceneManager : MonoBehaviour
     public static Upload_sceneManager inst = null;
 
     //한 동영상에 저장되는 정보
-    public static List<Image> uploadThumnail = new List<Image>(); //썸네일 배경
-    public static List<Image> uploadThumnailImage = new List<Image>();//썸네일
+    public static List<float> uploadThumnail_r = new List<float>(); //썸네일 배경
+    public static List<float> uploadThumnail_g = new List<float>(); //썸네일 배경
+    public static List<float> uploadThumnail_b = new List<float>(); //썸네일 배경
+    public static List<int> uploadThumnailImage = new List<int>();//썸네일
     public static List<string> uploadTitles = new List<string>(); //동영상 제목
     public static List<int> uploadHits = new List<int>(); //동영상조회수
     public static List<string> uploadConcepts = new List<string>(); //동영상 컨셉

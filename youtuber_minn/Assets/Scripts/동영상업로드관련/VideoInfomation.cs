@@ -10,7 +10,8 @@ public class VideoInfomation : MonoBehaviour
     public static int indexNumber;
     public static bool videoChk = false;
     public static bool hitChk = true;
-    public Image thum, thumnail;
+    public Image thum;
+    public GameObject thumnail;
     public Text infoma;
     void Start()
     {
@@ -38,9 +39,22 @@ public class VideoInfomation : MonoBehaviour
             int ads = Upload_sceneManager.uploadAds[id];
             int payoff = Upload_sceneManager.uploadPayoffs[id];
 
-            thum.sprite = Upload_sceneManager.uploadThumnail[id].sprite;
-            thum.color = Upload_sceneManager.uploadThumnail[id].color;
-            thumnail.sprite = Upload_sceneManager.uploadThumnailImage[id].sprite;
+            thum.color = new Color(Upload_sceneManager.uploadThumnail_r[id],
+                                   Upload_sceneManager.uploadThumnail_g[id],
+                                   Upload_sceneManager.uploadThumnail_b[id]);
+            for(int i=0;i<24;i++)
+            {
+                int pr = i / 3;
+                int chd = i % 3;
+                if(i == Upload_sceneManager.uploadThumnailImage[id])
+                {
+                    thumnail.transform.GetChild(pr).transform.GetChild(chd).gameObject.SetActive(true);
+                }
+                else
+                {
+                    thumnail.transform.GetChild(pr).transform.GetChild(chd).gameObject.SetActive(false);
+                }
+            }
 
             infoma.text = "제목: " + title
                      + "\n조회수: " + hit.ToString()

@@ -7,7 +7,7 @@ public class ItemLocker : MonoBehaviour
 {
     public static int[] Index = new int[4];             //매력아이템 index
     public static int[,] HealthItems = new int[4,3];
-    public static int[,]  CharmItems = new int[20, 3];
+    public static int[,]  CharmItems = new int[30, 3];
     public static int[,] EditItems = new int[30, 3];
     public GameObject HI, EI, CI, parent, item, button, itemCollection; 
     public Text itemTxt, statTxt;

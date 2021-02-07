@@ -45,8 +45,7 @@ public class EventButtonController : MonoBehaviour
     {
         for(int i = 0 ; i <= 31 ; i++)
         {
-            calControll.dayEventClone.Add(new List<string>());
-            calControll.dayEventClone[i] = GameTime.dayEvent[i].ToList();
+            calControll.dayEventClone[i] = GameTime.dayEvent[i];
         }
         calControll.eventDayClone = new Dictionary<string, int>(GameTime.eventDay);
         calControll.cummunityClone = GameTime.cummunity.ToList();
