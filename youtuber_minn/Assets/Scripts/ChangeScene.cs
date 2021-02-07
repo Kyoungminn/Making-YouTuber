@@ -31,5 +31,10 @@ public class ChangeScene : MonoBehaviour
         SceneManager.LoadScene("Schedule_scene");
     }
 
+    public void ItemLockerChange()
+    {
+        SceneManager.LoadScene("ItemLocker_scene");
+    }
+
 
 }
