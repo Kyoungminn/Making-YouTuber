@@ -13,8 +13,8 @@ public class Shop : MonoBehaviour
 
     void Start()
     {
-        //money = GameManager.money;
-        money = 1000;
+        money = GameManager.money;
+        //money = 100000;
         string str = money.ToString();
         moneyTxt.text = (str);
 
@@ -26,6 +26,14 @@ public class Shop : MonoBehaviour
         GameObject go;
         string str;
         string[] spstring;
+
+        GameObject parent = transform.parent.gameObject;       //item의 index 구하기
+        str = parent.gameObject.name;
+        spstring = str.Split('-');
+        Debug.Log(spstring[0] + "    " + spstring[1]);
+        str = spstring[1];
+        panel = int.Parse(str);
+
         if (itemTxt.text.Equals(this.gameObject.name))
         {
             itemTxt.text = "";
@@ -36,14 +44,8 @@ public class Shop : MonoBehaviour
             itemTxt.text = ItemName;
         }
 
-        GameObject parent = transform.parent.gameObject;       //item의 index 구하기
-        str = parent.gameObject.name;
-        spstring = str.Split('-');
-        Debug.Log(spstring[0] + "    " + spstring[1]);
-        str = spstring[1];
-        panel = int.Parse(str);
 
-        for (int i = 0; i < parent.transform.childCount; i++)
+        for (int i = 0; i < parent.transform.childCount; i++)       //btn 알아내기
         {
             go = parent.transform.GetChild(i).gameObject;
             if (go.name.Equals(this.gameObject.name))
@@ -54,25 +56,41 @@ public class Shop : MonoBehaviour
         }
         for (int i = 0; i < 4; i++)
         {
-            if (ShopButtonEvent.code[i].panel == panel && ShopButtonEvent.code[i].btn == btn)
+            /*if (ShopButtonEvent.code[i].panel == panel && ShopButtonEvent.code[i].btn == btn)
             {
                 ShopButtonEvent.code[i].panel = 0;
                 ShopButtonEvent.code[i].btn = 0;
-            }
-            else
-            {
+            }*/
+            //else
+            //{
                 if (panel >= 2 && panel < 8)         //itemCode에 각각 저장([0]: 머리, [1]: 상의, [2]:하의, [3]: 신발)
                 {
                     ShopButtonEvent.code[0].panel = panel;
                     ShopButtonEvent.code[0].btn = btn;
                 }
-            }
+                else if ((panel >= 8 && panel < 13) || (panel == 7 && btn == 2) || (panel == 13 && btn == 0) || (panel >= 16 && panel < 20) )         //itemCode에 각각 저장([0]: 머리, [1]: 상의, [2]:하의, [3]: 신발)
+                {
+                    ShopButtonEvent.code[1].panel = panel;
+                    ShopButtonEvent.code[1].btn = btn;
+                }
+                else if (panel >= 20 && panel < 23)         //itemCode에 각각 저장([0]: 머리, [1]: 상의, [2]:하의, [3]: 신발)
+                {
+                    ShopButtonEvent.code[2].panel = panel;
+                    ShopButtonEvent.code[2].btn = btn;
+                }
+                else if ((panel >= 13 && panel < 16) || (panel == 16 && btn == 0))         //itemCode에 각각 저장([0]: 머리, [1]: 상의, [2]:하의, [3]: 신발)
+                {
+                    ShopButtonEvent.code[3].panel = panel;
+                    ShopButtonEvent.code[3].btn = btn;
+                    //Debug.Log("현재  ShopButtonEvent.code[3].panel : " + ShopButtonEvent.code[3].panel + ", ShopButtonEvent.code[3].btn : " + ShopButtonEvent.code[3].btn);
+                }
+            //}
         }
     }
 
     public void ItemInfo_Beauty()       //매력탭에서 사용되는 아이템 이름을 팝업에 띄우는 함수
     {
-        GameObject go, go2;
+        /*GameObject go, go2;
         string str, str2;
         go = GameObject.Find("Hair");
         str = go.GetComponent<Text>().text;
@@ -92,8 +110,8 @@ public class Shop : MonoBehaviour
             {
                 ItemName = str;
             }
-        }
-        itemTxt.text = ItemName + "을(를)";              
+        }*/
+        itemTxt.text = "착용하신 아이템들을";              
     }
 
     public void GetName()
@@ -177,10 +195,13 @@ public class Shop : MonoBehaviour
             GameManager.money = money;
             for(int i = 0; i < 4; i++)
             {
-                ItemLocker.CharmItems[ShopButtonEvent.code[i].panel, ShopButtonEvent.code[i].btn]++;        //아이템 구매하면 개수++   
-            }                                     
+               // Debug.Log("(2) 현재  ShopButtonEvent.code["+i+ "].panel : " + ShopButtonEvent.code[i].panel + ", ShopButtonEvent.code[" + i + "].btn : " + ShopButtonEvent.code[i].btn);
+                if (ShopButtonEvent.code[i].panel == 0 && ShopButtonEvent.code[i].btn == 0)
+                    continue;
+                ItemLocker.CharmItems[ShopButtonEvent.code[i].panel, ShopButtonEvent.code[i].btn]++;        //아이템 구매하면 개수++  
+               // Debug.Log("현재 CharmItemes[" + ShopButtonEvent.code[i].panel + "," + ShopButtonEvent.code[i].btn + "] : " + ItemLocker.CharmItems[ShopButtonEvent.code[i].panel, ShopButtonEvent.code[i].btn]);
+            }            
         }
-        Debug.Log(ItemLocker.CharmItems[2,1]);
     }
 
     // Update is called once per frame
