@@ -31,9 +31,10 @@ public class DayEventController : MonoBehaviour
             prevMonth = currentMonth;
             prevDay = 0;
         }
-
-        if (GameTime.dayEvent[currentDay].Count == 1 && currentDay - prevDay > 0)
+        Debug.Log("preDay" + prevDay + "cutDay" + currentDay);
+        if (GameTime.dayEvent[currentDay] != "" && currentDay - prevDay > 0)
         {
+            Debug.Log("preDay" + prevDay + "cutDay" + currentDay);
             prevDay = currentDay;
             dayChk = true;
         }
@@ -42,7 +43,7 @@ public class DayEventController : MonoBehaviour
             dayChk = false;
             eventPopup.SetActive(true);
 
-            _event = GameTime.dayEvent[currentDay][0];
+            _event = GameTime.dayEvent[currentDay];
 
             if(_event == "합방")
             {

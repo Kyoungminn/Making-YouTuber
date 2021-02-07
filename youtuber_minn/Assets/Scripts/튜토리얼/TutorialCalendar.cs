@@ -19,18 +19,13 @@ public class TutorialCalendar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i <= 31; i++)
-        {
-            GameTime.dayEvent.Add(new List<string>());
-        }
-
         TutorialcreateCalendar();
     }
 
     public void TutorialCalendarSaveClick()
     {
         int idx = int.Parse(_dateItems[21].transform.GetComponentInChildren<Text>().text);
-        GameTime.dayEvent[idx].Add("합방");
+        GameTime.dayEvent[idx] = "합방";
         GameTime.eventDay.Add("합방", idx);
         _dateItems[21].transform.GetChild(1).gameObject.GetComponent<Text>().text = "합방";
 

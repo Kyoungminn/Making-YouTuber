@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class LockerVideo : MonoBehaviour
 {
     public Text info;
-    public Image thumnail, thumnailImage;
+    public Image thumnail;
+    public GameObject thumnailImage;
     int hit;
     string title;
 
@@ -27,10 +28,22 @@ public class LockerVideo : MonoBehaviour
         title = Upload_sceneManager.uploadTitles[id];
         hit = Upload_sceneManager.uploadHits[id];
 
-        Debug.Log("썸네일: " + Upload_sceneManager.uploadThumnail.Count);
-        thumnail.sprite = Upload_sceneManager.uploadThumnail[id].sprite;
-        thumnail.color = Upload_sceneManager.uploadThumnail[id].color;
-        thumnailImage.sprite = Upload_sceneManager.uploadThumnailImage[id].sprite;
+        thumnail.color = new Color(Upload_sceneManager.uploadThumnail_r[id],
+                                   Upload_sceneManager.uploadThumnail_g[id],
+                                   Upload_sceneManager.uploadThumnail_b[id]);
+        for (int i = 0; i < 24; i++)
+        {
+            int pr = i / 3;
+            int chd = i % 3;
+            if (i == Upload_sceneManager.uploadThumnailImage[id])
+            {
+                thumnailImage.transform.GetChild(pr).transform.GetChild(chd).gameObject.SetActive(true);
+            }
+            else
+            {
+                thumnailImage.transform.GetChild(pr).transform.GetChild(chd).gameObject.SetActive(false);
+            }
+        }
 
         if ((videoNum - 1) == id && GameManager.uploadChkLocker)
         {

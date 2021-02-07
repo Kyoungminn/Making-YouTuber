@@ -47,7 +47,7 @@ public class KeyInput : MonoBehaviour
     public List<GameObject> thumASMR = new List<GameObject>();
     public List<GameObject> thumSing = new List<GameObject>();
     public List<GameObject> thumTrend = new List<GameObject>();
-    private int id;
+    public int id, rand;
 
     private void Awake()
     {
@@ -164,14 +164,14 @@ public class KeyInput : MonoBehaviour
             if (chk2)
             {
                 chk2 = false;
-                int rand, cnt;
+                int cnt;
                 switch(conceptText)
                 {
                     case "토킹":
                         id = 0;
                         cnt = thumTalking.Count;
                         rand = Random.Range(0, cnt);
-                        hits.thumnailImage = thumTalking[rand].GetComponent<Image>();
+                        //hits.thumnailImage = thumTalking[rand].GetComponent<Image>();
                         for(int i=0;i<cnt;i++)
                         {
                             if (i == rand) thumTalking[i].SetActive(true);
@@ -183,7 +183,7 @@ public class KeyInput : MonoBehaviour
                         id = 1;
                         cnt = thumGame.Count;
                         rand = Random.Range(0, cnt);
-                        hits.thumnailImage = thumGame[rand].GetComponent<Image>();
+                        //hits.thumnailImage = thumGame[rand].GetComponent<Image>();
                         for (int i = 0; i < cnt; i++)
                         {
                             if (i == rand) thumGame[i].SetActive(true);
@@ -195,7 +195,7 @@ public class KeyInput : MonoBehaviour
                         id = 2;
                         cnt = thumEating.Count;
                         rand = Random.Range(0, cnt);
-                        hits.thumnailImage = thumEating[rand].GetComponent<Image>();
+                        //hits.thumnailImage = thumEating[rand].GetComponent<Image>();
                         for (int i = 0; i < cnt; i++)
                         {
                             if (i == rand) thumEating[i].SetActive(true);
@@ -207,7 +207,7 @@ public class KeyInput : MonoBehaviour
                         id =3;
                         cnt = thumCook.Count;
                         rand = Random.Range(0, cnt);
-                        hits.thumnailImage = thumCook[rand].GetComponent<Image>();
+                        //hits.thumnailImage = thumCook[rand].GetComponent<Image>();
                         for (int i = 0; i < cnt; i++)
                         {
                             if (i == rand) thumCook[i].SetActive(true);
@@ -219,7 +219,7 @@ public class KeyInput : MonoBehaviour
                         id = 4;
                         cnt = thumVlog.Count;
                         rand = Random.Range(0, cnt);
-                        hits.thumnailImage = thumVlog[rand].GetComponent<Image>();
+                        //hits.thumnailImage = thumVlog[rand].GetComponent<Image>();
                         for (int i = 0; i < cnt; i++)
                         {
                             if (i == rand) thumVlog[i].SetActive(true);
@@ -231,7 +231,7 @@ public class KeyInput : MonoBehaviour
                         id = 5;
                         cnt = thumASMR.Count;
                         rand = Random.Range(0, cnt);
-                        hits.thumnailImage = thumASMR[rand].GetComponent<Image>();
+                        //hits.thumnailImage = thumASMR[rand].GetComponent<Image>();
                         for (int i = 0; i < cnt; i++)
                         {
                             if (i == rand) thumASMR[i].SetActive(true);
@@ -243,7 +243,7 @@ public class KeyInput : MonoBehaviour
                         id = 6;
                         cnt = thumSing.Count;
                         rand = Random.Range(0, cnt);
-                        hits.thumnailImage = thumSing[rand].GetComponent<Image>();
+                        //hits.thumnailImage = thumSing[rand].GetComponent<Image>();
                         for (int i = 0; i < cnt; i++)
                         {
                             if (i == rand) thumSing[i].SetActive(true);
@@ -255,7 +255,7 @@ public class KeyInput : MonoBehaviour
                         id = 7;
                         cnt = thumTrend.Count;
                         rand = Random.Range(0, cnt);
-                        hits.thumnailImage = thumTrend[rand].GetComponent<Image>();
+                        //hits.thumnailImage = thumTrend[rand].GetComponent<Image>();
                         for (int i = 0; i < cnt; i++)
                         {
                             if (i == rand) thumTrend[i].SetActive(true);

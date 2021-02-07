@@ -45,8 +45,12 @@ public class Hits : MonoBehaviour
         string concept = keyinput.conceptText;
         float pay = (float)keyinput.adsCnt * (float)hits * 0.3f;
 
-        Upload_sceneManager.uploadThumnail.Add(thumnail);
-        Upload_sceneManager.uploadThumnailImage.Add(thumnailImage);
+        Upload_sceneManager.uploadThumnail_r.Add(thumnail.color.r);
+        Upload_sceneManager.uploadThumnail_g.Add(thumnail.color.g);
+        Upload_sceneManager.uploadThumnail_b.Add(thumnail.color.b);
+        int idx = keyinput.id * 3 + keyinput.rand;
+        Debug.Log(idx);
+        Upload_sceneManager.uploadThumnailImage.Add(idx);
         Upload_sceneManager.uploadTitles.Add(keyinput.titleText);
         Upload_sceneManager.uploadHits.Add(hits);
         Upload_sceneManager.uploadConcepts.Add(concept);
@@ -58,18 +62,11 @@ public class Hits : MonoBehaviour
         GameManager.money += (int)pay;
 
         //업로드 완료 시 컨셉개수카운트
-        if (!GameManager.conceptCnt.ContainsKey(concept))
-        {
-            GameManager.conceptCnt[concept] = 1;
-        }
-        else
-        {
-            GameManager.conceptCnt[concept] += 1;
-        }
+        int conceptIdx = GameManager.EndingConcept[concept];
+        GameManager.conceptCnt[conceptIdx]++;
 
         Debug.Log("조회수: " + hits);
-        Debug.Log(concept + ": " + GameManager.conceptCnt[concept]);
-        Debug.Log(GameManager.conceptCnt.Count);
+        Debug.Log(concept + ": " + GameManager.conceptCnt[conceptIdx]);
     }
 
     // Update is called once per frame

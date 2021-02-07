@@ -18,7 +18,7 @@ public class MainCharacter : MonoBehaviour
                 child2 = child.transform.GetChild(j).gameObject;
                 child4 = child3.transform.GetChild(j).gameObject;
                 if (ItemLocker.Index[i] == j)
-                {                   
+                {
                     child2.SetActive(true);
                     child4.SetActive(true);
                 }
@@ -34,6 +34,7 @@ public class MainCharacter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
+
