@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     public static int subscriber = 100; //구독자수
     public static string youtubaButton = "노버튼"; //현재 유저가 지닌 최고 버튼
-    public static List<string> button_name = new List<string>{"bronze","silver","diamond","ruby"}; //브론즈,실버,골드,다이아,루비
+    public static List<string> button_name = new List<string>{"bronze","silver", "gold", "diamond","ruby"}; //브론즈,실버,골드,다이아,루비
 
     public static bool uploadChkLocker; //보관함에서 동영상업로드 여부 확인
     public static bool uploadChkMain; //메인에서 동영상 업로드 후 시간재기 위해 쓸 변수
@@ -31,17 +31,46 @@ public class GameManager : MonoBehaviour
 
     public GameObject UploadPanel;
 
+    public float sub_time = 0;
+
     void Start()
     {
-        if (uploadChkMain == true) {
-            subscriber += 10;
-            Debug.Log(subscriber);
+        if (uploadChkMain == true) //업로드하면 30초 간격으로 구독자 수 증가
+        {
+            InvokeRepeating ("up_subscriber", 30 ,30);
+            
         }
-        
+
+        else 
+        {
+            InvokeRepeating ("down_subscriber", 600 ,600); //아니면 10분 간격으로 구독자 수 감소
+        }
     }
 
     void Update()
     {
+        sub_time += Time.deltaTime; //수정해야함! 10분동안 구독자수가 증가하고 이후에 업로드 하지 않으면 감소하도록
+        if(sub_time >= 600)
+        {
+            CancelInvoke("up_subscriber");
+            Debug.Log("현재구독자수 :" + subscriber);
+
+        }
     
     }
+    void up_subscriber() 
+    {
+        subscriber += subscriber/100;
+        Debug.Log(subscriber);
+
+    }
+    void down_subscriber() 
+    {
+        subscriber -= 5 * (subscriber/100);
+        Debug.Log(subscriber);
+
+    }
+
+
+
 }
