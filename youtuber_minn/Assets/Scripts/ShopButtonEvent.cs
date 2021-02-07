@@ -74,6 +74,10 @@ public void itemActive()    //아이템 입혀보기
                     spstring = str.Split('_');                  //_img 뗀 게임 오브젝트 네임으로 찾아서 그 가격을 가져옴
                     str = spstring[0];
                     go = GameObject.Find(str);
+                    if(go == null)
+                    {
+                        Debug.Log(str+" 못찾음");
+                    }
                     str = go.GetComponentInChildren<Text>().text;
                     price = int.Parse(str);
                     total += price;
