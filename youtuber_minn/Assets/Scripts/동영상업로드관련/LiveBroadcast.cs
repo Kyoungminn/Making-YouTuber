@@ -7,6 +7,7 @@ public class LiveBroadcast : MonoBehaviour
 {
     public Sprite[] spriteArray; //구독자그래픽
 
+    public Text huwonText;
     public Text _comment;
     public Image subscriberImage;
     string live_comment;
@@ -82,19 +83,29 @@ public class LiveBroadcast : MonoBehaviour
 
     IEnumerator Live_ing()
     {
-        for(int i = 0 ; i < 29 ; i++)
+        for(int i = 0 ; i < 24 ; i++)
         {
+            Debug.Log(GameManager.game_time);
+            huwonText.gameObject.SetActive(false);
+
             int rand = Random.Range(0, liveComments.Count);
-            int rand2 = Random.Range(0, spriteArray.Length);
+            //int rand2 = Random.Range(0, spriteArray.Length);
+            int rand3 = Random.Range(0, 4); //후원텍스트 랜덤
+            Debug.Log(rand3);
 
             int r1 = Random.Range(0, 256);
             int r2 = Random.Range(0, 256);
             int r3 = Random.Range(0, 256);
             
+            if (rand3 == 0)
+            {
+                huwonText.gameObject.SetActive(true);
+            }
+
             _comment.text = liveComments[rand];
             subscriberImage.color = new Color(r1 / 255f, r2 / 255f, r3 / 255f);
             //subscriberImage.sprite = spriteArray[rand2];
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(2.5f);
         }
 
         Live_end();
