@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public static string human_name; //사람이름
     public static string channel_name; //채널이름
 
+    public static string nickname; //구독자 애칭
+
     public static int money; //돈
     public static int health; //건강
     public static int charm; //매력
@@ -36,6 +38,9 @@ public class GameManager : MonoBehaviour
     public float sub_time = 0;
 
     public bool chk_sub = true;
+    public bool chk_sub1 = true;
+    public bool chk_sub2 = true;
+
 
     void Start()
     {
@@ -49,27 +54,25 @@ public class GameManager : MonoBehaviour
             {
                 chk_sub = false;
                 InvokeRepeating ("up_subscriber", 30 ,30);
-
-                
-                
+                sub_time = 0;
             }
 
             sub_time += Time.deltaTime;
 
-            if(sub_time >= 600) //10분이 지나면 증가가 멈추고 10분 간격으로 감소 시작 
+            if(sub_time >= 600 && chk_sub1) //10분이 지나면 증가가 멈추고 10분 간격으로 감소 시작 
             {
-                    
+                chk_sub1 = false;    
                 CancelInvoke("up_subscriber");
                 Debug.Log("현재구독자수 :" + subscriber);
                 uploadChkMain = false;
-                chk_sub = true;
-
+      
             }
 
-            if (uploadChkMain == false && chk_sub)
+            if (uploadChkMain == false && chk_sub2)
             {
-                chk_sub = false;
+                chk_sub2 = false;
                 InvokeRepeating ("down_subscriber", 600 ,600); //아니면 10분 간격으로 구독자 수 감소
+    
             }
         
         
