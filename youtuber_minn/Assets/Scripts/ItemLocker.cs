@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class ItemLocker : MonoBehaviour
 {
-    public static int[] Index = new int[4];             //매력아이템 index
+    public static int[] Index = new int[6];             //매력아이템 index
     public static int[,] HealthItems = new int[4,3];
-    public static int[,]  CharmItems = new int[20, 3];
+    public static int[,]  CharmItems = new int[30, 3];
     public static int[,] EditItems = new int[30, 3];
     public GameObject HI, EI, CI, parent, item, button, itemCollection; 
     public Text itemTxt, statTxt;
@@ -90,11 +90,14 @@ public class ItemLocker : MonoBehaviour
                     str = child2.name;
                     spstring = str.Split('_');
                     str = spstring[0];
-                    Debug.Log(str);
                     go = GameObject.Find(str);
                     if(go == null)
                     {
                         Debug.Log(str + " 못 찾음");
+                    }
+                    else
+                    {
+                        Debug.Log(str + " 찾음");
                     }
                     str = go.GetComponentInChildren<Text>().text;
                     spstring = str.Split('+');

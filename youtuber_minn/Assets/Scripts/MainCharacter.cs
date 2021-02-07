@@ -13,11 +13,15 @@ public class MainCharacter : MonoBehaviour
         {
             child = itemCollection.transform.GetChild(i).gameObject;
             for (int j = 0; j < child.transform.childCount; j++)
-            {                
+            {
+                child2 = child.transform.GetChild(j).gameObject;
                 if (ItemLocker.Index[i] == j)
-                {
-                    child2 = child.transform.GetChild(j).gameObject;
+                {                   
                     child2.SetActive(true);
+                }
+                else
+                {
+                    child2.SetActive(false);
                 }
             }
         }
