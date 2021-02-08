@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public static int edit; //편집
 
 
-    public static int subscriber; //구독자수
+    public static int subscriber = 100; //구독자수
     public static string youtubaButton; //현재 유저가 지닌 최고 버튼
     public static List<string> button_name = new List<string>{"bronze","silver", "gold", "diamond","ruby"}; //브론즈,실버,골드,다이아,루비
 

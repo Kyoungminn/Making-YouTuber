@@ -49,7 +49,13 @@ public class GameData
 
     //ItemLocker-OK
     public int[] IL_Index = new int[6];
-    public int[,] IL_HealthItems = new int[4,3];
-    public int[,] IL_CharmItems = new int[30,3];
-    public int[,] IL_EditItems = new int[30,3];
+    public int[] IL_HealthItems_0 = new int[4]; //[4,3]2차원 배열 나눠서 저장
+    public int[] IL_HealthItems_1 = new int[4];
+    public int[] IL_HealthItems_2 = new int[4];
+    public int[] IL_CharmItems_0 = new int[30]; //[30,3]2차원 배열 나눠서 저장
+    public int[] IL_CharmItems_1 = new int[30];
+    public int[] IL_CharmItems_2 = new int[30];
+    public int[] IL_EditItems_0 = new int[30];
+    public int[] IL_EditItems_1 = new int[30];
+    public int[] IL_EditItems_2 = new int[30];
 }

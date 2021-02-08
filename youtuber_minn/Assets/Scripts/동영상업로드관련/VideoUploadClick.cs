@@ -14,11 +14,11 @@ public class VideoUploadClick : MonoBehaviour
 
     public void onVideoUploadClick()
     {
-        if(GameManager.health > 20 && VideoUploadTime.afterUploadTime == 0.0f)
+        if(GameManager.health >= 20 && VideoUploadTime.afterUploadTime == 0.0f)
         {
             SceneManager.LoadScene("Upload_scene");
         }
-        else if(GameManager.health <= 20)
+        else if(GameManager.health < 20)
         {
             impossiblePopup[0].SetActive(true);
         }
@@ -30,11 +30,11 @@ public class VideoUploadClick : MonoBehaviour
 
     public void onLiveClick()
     {
-        if (GameManager.health > 50 && VideoUploadTime.afterLiveTime == 0.0f)
+        if (GameManager.health >= 50 && VideoUploadTime.afterLiveTime == 0.0f)
         {
             SceneManager.LoadScene("Live_scene");
         }
-        else if (GameManager.health <= 50)
+        else if (GameManager.health < 50)
         {
             impossibleLive[0].SetActive(true);
         }
