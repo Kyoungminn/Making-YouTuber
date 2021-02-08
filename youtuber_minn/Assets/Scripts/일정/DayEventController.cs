@@ -16,12 +16,6 @@ public class DayEventController : MonoBehaviour
     string _event;
     public Sprite[] icons = new Sprite[3]; //0:구독자, 1:매력, 2:편집
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -151,7 +145,7 @@ public class DayEventController : MonoBehaviour
         if (_event == "합방")
         {
             //편집 + 1%
-            GameManager.edit += (int)((float)_edit * 0.01f);
+            GameManager.edit += (_edit / 100);
         }
         else if (_event == "팬미팅")
         {
@@ -171,8 +165,8 @@ public class DayEventController : MonoBehaviour
         else if (_event == "행사게스트")
         {
             //구독자 + 1 % 편집 + 1 %
-            GameManager.subscriber += (int)((float)_subscriber * 0.01f);
-            GameManager.edit += (int)((float)_edit * 0.01f);
+            GameManager.subscriber += (_subscriber / 100);
+            GameManager.edit += (_edit / 100);
         }
         else if (_event == "인터뷰")
         {
@@ -182,8 +176,8 @@ public class DayEventController : MonoBehaviour
         else if (_event == "유투바 대회")
         {
             //구독자 + 1 % 편집 + 1 % "
-            GameManager.subscriber += (int)((float)_subscriber * 0.01f);
-            GameManager.edit += (int)((float)_edit * 0.01f);
+            GameManager.subscriber += (_subscriber / 100);
+            GameManager.edit += (_edit / 100);
         }
         else if (_event == "팬싸인회")
         {
@@ -203,12 +197,13 @@ public class DayEventController : MonoBehaviour
         else if (_event == "팟캐스트 게스트 출연")
         {
             //구독자 + 1 % "
-            GameManager.subscriber += (int)((float)_subscriber * 0.01f);
+            GameManager.subscriber += (_subscriber / 100);
         }
         else //커뮤니티 글 작성
         {
             //구독자 + 1 % "
-            GameManager.subscriber += (int)((float)_subscriber * 0.01f);
+            GameManager.subscriber += (_subscriber / 100);
+            
         }
 
         Debug.Log("구독자수: " + GameManager.subscriber + "\n편집: " + GameManager.edit + "\n매력: " + GameManager.charm);
