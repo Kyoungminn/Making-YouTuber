@@ -27,6 +27,7 @@ public class GameQuit : MonoBehaviour
         }
         else if (ClickCount == 2)
         {
+            ClickCount = 0;
             CancelInvoke("DoubleClick");
             Popup.SetActive(true);
         }

@@ -64,7 +64,7 @@ public class DataLoad : MonoBehaviour
         VideoUploadTime.afterLiveTime = DataController.Instance._gameData.VT_afterLiveTime; //라이브 방송 후 시간
 
         //ItemLocker
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 6; i++)
         {
             ItemLocker.Index[i] = DataController.Instance._gameData.IL_Index[i];
         }

@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     public new AudioSource audio;
     public AudioClip gameBgm; //bgm
-    public AudioClip clendarRandomPopupAudio; //일정,랜덤이벤트 창 효과음
+    public AudioClip popupAudio; //일정,랜덤이벤트 창 효과음
     public AudioClip shopPayAudio; //상점 구매 효과음
     public AudioClip buttonAudio; //버튼음
 
@@ -27,6 +27,19 @@ public class SoundManager : MonoBehaviour
         audio.Play();
     }
 
+    public void OnShopPayAudio()
+    {
+        audio.clip = shopPayAudio;
+        audio.volume = 0.6f;
+        audio.Play();
+    }
+
+    public void PopupAudio()
+    {
+        audio.clip = popupAudio;
+        audio.volume = 0.6f;
+        audio.Play();
+    }
     // Update is called once per frame
     void Update()
     {

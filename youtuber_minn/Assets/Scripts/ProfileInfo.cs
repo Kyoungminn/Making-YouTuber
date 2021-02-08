@@ -18,6 +18,9 @@ public class ProfileInfo : MonoBehaviour
     public Text charm_value;
     public Text health_value;
 
+    //일정 값
+    public Text day_Text;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +36,22 @@ public class ProfileInfo : MonoBehaviour
         charm_value.text = GameManager.charm.ToString();
         health_value.text = GameManager.health.ToString();
 
+    }
+
+    void Update()
+    {
+        //구독자수, 돈 변화하는 값이므로
+        sub_value1.text = GameManager.subscriber.ToString();
+        money_value1.text = GameManager.money.ToString();
+
+        sub_value.text = GameManager.subscriber.ToString();
+        money_value.text = GameManager.money.ToString();
+        edit_value.text = GameManager.edit.ToString();
+        charm_value.text = GameManager.charm.ToString();
+        health_value.text = GameManager.health.ToString();
+
+        //일정표시
+        day_Text.text = GameManager.game_year.ToString() + "/" + GameManager.game_month.ToString("D2") + "/" + ((int)GameManager.game_day).ToString("D2");
     }
 
 }

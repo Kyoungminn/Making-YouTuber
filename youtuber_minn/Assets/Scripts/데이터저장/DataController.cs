@@ -70,6 +70,7 @@ public class DataController : MonoBehaviour
             Debug.Log("새로운 파일 생성");
             _gameData = new GameData();
             _gameData.GT_dayEvent.Initialize();
+            _gameData.IL_CharmItems[0, 0] = _gameData.IL_CharmItems[0, 1] = _gameData.IL_CharmItems[0, 2] = 1;
         }
         
     }
@@ -126,7 +127,7 @@ public class DataController : MonoBehaviour
         gameData.VT_afterLiveTime = VideoUploadTime.afterLiveTime; //라이브 방송 후 시간
 
         //ItemLocker
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 6; i++)
         {
             gameData.IL_Index[i] = ItemLocker.Index[i];
         }

@@ -58,7 +58,7 @@ public class EventButtonController : MonoBehaviour
             Text eventButtonText = eventButtons[i].GetComponentInChildren<Text>();
             eventButtonText.text = EventController._eventInstance.monthEvent[now_month][i];
 
-            if (eventButtonText.text == "팬페스트") //팬페스트는 9/1 고정일정
+            if (eventButtonText.text == "팬페스트") //팬페스트는 9/1 고정일정,무조건 회색 선택 안되게
             {
                 eventButtons[i].GetComponent<Image>().color = new Color(186f / 255f, 186f / 255f, 186f / 255f);
                 eventButtons[i].GetComponent<Button>().enabled = false;
