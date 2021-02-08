@@ -48,7 +48,7 @@ public class RandomEvent_appear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(GameManager.game_time);
+        //Debug.Log(GameManager.game_time);
         if ((int)(GameManager.game_time - (float)Time_before) == 10)
         {
             int rand = Random.Range(0, 10);

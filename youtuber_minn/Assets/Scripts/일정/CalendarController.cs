@@ -147,10 +147,10 @@ public class CalendarController : MonoBehaviour
         {
             int idx = i - startDayId + 1;
             _dateItems[i].transform.GetChild(1).gameObject.GetComponent<Text>().text = "";
-            if (GameTime.dayEvent[idx] != "")
+            if (GameTime.dayEvent[idx] != null)
             { 
                 _dateItems[i].transform.GetChild(1).gameObject.GetComponent<Text>().text += GameTime.dayEvent[idx] + "\n";
-                Debug.Log(GameTime.dayEvent[idx]);
+                Debug.Log(idx + " : " + GameTime.dayEvent[idx]);
             }
         }
     }
@@ -164,12 +164,12 @@ public class CalendarController : MonoBehaviour
             if (cummunityClone.Contains(cutDay)) //»¡°­->ÇÏ¾ç
             {
                 evt.GetComponent<Image>().color = new Color(1f, 1f, 1f);
-                dayEventClone[cutDay] = "";
+                dayEventClone[cutDay] = null;
                 cummunityClone.Remove(cutDay);
             }
             else //ÇÏ¾ç -> »¡°­
             {
-                if(dayEventClone[cutDay] == "")
+                if(dayEventClone[cutDay] == null || dayEventClone[cutDay] == "")
                 {
                     evt.GetComponent<Image>().color = new Color(255f / 255f, 88f / 255f, 88f / 255f);
                     dayEventClone[cutDay] = evtText;
@@ -184,12 +184,12 @@ public class CalendarController : MonoBehaviour
             if(eventDayClone.ContainsKey(evtText)) //»¡°­ -> ÇÏ¾ç
             {
                 evt.GetComponent<Image>().color = new Color(1f, 1f, 1f);
-                dayEventClone[cutDay] = "";
+                dayEventClone[cutDay] = null;
                 eventDayClone.Remove(evtText);
             }
             else //ÇÏ¾ç -> »¡°­
             {
-                if(dayEventClone[cutDay] == "")
+                if(dayEventClone[cutDay] == null || dayEventClone[cutDay] == "")
                 {
                     evt.GetComponent<Image>().color = new Color(255f / 255f, 88f / 255f, 88f / 255f);
                     dayEventClone[cutDay] = evtText;

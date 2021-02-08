@@ -48,7 +48,7 @@ public class GameData
     public float VT_afterLiveTime = 0.0f;
 
     //ItemLocker-OK
-    public int[] IL_Index = new int[4];
+    public int[] IL_Index = new int[6];
     public int[,] IL_HealthItems = new int[4,3];
     public int[,] IL_CharmItems = new int[30,3];
     public int[,] IL_EditItems = new int[30,3];

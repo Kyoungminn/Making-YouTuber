@@ -31,8 +31,8 @@ public class DayEventController : MonoBehaviour
             prevMonth = currentMonth;
             prevDay = 0;
         }
-        Debug.Log("preDay" + prevDay + "cutDay" + currentDay);
-        if (GameTime.dayEvent[currentDay] != "" && currentDay - prevDay > 0)
+        //Debug.Log("preDay" + prevDay + "cutDay" + currentDay);
+        if (GameTime.dayEvent[currentDay] != null && GameTime.dayEvent[currentDay] != "" && currentDay - prevDay > 0)
         {
             Debug.Log("preDay" + prevDay + "cutDay" + currentDay);
             prevDay = currentDay;
@@ -42,6 +42,8 @@ public class DayEventController : MonoBehaviour
         {
             dayChk = false;
             eventPopup.SetActive(true);
+
+            SoundManager._soundInstance.PopupAudio();
 
             _event = GameTime.dayEvent[currentDay];
 

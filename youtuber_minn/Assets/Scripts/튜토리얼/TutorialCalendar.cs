@@ -29,7 +29,7 @@ public class TutorialCalendar : MonoBehaviour
         GameTime.eventDay.Add("합방", idx);
         _dateItems[21].transform.GetChild(1).gameObject.GetComponent<Text>().text = "합방";
 
-        Debug.Log(GameTime.dayEvent[idx][0]);
+        Debug.Log(GameTime.dayEvent[idx]);
 
     }
 
