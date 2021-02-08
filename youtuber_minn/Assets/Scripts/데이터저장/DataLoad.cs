@@ -70,24 +70,21 @@ public class DataLoad : MonoBehaviour
         }
         for (int i = 0; i < 4; i++)
         {
-            for (int j = 0; j < 3; j++)
-            {
-                ItemLocker.HealthItems[i, j] = DataController.Instance._gameData.IL_HealthItems[i,j];
-            }
+            ItemLocker.HealthItems[i, 0] = DataController.Instance._gameData.IL_HealthItems_0[i];
+            ItemLocker.HealthItems[i, 1] = DataController.Instance._gameData.IL_HealthItems_1[i];
+            ItemLocker.HealthItems[i, 2] = DataController.Instance._gameData.IL_HealthItems_2[i];
         }
         for (int i = 0; i < 30; i++)
         {
-            for (int j = 0; j < 3; j++)
-            {
-                ItemLocker.CharmItems[i, j] = DataController.Instance._gameData.IL_CharmItems[i,j];
-            }
+            ItemLocker.CharmItems[i, 0] = DataController.Instance._gameData.IL_CharmItems_0[i];
+            ItemLocker.CharmItems[i, 1] = DataController.Instance._gameData.IL_CharmItems_1[i];
+            ItemLocker.CharmItems[i, 2] = DataController.Instance._gameData.IL_CharmItems_2[i];
         }
         for (int i = 0; i < 30; i++)
         {
-            for (int j = 0; j < 3; j++)
-            {
-                ItemLocker.EditItems[i, j] = DataController.Instance._gameData.IL_EditItems[i,j];
-            }
+            ItemLocker.EditItems[i, 0] = DataController.Instance._gameData.IL_EditItems_0[i];
+            ItemLocker.EditItems[i, 1] = DataController.Instance._gameData.IL_EditItems_1[i];
+            ItemLocker.EditItems[i, 2] = DataController.Instance._gameData.IL_EditItems_2[i];
         }
         Debug.Log(GameManager.game_time);
     }

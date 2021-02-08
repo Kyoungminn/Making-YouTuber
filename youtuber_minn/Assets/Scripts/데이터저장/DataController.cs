@@ -70,7 +70,7 @@ public class DataController : MonoBehaviour
             Debug.Log("새로운 파일 생성");
             _gameData = new GameData();
             _gameData.GT_dayEvent.Initialize();
-            _gameData.IL_CharmItems[0, 0] = _gameData.IL_CharmItems[0, 1] = _gameData.IL_CharmItems[0, 2] = 1;
+            _gameData.IL_CharmItems_0[0] = _gameData.IL_CharmItems_1[0] = _gameData.IL_CharmItems_2[0] = 1;
         }
         
     }
@@ -132,25 +132,22 @@ public class DataController : MonoBehaviour
             gameData.IL_Index[i] = ItemLocker.Index[i];
         }
         for (int i = 0; i < 4; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                gameData.IL_HealthItems[i,j] = ItemLocker.HealthItems[i, j];
-            }
+        { 
+            gameData.IL_HealthItems_0[i] = ItemLocker.HealthItems[i, 0];
+            gameData.IL_HealthItems_1[i] = ItemLocker.HealthItems[i, 1];
+            gameData.IL_HealthItems_2[i] = ItemLocker.HealthItems[i, 2];
         }
         for (int i = 0; i < 30; i++)
         {
-            for (int j = 0; j < 3; j++)
-            {
-                gameData.IL_CharmItems[i,j] = ItemLocker.CharmItems[i, j];
-            }
+            gameData.IL_CharmItems_0[i] = ItemLocker.CharmItems[i, 0];
+            gameData.IL_CharmItems_1[i] = ItemLocker.CharmItems[i, 1];
+            gameData.IL_CharmItems_2[i] = ItemLocker.CharmItems[i, 2];
         }
         for (int i = 0; i < 30; i++)
         {
-            for (int j = 0; j < 3; j++)
-            {
-                gameData.IL_EditItems[i,j] = ItemLocker.EditItems[i, j];
-            }
+            gameData.IL_EditItems_0[i] = ItemLocker.EditItems[i, 0];
+            gameData.IL_EditItems_1[i] = ItemLocker.EditItems[i, 1];
+            gameData.IL_EditItems_2[i] = ItemLocker.EditItems[i, 2];
         }
         //
 
