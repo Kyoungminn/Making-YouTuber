@@ -49,7 +49,6 @@ public void itemActive()    //아이템 입혀보기
                 if (child2.activeSelf == true)
                     boolean = true;
             }
-
         }
         if(boolean == false)
             button.GetComponent<Button>().interactable = false;
