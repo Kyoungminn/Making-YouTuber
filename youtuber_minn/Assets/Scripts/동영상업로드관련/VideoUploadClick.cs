@@ -55,13 +55,13 @@ public class VideoUploadClick : MonoBehaviour
         if (impossiblePopup[1])
         {
             float time = VideoUploadTime.afterUploadTime;
-            impossibleUploadTime.text = ((int)time / 60).ToString() + " : " + ((int)time % 60).ToString("D2");
+            impossibleUploadTime.text = ((int)time / 60).ToString("D2") + ":" + ((int)time % 60).ToString("D2");
         }
         
         if (impossibleLive[1])
         {
             float time = VideoUploadTime.afterLiveTime;
-            impossibleLiveTime.text = ((int)time / 60).ToString() + " : " + ((int)time % 60).ToString("D2");
+            impossibleLiveTime.text = ((int)time / 60).ToString("D2") + ":" + ((int)time % 60).ToString("D2");
         }
 
         

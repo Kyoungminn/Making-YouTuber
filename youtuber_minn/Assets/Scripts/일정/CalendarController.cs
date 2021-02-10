@@ -78,7 +78,6 @@ public class CalendarController : MonoBehaviour
                 if (thatDay.Month == firstDay.Month)
                 {
                     _dateItems[i].SetActive(true);
-
                     label.text = (date + 1).ToString("D2");
                     date++;
                 }
@@ -152,6 +151,16 @@ public class CalendarController : MonoBehaviour
                 _dateItems[i].transform.GetChild(1).gameObject.GetComponent<Text>().text += GameTime.dayEvent[idx] + "\n";
                 Debug.Log(idx + " : " + GameTime.dayEvent[idx]);
             }
+
+            if(GameTime.videoCalendar[idx])
+            {
+                _dateItems[i].transform.GetChild(2).gameObject.SetActive(true);
+            }
+
+            if(GameTime.liveCalendar[idx])
+            {
+                _dateItems[i].transform.GetChild(3).gameObject.SetActive(true);
+            }
         }
     }
 
@@ -200,6 +209,7 @@ public class CalendarController : MonoBehaviour
         }
         
     }
+
     void Update()
     {
         //Debug.Log(GameTime.monthChange);

@@ -12,6 +12,9 @@ public class GameTime : MonoBehaviour
     public static Dictionary<string, int> eventDay = new Dictionary<string, int>(); //매달에 대한 이벤트 존재 여부 및 몇 일에 있는지 저장
     public static List<int> cummunity = new List<int>(); //커뮤니티는 매 달 4개씩 가능하므로 그거 처리
 
+    public static bool[] videoCalendar = new bool[32]; //동영상 업로드 후 일정에 저장
+    public static bool[] liveCalendar = new bool[32]; //라이브 후 일정에 저장
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +45,8 @@ public class GameTime : MonoBehaviour
                 dayEvent.Initialize();
                 eventDay = new Dictionary<string, int>();
                 cummunity = new List<int>();
+                videoCalendar = new bool[32];
+                liveCalendar = new bool[32];
                 GameManager.game_day = 1.0f;
                 GameManager.game_month++;
                 if (GameManager.game_month > 12)
@@ -61,6 +66,8 @@ public class GameTime : MonoBehaviour
                 dayEvent.Initialize();
                 eventDay = new Dictionary<string, int>();
                 cummunity = new List<int>();
+                videoCalendar = new bool[32];
+                liveCalendar = new bool[32];
                 GameManager.game_day = 1.0f;
                 GameManager.game_month++;
             }
@@ -75,6 +82,8 @@ public class GameTime : MonoBehaviour
                 dayEvent.Initialize();
                 eventDay = new Dictionary<string, int>();
                 cummunity = new List<int>();
+                videoCalendar = new bool[32];
+                liveCalendar = new bool[32];
                 GameManager.game_day = 1.0f;
                 GameManager.game_month++;
             }

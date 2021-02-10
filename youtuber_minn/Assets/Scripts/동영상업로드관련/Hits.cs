@@ -65,6 +65,9 @@ public class Hits : MonoBehaviour
         int conceptIdx = GameManager.EndingConcept[concept];
         GameManager.conceptCnt[conceptIdx]++;
 
+        //업로드 완료 시 달력에 표시
+        GameTime.videoCalendar[(int)GameManager.game_day] = true;
+
         Debug.Log("조회수: " + hits);
         Debug.Log(concept + ": " + GameManager.conceptCnt[conceptIdx]);
     }

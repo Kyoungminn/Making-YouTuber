@@ -41,6 +41,9 @@ public class DataLoad : MonoBehaviour
             {
                 GameTime.eventDay.Add(GameTime.dayEvent[i], i);
             }
+
+            GameTime.videoCalendar[i] = DataController.Instance._gameData.GT_videoCalendar[i]; //동영상 업로드 후 일정에 저장
+            GameTime.liveCalendar[i] = DataController.Instance._gameData.GT_liveCalendar[i];//라이브 후 일정에 저장
         }
         GameTime.cummunity = DataController.Instance._gameData.GT_cummunity.ToList(); //커뮤니티
 
@@ -64,28 +67,31 @@ public class DataLoad : MonoBehaviour
         VideoUploadTime.afterLiveTime = DataController.Instance._gameData.VT_afterLiveTime; //라이브 방송 후 시간
 
         //ItemLocker
-        for (int i = 0; i < 6; i++)
-        {
-            ItemLocker.Index[i] = DataController.Instance._gameData.IL_Index[i];
-        }
-        for (int i = 0; i < 4; i++)
-        {
-            ItemLocker.HealthItems[i, 0] = DataController.Instance._gameData.IL_HealthItems_0[i];
-            ItemLocker.HealthItems[i, 1] = DataController.Instance._gameData.IL_HealthItems_1[i];
-            ItemLocker.HealthItems[i, 2] = DataController.Instance._gameData.IL_HealthItems_2[i];
-        }
         for (int i = 0; i < 30; i++)
         {
+            if(i < 4)
+            {
+                ItemLocker.HealthItems[i, 0] = DataController.Instance._gameData.IL_HealthItems_0[i];
+                ItemLocker.HealthItems[i, 1] = DataController.Instance._gameData.IL_HealthItems_1[i];
+                ItemLocker.HealthItems[i, 2] = DataController.Instance._gameData.IL_HealthItems_2[i];
+            }
+            if(i < 6)
+            {
+                ItemLocker.Index[i] = DataController.Instance._gameData.IL_Index[i];
+            }
+
             ItemLocker.CharmItems[i, 0] = DataController.Instance._gameData.IL_CharmItems_0[i];
             ItemLocker.CharmItems[i, 1] = DataController.Instance._gameData.IL_CharmItems_1[i];
             ItemLocker.CharmItems[i, 2] = DataController.Instance._gameData.IL_CharmItems_2[i];
-        }
-        for (int i = 0; i < 30; i++)
-        {
+
             ItemLocker.EditItems[i, 0] = DataController.Instance._gameData.IL_EditItems_0[i];
             ItemLocker.EditItems[i, 1] = DataController.Instance._gameData.IL_EditItems_1[i];
             ItemLocker.EditItems[i, 2] = DataController.Instance._gameData.IL_EditItems_2[i];
         }
+
+        //RandomEvent
+        RandomEvent_appear.Time_before = DataController.Instance._gameData.RE_Time_before;
+
         Debug.Log(GameManager.game_time);
     }
 

@@ -11,6 +11,7 @@ public class RandomEvent_appear : MonoBehaviour
 
     public void Appear()
     {
+        SoundManager._soundInstance.PopupAudio();
         int rand;
         rand = Random.Range(0, 20);
         switch (rand)
@@ -49,7 +50,7 @@ public class RandomEvent_appear : MonoBehaviour
     void Update()
     {
         //Debug.Log(GameManager.game_time);
-        if ((int)(GameManager.game_time - (float)Time_before) == 10)
+        if ((int)(GameManager.game_time - (float)Time_before) >= 10)
         {
             int rand = Random.Range(0, 10);
 
