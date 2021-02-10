@@ -27,6 +27,8 @@ public class GameData
     public bool GT_monthChange;
     public string[] GT_dayEvent = new string[32]; //매달 일에 들어가는 일정
     public List<int> GT_cummunity = new List<int>(); //커뮤니티는 매 달 4개씩 가능하므로 그거 처리
+    public bool[] GT_videoCalendar = new bool[32]; //동영상 업로드 후 일정에 저장
+    public bool[] GT_liveCalendar = new bool[32]; //라이브 후 일정에 저장
 
     //Upload_sceneManager-OK
     public List<float> UM_uploadThumnail_r = new List<float>(); //썸네일 배경
@@ -58,4 +60,7 @@ public class GameData
     public int[] IL_EditItems_0 = new int[30];
     public int[] IL_EditItems_1 = new int[30];
     public int[] IL_EditItems_2 = new int[30];
+
+    //RandomEvent
+    public int RE_Time_before = 0;
 }

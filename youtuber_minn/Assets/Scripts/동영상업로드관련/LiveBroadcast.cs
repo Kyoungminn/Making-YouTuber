@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class LiveBroadcast : MonoBehaviour
 {
+    TextFade textFade;
     public Sprite[] spriteArray; //구독자그래픽
+    public GameObject hairPar, hairPar2, commentBox;
 
     public Text huwonText;
     public Text _comment;
@@ -19,6 +21,8 @@ public class LiveBroadcast : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        textFade = huwonText.GetComponent<TextFade>();
+
         live_comment = "요즘 굴이 제철이래... " + GameManager.human_name + "얼굴…☆";
         liveComments.Add(live_comment);
 
@@ -52,8 +56,37 @@ public class LiveBroadcast : MonoBehaviour
         live_comment = "혼혈 아니야? 천국이랑 한국.";
         liveComments.Add(live_comment);
 
+        live_comment = "나 몰랐는데 " + GameManager.human_name + "좋아하네.";
+        liveComments.Add(live_comment);
+
+        live_comment = "여기서 " + GameManager.human_name + "싫어하는 사람 있나? 탕 또 있나?";
+        liveComments.Add(live_comment);
+
+        live_comment = GameManager.human_name + "야,,넌 돌잡이 때 내 심장을 잡았어,,,";
+        liveComments.Add(live_comment);
+        CharacHair();
 
         StartCoroutine(Live_ing());
+    }
+
+    void CharacHair()
+    {
+        GameObject hairChild, hairChild2;
+        for(int i=0;i<hairPar.transform.childCount;i++)
+        {
+            hairChild = hairPar.transform.GetChild(i).gameObject;
+            hairChild2 = hairPar2.transform.GetChild(i).gameObject;
+            if(ItemLocker.Index[0] == i)
+            {
+                hairChild.SetActive(true);
+                hairChild2.SetActive(true);
+            }
+            else
+            {
+                hairChild.SetActive(false);
+                hairChild2.SetActive(false);
+            }
+        }
     }
 
     void Live_end()
@@ -77,37 +110,44 @@ public class LiveBroadcast : MonoBehaviour
         GameManager.money += (int)pay;
         //
 
+        //라이브 완료 시 일정에 표시
+        GameTime.liveCalendar[(int)GameManager.game_day] = true; 
+
         live.SetActive(false);
         liveEnd.SetActive(true);
     }
 
     IEnumerator Live_ing()
     {
-        for(int i = 0 ; i < 24 ; i++)
+        for(int i = 0 ; i < 20 ; i++)
         {
             Debug.Log(GameManager.game_time);
-            huwonText.gameObject.SetActive(false);
 
             int rand = Random.Range(0, liveComments.Count);
-            //int rand2 = Random.Range(0, spriteArray.Length);
-            int rand3 = Random.Range(0, 4); //후원텍스트 랜덤
-            Debug.Log(rand3);
-
-            int r1 = Random.Range(0, 256);
-            int r2 = Random.Range(0, 256);
-            int r3 = Random.Range(0, 256);
-            
-            if (rand3 == 0)
-            {
-                huwonText.gameObject.SetActive(true);
-            }
+            int rand2 = Random.Range(0, spriteArray.Length);
 
             _comment.text = liveComments[rand];
-            subscriberImage.color = new Color(r1 / 255f, r2 / 255f, r3 / 255f);
-            //subscriberImage.sprite = spriteArray[rand2];
-            yield return new WaitForSeconds(2.5f);
-        }
+            subscriberImage.sprite = spriteArray[rand2];
+            
+            commentBox.GetComponent<Animator>().Play("CommentText", -1, 0f);
+            yield return new WaitForSeconds(2.0f);
+            commentBox.SetActive(false);
+            //후원텍스트 랜덤
+            huwonText.gameObject.SetActive(false);
 
+            int rand3 = Random.Range(0, 4); 
+            Debug.Log(rand3);
+
+            if (rand3 == 0)
+            {
+                SoundManager._soundInstance.PopupAudio();
+                huwonText.gameObject.SetActive(true);
+                StartCoroutine(textFade.FadeTextToFullAlpha());
+            }
+            //
+            yield return new WaitForSeconds(1.0f);
+            commentBox.SetActive(true);
+        }
         Live_end();
     }
 

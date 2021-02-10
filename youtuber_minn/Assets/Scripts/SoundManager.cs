@@ -12,10 +12,14 @@ public class SoundManager : MonoBehaviour
 
     public static SoundManager _soundInstance;
 
+    private void Awake()
+    {
+        _soundInstance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        _soundInstance = this;
         this.audio = gameObject.AddComponent<AudioSource>();
         this.audio.loop = false;
     }
@@ -23,21 +27,21 @@ public class SoundManager : MonoBehaviour
     public void OnButtonAudio()
     {
         audio.clip = buttonAudio;
-        audio.volume = 0.6f;
+        audio.volume = 0.8f;
         audio.Play();
     }
 
     public void OnShopPayAudio()
     {
         audio.clip = shopPayAudio;
-        audio.volume = 0.6f;
+        audio.volume = 0.7f;
         audio.Play();
     }
 
     public void PopupAudio()
     {
         audio.clip = popupAudio;
-        audio.volume = 0.6f;
+        audio.volume = 0.8f;
         audio.Play();
     }
     // Update is called once per frame

@@ -104,6 +104,8 @@ public class DataController : MonoBehaviour
         for (int i = 0; i <= 31; i++)//매달 일에 들어가는 일정
         {
             gameData.GT_dayEvent[i] = GameTime.dayEvent[i];
+            gameData.GT_videoCalendar[i] = GameTime.videoCalendar[i];
+            gameData.GT_liveCalendar[i] = GameTime.liveCalendar[i];
         }
         gameData.GT_cummunity = GameTime.cummunity.ToList(); //커뮤니티는 매 달 4개씩 가능하므로 그거 처리
 
@@ -127,28 +129,29 @@ public class DataController : MonoBehaviour
         gameData.VT_afterLiveTime = VideoUploadTime.afterLiveTime; //라이브 방송 후 시간
 
         //ItemLocker
-        for (int i = 0; i < 6; i++)
-        {
-            gameData.IL_Index[i] = ItemLocker.Index[i];
-        }
-        for (int i = 0; i < 4; i++)
-        { 
-            gameData.IL_HealthItems_0[i] = ItemLocker.HealthItems[i, 0];
-            gameData.IL_HealthItems_1[i] = ItemLocker.HealthItems[i, 1];
-            gameData.IL_HealthItems_2[i] = ItemLocker.HealthItems[i, 2];
-        }
         for (int i = 0; i < 30; i++)
         {
+            if (i < 4)
+            {
+                gameData.IL_HealthItems_0[i] = ItemLocker.HealthItems[i, 0];
+                gameData.IL_HealthItems_1[i] = ItemLocker.HealthItems[i, 1];
+                gameData.IL_HealthItems_2[i] = ItemLocker.HealthItems[i, 2];
+            }
+            if (i < 6)
+            {
+                gameData.IL_Index[i] = ItemLocker.Index[i];
+            }
             gameData.IL_CharmItems_0[i] = ItemLocker.CharmItems[i, 0];
             gameData.IL_CharmItems_1[i] = ItemLocker.CharmItems[i, 1];
             gameData.IL_CharmItems_2[i] = ItemLocker.CharmItems[i, 2];
-        }
-        for (int i = 0; i < 30; i++)
-        {
+
             gameData.IL_EditItems_0[i] = ItemLocker.EditItems[i, 0];
             gameData.IL_EditItems_1[i] = ItemLocker.EditItems[i, 1];
             gameData.IL_EditItems_2[i] = ItemLocker.EditItems[i, 2];
         }
+
+        //RandomEvent
+        gameData.RE_Time_before = RandomEvent_appear.Time_before;
         //
 
         string ToJsonData = JsonUtility.ToJson(gameData);
