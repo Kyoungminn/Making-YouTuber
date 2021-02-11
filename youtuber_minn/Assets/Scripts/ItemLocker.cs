@@ -15,20 +15,37 @@ public class ItemLocker : MonoBehaviour
 
     GameObject child, child2, Count;
     string str;
-    static int panel, btn, stat;
+    static int panel, btn, stat, maxEdit, maxCharm, maxHealth = 100;
 
     public void useItem()
     {
-        //Debug.Log("현재 stat : " + stat);
-        HealthItems[panel, btn]--;
-        GameManager.health += stat;
+        //Debug.Log("현재 stat : " + stat);       
+        if (GameManager.health < maxHealth)
+        {
+            HealthItems[panel, btn]--;
+            GameManager.health += stat;
+            if (GameManager.health > maxHealth)
+                GameManager.health = maxHealth;
+        }
+        else
+        {
+            GameObject.Find("Canvas").transform.Find("사용불가팝업").gameObject.SetActive(true);
+        }
     }
 
     public void useItem_edit()
-    {
-        //Debug.Log("현재 edit stat : " + stat);
-        EditItems[panel, btn]--;
-        GameManager.edit += stat;
+    {        //Debug.Log("현재 edit stat : " + stat);      
+        if (GameManager.edit < maxEdit)
+        {
+            EditItems[panel, btn]--;
+            GameManager.edit += stat;
+            if (GameManager.edit > maxEdit)
+                GameManager.edit = maxEdit;
+        }
+        else
+        {
+            GameObject.Find("Canvas").transform.Find("사용불가팝업").gameObject.SetActive(true);
+        }
     }
 
     public void GetName_Beauty()
@@ -102,14 +119,20 @@ public class ItemLocker : MonoBehaviour
                     str = go.GetComponentInChildren<Text>().text;
                     spstring = str.Split('+');
                     charming += int.Parse(spstring[1]);
-
                 }
             }
         }
-        GameManager.charm = charming;
-        GameObject go2;
-        go2 = GameObject.Find("MyGMCharmStat");
-        go2.GetComponentInChildren<Text>().text = "현재 매력 : " + GameManager.charm;
+        if(charming > maxCharm)
+        {
+            GameObject.Find("Canvas").transform.Find("착용불가팝업").gameObject.SetActive(true);
+        }
+        else
+        {
+            GameManager.charm = charming;
+            GameObject go2;
+            go2 = GameObject.Find("MyGMCharmStat");
+            go2.GetComponentInChildren<Text>().text = "현재 매력 : " + GameManager.charm;
+        }
     }
     public void itemActive()    //아이템 입혀보기
     {
@@ -146,11 +169,47 @@ public class ItemLocker : MonoBehaviour
         if (boolean == false)
             button.GetComponent<Button>().interactable = false;
     }
+    void Awake()
+    {
+        
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         CharmItems[0, 0] = CharmItems[0, 1] = CharmItems[0, 2] = 1;
+        string mybutton;
+        if (GameManager.youtubaButton != null)
+        {
+            Debug.Log("현재 버튼 정보 있음");
+            mybutton = GameManager.youtubaButton;
+            Debug.Log("mybutton" + mybutton);
+            if (mybutton.Equals("bronze") || mybutton == null)
+            {
+                maxCharm = maxEdit = 100;
+            }
+            else if (mybutton.Equals("silver"))
+            {
+                maxCharm = maxEdit = 300;
+            }
+            else if (mybutton.Equals("gold"))
+            {
+                maxCharm = maxEdit = 500;
+            }
+            else if (mybutton.Equals("diamond"))
+            {
+                maxCharm = maxEdit = 700;
+            }
+            else if (mybutton.Equals("ruby"))
+            {
+                maxCharm = maxEdit = 1000;
+            }
+        }
+        else
+        {
+            Debug.Log("현재 버튼 null");
+            maxCharm = maxEdit = 100;
+        }
     }
 
     // Update is called once per frame
