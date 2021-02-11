@@ -19,7 +19,7 @@ public class GameData
     public int GM_charm = 0; //매력
     public int GM_edit = 0; //편집
     public int GM_subscriber = 100; //구독자수
-    public string GM_youtubaButton = "노버튼"; //현재 유저가 지닌 최고 버튼
+    public string GM_youtubaButton = ""; //현재 유저가 지닌 최고 버튼
     public bool GM_uploadChkLocker = false; //보관함에서 동영상업로드 여부 확인
     public bool GM_uploadChkMain = false; //메인에서 동영상 업로드 후 시간재기 위해 쓸 변수
     public int[] GM_conceptCnt = new int[8]; //컨셉개수
