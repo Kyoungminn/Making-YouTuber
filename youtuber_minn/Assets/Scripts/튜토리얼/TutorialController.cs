@@ -31,7 +31,7 @@ public class TutorialController : MonoBehaviour
             Tuto4_1_2.SetActive(true);
             VideoUploadTime.afterUploadTime = 0.0f;
             GameManager.uploadChkLocker = false;
-            GameManager.uploadChkMain = false;
+            GameManager.uploadChkMain = true;
 
             StartCoroutine(hitRest());
         }

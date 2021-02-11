@@ -31,6 +31,7 @@ public class GameData
     public List<int> GT_cummunity = new List<int>(); //커뮤니티는 매 달 4개씩 가능하므로 그거 처리
     public bool[] GT_videoCalendar = new bool[32]; //동영상 업로드 후 일정에 저장
     public bool[] GT_liveCalendar = new bool[32]; //라이브 후 일정에 저장
+    public int GT_healthPreday = 1; //건강감소 위한 변수
 
     //Upload_sceneManager-OK
     public List<float> UM_uploadThumnail_r = new List<float>(); //썸네일 배경

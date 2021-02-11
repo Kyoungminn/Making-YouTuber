@@ -63,7 +63,7 @@ public class SoundManager : MonoBehaviour
         if (EffectAudioChk)
         {
             audio.clip = keyAudio;
-            audio.volume = 0.04f;
+            audio.volume = 0.03f;
             audio.Play();
         }
 

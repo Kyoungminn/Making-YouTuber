@@ -110,6 +110,7 @@ public class DataController : MonoBehaviour
             gameData.GT_liveCalendar[i] = GameTime.liveCalendar[i];
         }
         gameData.GT_cummunity = GameTime.cummunity.ToList(); //커뮤니티는 매 달 4개씩 가능하므로 그거 처리
+        gameData.GT_healthPreday = GameTime.healthPreday;
 
         //Upload_sceneManager
         gameData.UM_uploadThumnail_r = Upload_sceneManager.uploadThumnail_r.ToList(); //썸네일 배경

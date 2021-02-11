@@ -77,7 +77,6 @@ public class TutorialKeyInput : MonoBehaviour
 
         if (keyboard_n != null && chk == 1)
         {
-            SoundManager._soundInstance.KeyboardAudio();
             if (keyboard_n.text.Length > 10) //글자 수에 10글자 제한이 있어서 추가한 if문
             {
                 nameText = keyboard_n.text.Substring(0,10);
@@ -86,7 +85,6 @@ public class TutorialKeyInput : MonoBehaviour
         }
         else if (keyboard_c != null && chk == 2)
         {
-            SoundManager._soundInstance.KeyboardAudio();
             if (keyboard_c.text.Length > 10)
             {
                 channelText = keyboard_c.text.Substring(0,10);
