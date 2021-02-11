@@ -13,8 +13,8 @@ public class Shop : MonoBehaviour
 
     void Start()
     {
-        //money = GameManager.money;
-        money = 1000000;
+        money = GameManager.money;
+        //money = 1000000;
         string str = money.ToString();
         moneyTxt.text = (str);
     }

@@ -130,12 +130,10 @@ public class KeyInput : MonoBehaviour
 
         if (keyboard_t != null && chk == 1)
         {
-            SoundManager._soundInstance.KeyboardAudio();
             titleText = keyboard_t.text;
         }
         else if (keyboard_a != null && chk == 2)
         {
-            SoundManager._soundInstance.KeyboardAudio();
             adsText = keyboard_a.text;
             adsCnt = int.Parse(adsText);
 

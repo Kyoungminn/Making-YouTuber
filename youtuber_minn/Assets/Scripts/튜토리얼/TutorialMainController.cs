@@ -16,7 +16,6 @@ public class TutorialMainController : MonoBehaviour
     public void coinAdd()
     {
         GameTime.tutorialChk = false;
-        GameManager.health = 0;
         GameManager.subscriber = 100;
         GameManager.money = 1000;
         GameObject.Find("Panel_Profile").transform.GetChild(6).gameObject.GetComponent<Text>().text = GameManager.money.ToString();

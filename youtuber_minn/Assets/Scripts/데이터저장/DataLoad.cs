@@ -48,6 +48,7 @@ public class DataLoad : MonoBehaviour
             GameTime.liveCalendar[i] = DataController.Instance._gameData.GT_liveCalendar[i];//라이브 후 일정에 저장
         }
         GameTime.cummunity = DataController.Instance._gameData.GT_cummunity.ToList(); //커뮤니티
+        GameTime.healthPreday = DataController.Instance._gameData.GT_healthPreday;
 
         //Upload_sceneManager
         Upload_sceneManager.uploadThumnail_r = DataController.Instance._gameData.UM_uploadThumnail_r.ToList(); //썸네일 배경
