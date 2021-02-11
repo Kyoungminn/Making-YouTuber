@@ -11,6 +11,9 @@ public class LockerVideo : MonoBehaviour
     int hit;
     string title;
 
+    public static float current = 0.0f;
+    public static float offset = 0.0f;
+
     public void hitView(int ogHit)
     {
         float hit2 = (float)ogHit * 0.0001f; //만단위 넘어갈 시
@@ -20,8 +23,6 @@ public class LockerVideo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        VideoInfomation.hitChk = false;
-
         int videoNum = Upload_sceneManager.uploadTitles.Count;
         int indexNum = gameObject.transform.GetSiblingIndex();
         int id = videoNum - 1 - indexNum;
@@ -45,7 +46,8 @@ public class LockerVideo : MonoBehaviour
             }
         }
 
-        if ((videoNum - 1) == id && GameManager.uploadChkLocker)
+        //Debug.Log(VideoInfomation.hitChk);
+        if ((videoNum - 1) == id && (GameManager.uploadChkLocker || VideoInfomation.hitChk))
         {
             VideoInfomation.hitChk = true;
             GameManager.uploadChkLocker = false;
@@ -64,16 +66,15 @@ public class LockerVideo : MonoBehaviour
         }
 
 
-        Debug.Log(Upload_sceneManager.uploadTitles.Count);
+        //Debug.Log(Upload_sceneManager.uploadTitles.Count);
         Debug.Log("인덱스: " + indexNum);
 
     }
 
     IEnumerator CountHit()
     {
-        float current = 0.0f; //조회수 초기
         float duration = 60.0f; //카운팅에 걸리는 시간
-        float offset = (hit - current) / duration;
+        offset = hit / duration;
 
         while (current < hit)
         {
@@ -100,6 +101,9 @@ public class LockerVideo : MonoBehaviour
         }
 
         VideoInfomation.hitChk = false;
+        current = 0.0f;
+
+        Debug.Log("조회수처리정보:" + VideoInfomation.hitChk);
 
     }
 

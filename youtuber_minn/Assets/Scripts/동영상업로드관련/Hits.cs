@@ -19,6 +19,7 @@ public class Hits : MonoBehaviour
     void Start()
     {
         //string youtubaButton = GameManager.youtubaButton;
+        SoundManager._soundInstance.PopupAudio();
 
         int adsProper = keyinput.adsMaxCnt / 2;
 

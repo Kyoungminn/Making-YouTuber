@@ -20,10 +20,12 @@ public class VideoUploadClick : MonoBehaviour
         }
         else if(GameManager.health < 20)
         {
+            SoundManager._soundInstance.PopupAudio();
             impossiblePopup[0].SetActive(true);
         }
         else
         {
+            SoundManager._soundInstance.PopupAudio();
             impossiblePopup[1].SetActive(true);
         }
     }
@@ -36,10 +38,12 @@ public class VideoUploadClick : MonoBehaviour
         }
         else if (GameManager.health < 50)
         {
+            SoundManager._soundInstance.PopupAudio();
             impossibleLive[0].SetActive(true);
         }
         else
         {
+            SoundManager._soundInstance.PopupAudio();
             impossibleLive[1].SetActive(true);
         }
     }

@@ -31,6 +31,7 @@ public class TextTyping : MonoBehaviour
         while (i < typing.Length && chk)
         {
             typingText.text += typing[i++];
+            SoundManager._soundInstance.KeyboardAudio();
             yield return new WaitForSeconds(0.1f);
         }
     }

@@ -83,8 +83,10 @@ public class DataController : MonoBehaviour
         gameData.GM_game_month = GameManager.game_month;
         gameData.GM_game_day = GameManager.game_day;
         gameData.GM_game_time = GameManager.game_time;
+        gameData.GM_sub_time = GameManager.sub_time;
         gameData.GM_human_name = GameManager.human_name;
         gameData.GM_channel_name = GameManager.channel_name;
+        gameData.GM_nickname = GameManager.nickname;
         gameData.GM_health = GameManager.health;
         gameData.GM_charm = GameManager.charm;
         gameData.GM_edit = GameManager.edit;

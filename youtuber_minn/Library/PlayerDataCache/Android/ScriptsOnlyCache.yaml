@@ -53,6 +53,12 @@ ScriptsOnlyBuild:
     - unlock_membership
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -249,6 +255,8 @@ ScriptsOnlyBuild:
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
@@ -908,14 +916,14 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 580}
     - Class: 114
       Script: {instanceID: 11240}
-    - Class: 114
-      Script: {instanceID: 11246}
     - Class: 114
       Script: {instanceID: 11254}
     - Class: 114
@@ -940,6 +948,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12300}
     - Class: 114
       Script: {instanceID: 12598}
+    - Class: 114
+      Script: {instanceID: 12612}
     - Class: 114
       Script: {instanceID: 12792}
     - Class: 114
@@ -1149,7 +1159,7 @@ ScriptsOnlyBuild:
     className: CameraResolution
   - hash:
       serializedVersion: 2
-      Hash: 46be82792d5ede14c979a39a79f8eb57
+      Hash: dbde68aac56bdb41f99c70d9ae682774
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -1251,7 +1261,7 @@ ScriptsOnlyBuild:
     className: LockerVideo
   - hash:
       serializedVersion: 2
-      Hash: c07a394e9b7761576bd9f2ca71550994
+      Hash: 69c2844b6555d2a6d7d638d2e6c3cfca
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LiveBroadcast
@@ -1275,7 +1285,7 @@ ScriptsOnlyBuild:
     className: ControlPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 8c93ece9f6a416237f9088f064b187e6
+      Hash: 7b4310f6135f62eb8b4055c15772d3ef
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DataController
@@ -1467,7 +1477,7 @@ ScriptsOnlyBuild:
     className: VideoUpload
   - hash:
       serializedVersion: 2
-      Hash: 81954a48870a835510502a022e8537a8
+      Hash: 432aaf654a39b409fa70866d94a4193e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SoundManager
@@ -1725,4 +1735,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Locker_scene.unity
   - Assets/Scenes/Ending_scene.unity
   - Assets/Scenes/ItemLocker_scene.unity
-  playerPath: "C:/Users/BaeSuA/Desktop/\uC720\uD22C\uBC14\uD0A4\uC6B0\uAE30/\uC720\uD22C\uBC14\uD0A4\uC6B0\uAE30\uBC84\uADF8\uC218\uC815(0209).apk"
+  playerPath: "C:/Users/BaeSuA/Desktop/\uC720\uD22C\uBC14\uD0A4\uC6B0\uAE30/\uC720\uD22C\uBC140211-2.apk"

@@ -30,18 +30,21 @@ public class VideoUpload : MonoBehaviour
     {
         if (keyinput.titleText == "")
         {
+            StartCoroutine(WaitTime());
             keyinput.enabled = false;
             noTitle.SetActive(true);
         }
 
         else if (keyinput.conceptText == "")
         {
+            StartCoroutine(WaitTime());
             keyinput.enabled = false;
             noConcept.SetActive(true);
         }
 
         else if (keyinput.adsText == "")
         {
+            StartCoroutine(WaitTime());
             keyinput.enabled = false;
             noAds.SetActive(true);
         }
@@ -84,6 +87,13 @@ public class VideoUpload : MonoBehaviour
         }
         
     }
+
+    IEnumerator WaitTime()
+    {
+        yield return null;
+        SoundManager._soundInstance.PopupAudio();
+    }
+
     // Update is called once per frame
     void Update()
     {

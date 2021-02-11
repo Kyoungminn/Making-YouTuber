@@ -17,6 +17,7 @@ public class ConceptInput : MonoBehaviour
     {
         gamemanager.GetComponent<KeyInput>().conceptText = conceptslt.text;
         gamemanager.GetComponent<KeyInput>().chk2 = true;
+        SoundManager._soundInstance.OnButtonAudio();
     }
 
     // Update is called once per frame

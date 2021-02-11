@@ -7,12 +7,13 @@ public class VideoInfomation : MonoBehaviour
 {
     public GameObject video;
     public GameObject hitting;
-    public static int indexNumber;
-    public static bool videoChk = false;
-    public static bool hitChk = true;
+    public static int indexNumber; //영상의 인덱스번호(최근영상이 0번)
+    public static bool videoChk = false; //눌렸는지 확인
+    public static bool hitChk = false; //조회수 처리중인 영상존재하는지 확인
     public Image thum;
     public GameObject thumnail;
     public Text infoma;
+
     void Start()
     {
 
@@ -20,19 +21,20 @@ public class VideoInfomation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (videoChk && hitChk)
+        int videoNum = Upload_sceneManager.uploadTitles.Count; //영상개수
+        int id = videoNum - 1 - indexNumber; //영상의 list번호
+
+        if (videoChk && hitChk && id == (videoNum - 1))
         {
             videoChk = false;
             StartCoroutine(Hit_ing());
         }
 
-        if (videoChk && !hitChk)
+        else if (videoChk)
         {
             videoChk = false;
             video.SetActive(true);
 
-            int videoNum = Upload_sceneManager.uploadTitles.Count;
-            int id = videoNum - 1 - indexNumber;
             string title = Upload_sceneManager.uploadTitles[id];
             int hit = Upload_sceneManager.uploadHits[id];
             string concept = Upload_sceneManager.uploadConcepts[id];
@@ -67,7 +69,7 @@ public class VideoInfomation : MonoBehaviour
     IEnumerator Hit_ing()
     {
         hitting.SetActive(true);
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
         hitting.SetActive(false);
     }
 }

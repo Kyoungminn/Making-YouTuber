@@ -29,6 +29,7 @@ public class GameQuit : MonoBehaviour
         {
             ClickCount = 0;
             CancelInvoke("DoubleClick");
+            SoundManager._soundInstance.PopupAudio();
             Popup.SetActive(true);
         }
 
@@ -46,6 +47,7 @@ public class GameQuit : MonoBehaviour
 
     public void NoButton()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         Popup.SetActive(false);
     }
 

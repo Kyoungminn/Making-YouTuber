@@ -14,7 +14,7 @@ public class GameTime : MonoBehaviour
 
     public static bool[] videoCalendar = new bool[32]; //동영상 업로드 후 일정에 저장
     public static bool[] liveCalendar = new bool[32]; //라이브 후 일정에 저장
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -91,5 +91,17 @@ public class GameTime : MonoBehaviour
 
         //Debug.Log("현재시간: " + (int)GameManager.game_time);
         //Debug.Log(GameManager.game_month + "월" + (int)GameManager.game_day + "일");
+
+        if(VideoInfomation.hitChk)
+        {
+            StartCoroutine(CountBackHit());
+        }
     }   
+
+    IEnumerator CountBackHit()
+    {
+        LockerVideo.current += (LockerVideo.offset * Time.deltaTime);
+        yield return null;
+    }
 }
+
