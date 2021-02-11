@@ -63,7 +63,7 @@ public class GameTime : MonoBehaviour
                     GameManager.game_month = 1;
                 }
 
-                if(membership != "")
+                if(membership != null && membership != "")
                 {
                     membershipNum = (GameManager.subscriber / 10);
                     membershipPay = pay * membershipNum / 2;
@@ -86,7 +86,7 @@ public class GameTime : MonoBehaviour
                 GameManager.game_day = 1.0f;
                 GameManager.game_month++;
 
-                if (membership != "")
+                if (membership != null && membership != "")
                 {
                     membershipNum = (GameManager.subscriber / 10);
                     membershipPay = pay * membershipNum / 2;
@@ -109,7 +109,7 @@ public class GameTime : MonoBehaviour
                 GameManager.game_day = 1.0f;
                 GameManager.game_month++;
 
-                if (membership != "")
+                if (membership != null && membership != "")
                 {
                     membershipNum = (GameManager.subscriber / 10);
                     membershipPay = pay * membershipNum / 2;

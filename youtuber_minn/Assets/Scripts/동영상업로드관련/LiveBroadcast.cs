@@ -18,6 +18,8 @@ public class LiveBroadcast : MonoBehaviour
 
     public bool firstLive = true;
 
+    public Text liveMoney;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -108,6 +110,8 @@ public class LiveBroadcast : MonoBehaviour
         }
         float pay = (float)live_viewer * 0.03f * 1000f * 0.7f; //라이브방송 수익
         GameManager.money += (int)pay;
+
+        liveMoney.text = ((int)pay).ToString();
         //
 
         //라이브 완료 시 일정에 표시
@@ -119,7 +123,7 @@ public class LiveBroadcast : MonoBehaviour
 
     IEnumerator Live_ing()
     {
-        for(int i = 0 ; i < 20 ; i++)
+        for(int i = 0 ; i < 3 ; i++)
         {
             Debug.Log(GameManager.game_time);
 

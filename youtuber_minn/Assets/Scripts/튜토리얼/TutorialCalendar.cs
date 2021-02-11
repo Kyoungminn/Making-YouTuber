@@ -25,8 +25,12 @@ public class TutorialCalendar : MonoBehaviour
     public void TutorialCalendarSaveClick()
     {
         int idx = int.Parse(_dateItems[21].transform.GetComponentInChildren<Text>().text);
-        GameTime.dayEvent[idx] = "합방";
-        GameTime.eventDay.Add("합방", idx);
+        
+        if(GameTime.dayEvent[idx] == "" || GameTime.dayEvent[idx] == null)
+        {
+            GameTime.dayEvent[idx] = "합방";
+            GameTime.eventDay.Add("합방", idx);
+        }
         _dateItems[21].transform.GetChild(1).gameObject.GetComponent<Text>().text = "합방";
 
         Debug.Log(GameTime.dayEvent[idx]);
