@@ -7,6 +7,7 @@ public class VideoInfoTrue : MonoBehaviour
 {
     public void OnClickVideoInfo()
     {
+        SoundManager._soundInstance.PopupAudio();
         VideoInfomation.indexNumber = gameObject.transform.GetSiblingIndex();
         VideoInfomation.videoChk = true;
     }

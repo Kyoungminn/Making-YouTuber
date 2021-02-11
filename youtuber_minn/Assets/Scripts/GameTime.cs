@@ -14,7 +14,7 @@ public class GameTime : MonoBehaviour
 
     public static bool[] videoCalendar = new bool[32]; //동영상 업로드 후 일정에 저장
     public static bool[] liveCalendar = new bool[32]; //라이브 후 일정에 저장
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +26,14 @@ public class GameTime : MonoBehaviour
     {
         GameManager.game_time += (Time.deltaTime / 60.0f);
         GameManager.game_day += (Time.deltaTime / 60.0f);
+
+        //유투바멤버십계산
+        string membership = GameManager.now_membership;
+        int pay = 0, membershipNum = 0, membershipPay = 0;
+        if (membership == "bronze") pay = 50;
+        else if (membership == "silver") pay = 100;
+        else if (membership == "gold") pay = 200;
+        else if (membership == "diamond") pay = 500;
 
         int month = GameManager.game_month;
         float day = GameManager.game_day;
@@ -54,6 +62,13 @@ public class GameTime : MonoBehaviour
                     GameManager.game_year++;
                     GameManager.game_month = 1;
                 }
+
+                if(membership != "")
+                {
+                    membershipNum = (GameManager.subscriber / 10);
+                    membershipPay = pay * membershipNum / 2;
+                    GameManager.money += membershipPay;
+                }
             }
         }
 
@@ -70,6 +85,13 @@ public class GameTime : MonoBehaviour
                 liveCalendar = new bool[32];
                 GameManager.game_day = 1.0f;
                 GameManager.game_month++;
+
+                if (membership != "")
+                {
+                    membershipNum = (GameManager.subscriber / 10);
+                    membershipPay = pay * membershipNum / 2;
+                    GameManager.money += membershipPay;
+                }
             }
         }
 
@@ -86,10 +108,29 @@ public class GameTime : MonoBehaviour
                 liveCalendar = new bool[32];
                 GameManager.game_day = 1.0f;
                 GameManager.game_month++;
+
+                if (membership != "")
+                {
+                    membershipNum = (GameManager.subscriber / 10);
+                    membershipPay = pay * membershipNum / 2;
+                    GameManager.money += membershipPay;
+                }
             }
         }
 
         //Debug.Log("현재시간: " + (int)GameManager.game_time);
         //Debug.Log(GameManager.game_month + "월" + (int)GameManager.game_day + "일");
+
+        if(VideoInfomation.hitChk)
+        {
+            StartCoroutine(CountBackHit());
+        }
     }   
+
+    IEnumerator CountBackHit()
+    {
+        LockerVideo.current += (LockerVideo.offset * Time.deltaTime);
+        yield return null;
+    }
 }
+

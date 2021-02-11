@@ -78,23 +78,23 @@ public class KeyInput : MonoBehaviour
 
         youtubaButton = GameManager.youtubaButton;
 
-        if (youtubaButton == "노버튼")
+        if (youtubaButton == "")
         {
             adsMaxCnt = 2;
         }
-        else if (youtubaButton == "브론즈")
+        else if (youtubaButton == "bronze")
         {
             adsMaxCnt = 6;
         }
-        else if (youtubaButton == "실버")
+        else if (youtubaButton == "silver")
         {
             adsMaxCnt = 10;
         }
-        else if (youtubaButton == "골드")
+        else if (youtubaButton == "gold")
         {
             adsMaxCnt = 14;
         }
-        else if (youtubaButton == "다이아")
+        else if (youtubaButton == "diamond")
         {
             adsMaxCnt = 20;
         }
@@ -130,10 +130,12 @@ public class KeyInput : MonoBehaviour
 
         if (keyboard_t != null && chk == 1)
         {
+            SoundManager._soundInstance.KeyboardAudio();
             titleText = keyboard_t.text;
         }
         else if (keyboard_a != null && chk == 2)
         {
+            SoundManager._soundInstance.KeyboardAudio();
             adsText = keyboard_a.text;
             adsCnt = int.Parse(adsText);
 

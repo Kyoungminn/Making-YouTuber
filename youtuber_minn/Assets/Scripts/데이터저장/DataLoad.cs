@@ -16,8 +16,10 @@ public class DataLoad : MonoBehaviour
         GameManager.game_month = DataController.Instance._gameData.GM_game_month;
         GameManager.game_day = DataController.Instance._gameData.GM_game_day;
         GameManager.game_time = DataController.Instance._gameData.GM_game_time;
+        GameManager.sub_time = DataController.Instance._gameData.GM_sub_time;
         GameManager.human_name = DataController.Instance._gameData.GM_human_name;
         GameManager.channel_name = DataController.Instance._gameData.GM_channel_name;
+        GameManager.nickname = DataController.Instance._gameData.GM_nickname;
         GameManager.health = DataController.Instance._gameData.GM_health;
         GameManager.charm = DataController.Instance._gameData.GM_charm;
         GameManager.edit = DataController.Instance._gameData.GM_edit;

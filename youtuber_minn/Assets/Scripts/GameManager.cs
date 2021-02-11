@@ -23,7 +23,8 @@ public class GameManager : MonoBehaviour
 
 
     public static int subscriber = 100; //구독자수
-    public static string youtubaButton; //현재 유저가 지닌 최고 버튼
+    public static string youtubaButton = ""; //현재 유저가 지닌 최고 버튼
+    public static string now_membership = ""; //유저가 선택한 멤버십 버튼 종류
     public static List<string> button_name = new List<string>{"bronze","silver", "gold", "diamond","ruby"}; //브론즈,실버,골드,다이아,루비
 
     public static bool uploadChkLocker; //보관함에서 동영상업로드 여부 확인
@@ -35,12 +36,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject UploadPanel;
 
-    public float sub_time = 0;
+    public static float sub_time = 0;
 
     public bool chk_sub = true;
     public bool chk_sub1 = true;
     public bool chk_sub2 = true;
-
 
     void Start()
     {

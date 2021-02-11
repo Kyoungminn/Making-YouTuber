@@ -58,14 +58,14 @@ public class TutorialKeyInput : MonoBehaviour
         //
 
         //이름 버튼
-        if (GUI.Button(new Rect(430.0f,770.0f, 350.0f, 90.0f), nameText))
+        if (GUI.Button(new Rect(420.0f,770.0f, 355.0f, 90.0f), nameText))
         {
             keyboard_n = TouchScreenKeyboard.Open(nameText);
             chk = 1; //키보드가 2개 이상이라서 chk변수가 필요했습니다 키보드가 1개라면 필요 없을 것 같아요!
         }
 
         //채널명 버튼
-        else if (GUI.Button(new Rect(430.0f, 900.0f, 350.0f, 90.0f), channelText))
+        else if (GUI.Button(new Rect(420.0f, 910.0f, 355.0f, 90.0f), channelText))
         {
             //type = TouchScreenKeyboardType.NumberPad;
             keyboard_c = TouchScreenKeyboard.Open(channelText);
@@ -77,6 +77,7 @@ public class TutorialKeyInput : MonoBehaviour
 
         if (keyboard_n != null && chk == 1)
         {
+            SoundManager._soundInstance.KeyboardAudio();
             if (keyboard_n.text.Length > 10) //글자 수에 10글자 제한이 있어서 추가한 if문
             {
                 nameText = keyboard_n.text.Substring(0,10);
@@ -85,6 +86,7 @@ public class TutorialKeyInput : MonoBehaviour
         }
         else if (keyboard_c != null && chk == 2)
         {
+            SoundManager._soundInstance.KeyboardAudio();
             if (keyboard_c.text.Length > 10)
             {
                 channelText = keyboard_c.text.Substring(0,10);

@@ -26,25 +26,30 @@ public class Nickname : MonoBehaviour
 
          if (GameManager.subscriber >= 10000 && GameManager.charm >= 100)
         {
+            SoundManager._soundInstance.PopupAudio();
            Bronze.SetActive(true);
             
         }
         if (GameManager.subscriber >= 100000 && GameManager.charm >= 300)
         {
+            SoundManager._soundInstance.PopupAudio();
             Silver.SetActive(true);
             
         }
         if (GameManager.subscriber >= 1000000 && GameManager.charm >= 500)
         {
+            SoundManager._soundInstance.PopupAudio();
             Gold.SetActive(true);
             
         }
         if (GameManager.subscriber >= 10000000 && GameManager.charm >= 700)
         {
+            SoundManager._soundInstance.PopupAudio();
             Diamond.SetActive(true);
         }
         if (GameManager.subscriber >= 50000000 && GameManager.charm >= 1000)
         {
+            SoundManager._soundInstance.PopupAudio();
             Ruby.SetActive(true);
             
         }
