@@ -59,7 +59,6 @@ public class GameTime : MonoBehaviour
             {
                 monthChange = true;
                 dayEvent = new string[32];
-                dayEvent.Initialize();
                 eventDay = new Dictionary<string, int>();
                 cummunity = new List<int>();
                 videoCalendar = new bool[32];
@@ -87,7 +86,6 @@ public class GameTime : MonoBehaviour
             {
                 monthChange = true;
                 dayEvent = new string[32];
-                dayEvent.Initialize();
                 eventDay = new Dictionary<string, int>();
                 cummunity = new List<int>();
                 videoCalendar = new bool[32];
@@ -110,7 +108,6 @@ public class GameTime : MonoBehaviour
             {
                 monthChange = true;
                 dayEvent = new string[32];
-                dayEvent.Initialize();
                 eventDay = new Dictionary<string, int>();
                 cummunity = new List<int>();
                 videoCalendar = new bool[32];

@@ -95,6 +95,11 @@ public class DataLoad : MonoBehaviour
         //RandomEvent
         RandomEvent_appear.Time_before = DataController.Instance._gameData.RE_Time_before;
 
+        //EndingController
+        EndingController.gameEnding = DataController.Instance._gameData.EC_gameEnding.ToList();
+        EndingController.gameEnding_name = DataController.Instance._gameData.EC_gameEnding_name.ToList();
+        EndingController.gameEnding_channel = DataController.Instance._gameData.EC_gameEnding_channel.ToList();
+   
         Debug.Log(GameManager.game_time);
     }
 
