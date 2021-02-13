@@ -50,6 +50,7 @@ public class TutorialController : MonoBehaviour
     {
         yield return null;
         Upload_sceneManager.uploadHits[0] = 100;
-        Upload_sceneManager.uploadPayoffs[0] = 0;
+        Upload_sceneManager.uploadAds[0] = 1;
+        Upload_sceneManager.uploadPayoffs[0] = 1000;
     }
 }

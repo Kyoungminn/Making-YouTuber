@@ -59,8 +59,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -749,11 +751,17 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 82
       Script: {instanceID: 0}
     - Class: 83
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -794,6 +802,8 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -1313,7 +1323,7 @@ ScriptsOnlyBuild:
     className: UploadToLocker
   - hash:
       serializedVersion: 2
-      Hash: 0aaf41ec0699d9d74c08b031b4a3ec7a
+      Hash: ba9979f2c4948c94f800c3f85cf844a0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ChannelController
@@ -1848,4 +1858,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Ending_scene.unity
   - Assets/Scenes/ItemLocker_scene.unity
   - Assets/Scenes/Channel_scene.unity
-  playerPath: "C:/Users/BaeSuA/Desktop/\uC720\uD22C\uBC14\uD0A4\uC6B0\uAE30/\uC720\uD22C\uBC140214.apk"
+  playerPath: "C:/Users/BaeSuA/Desktop/\uC720\uD22C\uBC14\uD0A4\uC6B0\uAE30/0.\uC720\uD22C\uBC14\uD0A4\uC6B0\uAE30.apk"

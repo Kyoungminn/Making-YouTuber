@@ -10,6 +10,7 @@ public class LockerVideo : MonoBehaviour
     public GameObject thumnailImage;
     int hit;
     string title;
+    int id; //동영상 번호
 
     public static float current = 0.0f;
     public static float offset = 0.0f;
@@ -17,7 +18,7 @@ public class LockerVideo : MonoBehaviour
     public void hitView(int ogHit)
     {
         float hit2 = (float)ogHit * 0.0001f; //만단위 넘어갈 시
-        info.text = "제목: " + title  + "\n조회수: " + string.Format("{0:N1}",hit2) + " 만회";
+        info.text = title  + "\n조회수: " + string.Format("{0:N1}",hit2) + " 만회";
     }
 
     // Start is called before the first frame update
@@ -25,7 +26,7 @@ public class LockerVideo : MonoBehaviour
     {
         int videoNum = Upload_sceneManager.uploadTitles.Count;
         int indexNum = gameObject.transform.GetSiblingIndex();
-        int id = videoNum - 1 - indexNum;
+        id = videoNum - 1 - indexNum;
         title = Upload_sceneManager.uploadTitles[id];
         hit = Upload_sceneManager.uploadHits[id];
 
@@ -61,7 +62,7 @@ public class LockerVideo : MonoBehaviour
             }
             else
             {
-                info.text = "제목: " + title + "\n조회수: " + hit.ToString();
+                info.text = title + "\n조회수: " + hit.ToString();
             }
         }
 
@@ -85,7 +86,7 @@ public class LockerVideo : MonoBehaviour
             }
             else
             {
-                info.text = "제목: " + title + "\n조회수: " + ((int)current).ToString();
+                info.text = title + "\n조회수: " + ((int)current).ToString();
             }
             yield return null;
         }
@@ -97,11 +98,14 @@ public class LockerVideo : MonoBehaviour
         }
         else
         {
-            info.text = "제목: " + title + "\n조회수: " + ((int)current).ToString();
+            info.text = title + "\n조회수: " + ((int)current).ToString();
         }
 
         VideoInfomation.hitChk = false;
         current = 0.0f;
+
+        //동영상 수익 게임머니에 저장
+        GameManager.money += Upload_sceneManager.uploadPayoffs[id];
 
         Debug.Log("조회수처리정보:" + VideoInfomation.hitChk);
 

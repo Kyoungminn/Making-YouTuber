@@ -144,12 +144,9 @@ public class EndingController : MonoBehaviour
         //GameTime
         GameTime.tutorialChk = true;
         GameTime.monthChange = false;
-        for (int i = 0; i <= 31; i++)//매달 일에 들어가는 일정
-        {
-            GameTime.dayEvent[i] = "";
-            GameTime.videoCalendar[i] = false; //동영상 업로드 후 일정에 저장
-            GameTime.liveCalendar[i] = false;//라이브 후 일정에 저장
-        }
+        GameTime.dayEvent = new string[32]; //매달 일에 들어가는 일정 
+        GameTime.videoCalendar = new bool[32]; //동영상 업로드 후 일정에 저장
+        GameTime.liveCalendar = new bool[32]; //라이브 후 일정에 저장
         GameTime.eventDay = new Dictionary<string, int>();
         GameTime.cummunity = new List<int>(); //커뮤니티
         GameTime.healthPreday = 0;

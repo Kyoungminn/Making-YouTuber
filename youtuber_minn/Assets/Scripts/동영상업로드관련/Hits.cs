@@ -60,7 +60,7 @@ public class Hits : MonoBehaviour
         //
 
         //광고수익 게임머니에 저장
-        GameManager.money += (int)pay;
+        //GameManager.money += (int)pay;
 
         //업로드 완료 시 컨셉개수카운트
         int conceptIdx = GameManager.EndingConcept[concept];

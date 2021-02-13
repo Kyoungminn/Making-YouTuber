@@ -7,6 +7,7 @@ public class ChannelController : MonoBehaviour
 {
     public static ChannelController _channelControlelr;
     public GameObject _item;
+    public Text Nochannel;
 
     //토킹0,게임1,먹방2,요리3,브이로그4,ASMR5,노래6,유행7,PD8 
     public Sprite[] endingImage = new Sprite[9];
@@ -47,6 +48,11 @@ public class ChannelController : MonoBehaviour
                 item.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = endingImage[endingConceptNum];
                 item.transform.GetComponentInChildren<Text>().text = EndingController.gameEnding_name[i] + " (" + EndingController.gameEnding_channel[i] + ")";
             }
+        }
+
+        else
+        {
+            Nochannel.gameObject.SetActive(true);
         }
         
     }

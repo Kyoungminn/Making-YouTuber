@@ -41,7 +41,8 @@ public class DataLoad : MonoBehaviour
             GameTime.dayEvent[i] = DataController.Instance._gameData.GT_dayEvent[i];
             if (GameTime.dayEvent[i] != "" && GameTime.dayEvent[i] != "커뮤니티 글 작성") //매달에 대한 이벤트 존재 여부 및 몇 일에 있는지 저장
             {
-                GameTime.eventDay.Add(GameTime.dayEvent[i], i);
+                if(!GameTime.eventDay.ContainsKey(GameTime.dayEvent[i]))
+                    GameTime.eventDay.Add(GameTime.dayEvent[i], i);
             }
 
             GameTime.videoCalendar[i] = DataController.Instance._gameData.GT_videoCalendar[i]; //동영상 업로드 후 일정에 저장

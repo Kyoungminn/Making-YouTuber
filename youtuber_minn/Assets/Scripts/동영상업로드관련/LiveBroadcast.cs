@@ -95,6 +95,7 @@ public class LiveBroadcast : MonoBehaviour
     {
         VideoUploadTime.afterLiveTime = 600.0f;
         GameManager.health -= 30;
+        if (GameManager.health < 0) GameManager.health = 0;
 
         //라이브방송 수익 계산
         int live_viewer;//라이브방송 시청자수

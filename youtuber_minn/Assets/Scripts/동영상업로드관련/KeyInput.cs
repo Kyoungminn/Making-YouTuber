@@ -100,6 +100,7 @@ public class KeyInput : MonoBehaviour
         }
 
         adsNumMax.text = "(최대  " + adsMaxCnt.ToString() + "개)";
+        adsCnt = int.Parse(adsText);
 
     }
     private void OnGUI()

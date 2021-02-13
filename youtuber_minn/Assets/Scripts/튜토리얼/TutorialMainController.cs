@@ -9,8 +9,7 @@ public class TutorialMainController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = GameManager.human_name;
-        gameObject.transform.GetChild(2).gameObject.GetComponent<Text>().text = "( "+GameManager.channel_name+" )";
+        gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = GameManager.human_name + "  ( " + GameManager.channel_name + " )";
     }
 
     public void coinAdd()
@@ -19,7 +18,7 @@ public class TutorialMainController : MonoBehaviour
         GameManager.health = 100;
         GameManager.subscriber = 100;
         GameManager.money = 1000;
-        GameObject.Find("Panel_Profile").transform.GetChild(6).gameObject.GetComponent<Text>().text = GameManager.money.ToString();
+        GameObject.Find("Panel_Profile").transform.GetChild(5).gameObject.GetComponent<Text>().text = GameManager.money.ToString();
     }
 
     // Update is called once per frame
