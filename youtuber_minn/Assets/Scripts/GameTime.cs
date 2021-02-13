@@ -32,8 +32,11 @@ public class GameTime : MonoBehaviour
         if ((GameManager.game_day - (float)healthPreday) >= 1.0f)
         {
             healthPreday = (int)GameManager.game_day;
-            GameManager.health -= 1;
-            Debug.Log("건강감소 " + GameManager.health);
+            if(GameManager.health > 0)
+            {
+                GameManager.health -= 1;
+                Debug.Log("건강감소 " + GameManager.health);
+            }
         }
 
         //유투바멤버십계산
