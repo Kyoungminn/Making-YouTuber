@@ -78,7 +78,7 @@ public class KeyInput : MonoBehaviour
 
         youtubaButton = GameManager.youtubaButton;
 
-        if (youtubaButton == "")
+        if (youtubaButton == "" || youtubaButton == null)
         {
             adsMaxCnt = 2;
         }

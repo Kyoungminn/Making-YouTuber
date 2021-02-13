@@ -66,4 +66,9 @@ public class GameData
 
     //RandomEvent
     public int RE_Time_before = 0;
+
+    //EndingController
+    public List<int> EC_gameEnding = new List<int>();
+    public List<string> EC_gameEnding_name = new List<string>();
+    public List<string> EC_gameEnding_channel = new List<string>();
 }

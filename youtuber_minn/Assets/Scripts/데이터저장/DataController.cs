@@ -69,7 +69,6 @@ public class DataController : MonoBehaviour
         {
             Debug.Log("새로운 파일 생성");
             _gameData = new GameData();
-            _gameData.GT_dayEvent.Initialize();
             _gameData.IL_CharmItems_0[0] = _gameData.IL_CharmItems_1[0] = _gameData.IL_CharmItems_2[0] = 1;
         }
         
@@ -155,6 +154,11 @@ public class DataController : MonoBehaviour
 
         //RandomEvent
         gameData.RE_Time_before = RandomEvent_appear.Time_before;
+
+        //EndingController
+        gameData.EC_gameEnding = EndingController.gameEnding.ToList();
+        gameData.EC_gameEnding_name = EndingController.gameEnding_name.ToList();
+        gameData.EC_gameEnding_channel = EndingController.gameEnding_channel.ToList();
         //
 
         string ToJsonData = JsonUtility.ToJson(gameData);

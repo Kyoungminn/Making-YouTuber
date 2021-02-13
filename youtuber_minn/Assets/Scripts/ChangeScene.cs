@@ -36,5 +36,10 @@ public class ChangeScene : MonoBehaviour
         SceneManager.LoadScene("ItemLocker_scene");
     }
 
+    public void ChannelChange()
+    {
+        SceneManager.LoadScene("Channel_scene");
+    }
+
 
 }
