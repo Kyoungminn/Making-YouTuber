@@ -70,7 +70,7 @@ public class GameData
     public int RE_Time_before = 0;
 
     //LiveBroadcast
-    //public bool LB_firstLive = true;
+    public bool LB_firstLive = true;
 
     //EndingController
     public List<int> EC_gameEnding = new List<int>();

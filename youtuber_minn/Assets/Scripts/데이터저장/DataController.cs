@@ -158,7 +158,7 @@ public class DataController : MonoBehaviour
         gameData.RE_Time_before = RandomEvent_appear.Time_before;
 
         //LiveBroadcast
-        //gameData.LB_firstLive = LiveBroadcast.firstLive;
+        gameData.LB_firstLive = LiveBroadcast.firstLive;
 
         //EndingController
         gameData.EC_gameEnding = EndingController.gameEnding.ToList();

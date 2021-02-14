@@ -16,7 +16,7 @@ public class LiveBroadcast : MonoBehaviour
     public List<string> liveComments = new List<string>();
     public GameObject live, liveEnd;
 
-    public bool firstLive = true;
+    public static bool firstLive = true;
 
     public Text liveMoney;
 
@@ -93,7 +93,7 @@ public class LiveBroadcast : MonoBehaviour
 
     void Live_end()
     {
-        VideoUploadTime.afterLiveTime = 600.0f;
+        VideoUploadTime.afterLiveTime = 420.0f;
         GameManager.health -= 30;
         if (GameManager.health < 0) GameManager.health = 0;
 
@@ -124,7 +124,7 @@ public class LiveBroadcast : MonoBehaviour
 
     IEnumerator Live_ing()
     {
-        for(int i = 0 ; i < 20 ; i++)
+        for(int i = 0 ; i < 10 ; i++)
         {
             //Debug.Log(GameManager.game_time);
 

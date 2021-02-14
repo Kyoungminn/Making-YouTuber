@@ -99,7 +99,7 @@ public class DataLoad : MonoBehaviour
         RandomEvent_appear.Time_before = DataController.Instance._gameData.RE_Time_before;
 
         //LiveBroadcast
-        //LiveBroadcast.firstLive = DataController.Instance._gameData.LB_firstLive;
+        LiveBroadcast.firstLive = DataController.Instance._gameData.LB_firstLive;
 
         //EndingController
         EndingController.gameEnding = DataController.Instance._gameData.EC_gameEnding.ToList();
