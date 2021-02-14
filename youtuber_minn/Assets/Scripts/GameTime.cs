@@ -26,6 +26,9 @@ public class GameTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //건강 마이너스로 안떨어지게 하기
+        if (GameManager.health < 0) GameManager.health = 0;
+
         GameManager.game_time += (Time.deltaTime / 60.0f);
         GameManager.game_day += (Time.deltaTime / 60.0f);
 
