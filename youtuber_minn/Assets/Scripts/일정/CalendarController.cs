@@ -220,5 +220,13 @@ public class CalendarController : MonoBehaviour
 
             GameTime.monthChange = false;
         }
+
+        int id = startDayId + (int)GameManager.game_day - 1;
+        for(int i = 0 ; i < _totalDateNum ; i++)
+        {
+            if (i == id) _dateItems[i].GetComponent<Image>().color = new Color(255f / 255f, 117f / 255f, 128f / 255f, 255f / 255f);
+            else _dateItems[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+        }
+       
     }
 }

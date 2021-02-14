@@ -107,7 +107,7 @@ public class LiveBroadcast : MonoBehaviour
         else
         {
             float rand = Random.Range(1.0f, 5.0f);
-            live_viewer = (int)((float)GameManager.subscriber * rand);
+            live_viewer = (int)((float)(GameManager.subscriber / 100) * rand);
         }
         float pay = (float)live_viewer * 0.03f * 1000f * 0.7f; //라이브방송 수익
         GameManager.money += (int)pay;
