@@ -184,7 +184,7 @@ public class ItemLocker : MonoBehaviour
             Debug.Log("현재 버튼 정보 있음");
             mybutton = GameManager.youtubaButton;
             Debug.Log("mybutton" + mybutton);
-            if (mybutton.Equals("bronze") || mybutton == null)
+            if (mybutton.Equals("bronze") || mybutton == null || mybutton == "")
             {
                 maxCharm = maxEdit = 100;
             }
