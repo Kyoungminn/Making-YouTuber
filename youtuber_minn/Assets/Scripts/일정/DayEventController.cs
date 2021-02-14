@@ -140,7 +140,8 @@ public class DayEventController : MonoBehaviour
 
         Debug.Log("이전구독자수: " + _subscriber + "\n편집: " + _edit + "\n매력: " + _charm);
 
-        GameManager.health -= 5;
+        GameManager.health -= 5; //건강감소
+        if (GameManager.health < 0) GameManager.health = 0;
 
         if (_event == "합방")
         {

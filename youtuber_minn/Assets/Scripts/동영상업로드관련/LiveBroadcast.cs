@@ -16,7 +16,7 @@ public class LiveBroadcast : MonoBehaviour
     public List<string> liveComments = new List<string>();
     public GameObject live, liveEnd;
 
-    public bool firstLive = true;
+    public static bool firstLive = true;
 
     public Text liveMoney;
 
@@ -93,8 +93,9 @@ public class LiveBroadcast : MonoBehaviour
 
     void Live_end()
     {
-        VideoUploadTime.afterLiveTime = 600.0f;
+        VideoUploadTime.afterLiveTime = 420.0f;
         GameManager.health -= 30;
+        if (GameManager.health < 0) GameManager.health = 0;
 
         //라이브방송 수익 계산
         int live_viewer;//라이브방송 시청자수
@@ -123,9 +124,9 @@ public class LiveBroadcast : MonoBehaviour
 
     IEnumerator Live_ing()
     {
-        for(int i = 0 ; i < 20 ; i++)
+        for(int i = 0 ; i < 10 ; i++)
         {
-            Debug.Log(GameManager.game_time);
+            //Debug.Log(GameManager.game_time);
 
             int rand = Random.Range(0, liveComments.Count);
             int rand2 = Random.Range(0, spriteArray.Length);
@@ -140,7 +141,7 @@ public class LiveBroadcast : MonoBehaviour
             huwonText.gameObject.SetActive(false);
 
             int rand3 = Random.Range(0, 4); 
-            Debug.Log(rand3);
+            //Debug.Log(rand3);
 
             if (rand3 == 0)
             {

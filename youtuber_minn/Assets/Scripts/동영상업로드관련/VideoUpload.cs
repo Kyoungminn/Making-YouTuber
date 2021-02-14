@@ -77,10 +77,12 @@ public class VideoUpload : MonoBehaviour
                 uploadDonetxt.SetActive(true);
                 deleteButton.enabled = true;
                 
-                VideoUploadTime.afterUploadTime = 180.0f;
-                GameManager.health -= 15;
+                VideoUploadTime.afterUploadTime = 120.0f;
                 GameManager.uploadChkLocker = true;
                 GameManager.uploadChkMain = true;
+
+                GameManager.health -= 15; //건강감소
+                if (GameManager.health < 0) GameManager.health = 0;
 
                 break;
             }

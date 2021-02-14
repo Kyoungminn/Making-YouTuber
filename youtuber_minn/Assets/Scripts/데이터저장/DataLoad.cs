@@ -26,8 +26,10 @@ public class DataLoad : MonoBehaviour
         GameManager.money = DataController.Instance._gameData.GM_money;
         GameManager.subscriber = DataController.Instance._gameData.GM_subscriber;
         GameManager.youtubaButton = DataController.Instance._gameData.GM_youtubaButton;
+        GameManager.now_membership = DataController.Instance._gameData.GM_now_membership;
         GameManager.uploadChkLocker = DataController.Instance._gameData.GM_uploadChkLocker;
         GameManager.uploadChkMain = DataController.Instance._gameData.GM_uploadChkMain;
+        GameManager.membershipChk = DataController.Instance._gameData.GM_membershipChk;
         for(int i = 0; i < 8; i++)
         {
             GameManager.conceptCnt[i] = DataController.Instance._gameData.GM_conceptCnt[i];
@@ -41,7 +43,8 @@ public class DataLoad : MonoBehaviour
             GameTime.dayEvent[i] = DataController.Instance._gameData.GT_dayEvent[i];
             if (GameTime.dayEvent[i] != "" && GameTime.dayEvent[i] != "커뮤니티 글 작성") //매달에 대한 이벤트 존재 여부 및 몇 일에 있는지 저장
             {
-                GameTime.eventDay.Add(GameTime.dayEvent[i], i);
+              //  if(!GameTime.eventDay.ContainsKey(GameTime.dayEvent[i]))
+                    GameTime.eventDay.Add(GameTime.dayEvent[i], i);
             }
 
             GameTime.videoCalendar[i] = DataController.Instance._gameData.GT_videoCalendar[i]; //동영상 업로드 후 일정에 저장
@@ -94,6 +97,9 @@ public class DataLoad : MonoBehaviour
 
         //RandomEvent
         RandomEvent_appear.Time_before = DataController.Instance._gameData.RE_Time_before;
+
+        //LiveBroadcast
+        LiveBroadcast.firstLive = DataController.Instance._gameData.LB_firstLive;
 
         //EndingController
         EndingController.gameEnding = DataController.Instance._gameData.EC_gameEnding.ToList();

@@ -31,7 +31,7 @@ public class TutorialLocker : MonoBehaviour
                 thumb2.transform.GetChild(pr).transform.GetChild(chd).gameObject.SetActive(false);
             }
         }
-        thumbText.text = "제목: " + Upload_sceneManager.uploadTitles[0] + "\n\n조회수: " + Upload_sceneManager.uploadHits[0].ToString();
+        thumbText.text = Upload_sceneManager.uploadTitles[0] + "\n조회수: " + Upload_sceneManager.uploadHits[0].ToString();
     }
 
     public void MainToLocker()

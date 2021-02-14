@@ -92,8 +92,10 @@ public class DataController : MonoBehaviour
         gameData.GM_money = GameManager.money;
         gameData.GM_subscriber = GameManager.subscriber;
         gameData.GM_youtubaButton = GameManager.youtubaButton;
+        gameData.GM_now_membership = GameManager.now_membership;
         gameData.GM_uploadChkLocker = GameManager.uploadChkLocker;
         gameData.GM_uploadChkMain = GameManager.uploadChkMain;
+        gameData.GM_membershipChk = GameManager.membershipChk;
         for(int i=0;i<8;i++)
         {
             gameData.GM_conceptCnt[i] = GameManager.conceptCnt[i];
@@ -154,6 +156,9 @@ public class DataController : MonoBehaviour
 
         //RandomEvent
         gameData.RE_Time_before = RandomEvent_appear.Time_before;
+
+        //LiveBroadcast
+        gameData.LB_firstLive = LiveBroadcast.firstLive;
 
         //EndingController
         gameData.EC_gameEnding = EndingController.gameEnding.ToList();
