@@ -171,7 +171,46 @@ public class ItemLocker : MonoBehaviour
     }
     void Awake()
     {
-        
+        /*GameObject child, child2, go;
+        int charming = 0;
+        string str;
+        string[] spstring;
+
+        for (int i = 0; i < itemCollection.transform.childCount; i++)   //캐릭터 아이템 착용 초기화
+        {
+            child = itemCollection.transform.GetChild(i).gameObject;
+            for (int j = 0; j < child.transform.childCount; j++)
+            {
+                child2 = child.transform.GetChild(j).gameObject;
+                if (ItemLocker.Index[i] == j)
+                {
+                    child2.SetActive(true);
+                    str = child2.name;
+                    spstring = str.Split('_');
+                    str = spstring[0];
+                    go = GameObject.Find(str);
+                    if(go == null)
+                    {
+                        Debug.Log(str + " 못 찾음");
+                    }
+                    else
+                    {
+                        Debug.Log(str + " 찾음");
+                    }
+                    str = go.GetComponentInChildren<Text>().text;
+                    spstring = str.Split('+');
+                    charming += int.Parse(spstring[1]);
+                }
+                else
+                {
+                    child2.SetActive(false);
+                }
+            }
+        }
+        GameObject go2;
+        go2 = GameObject.Find("MyGMCharmStat");
+        go2.GetComponentInChildren<Text>().text = "현재 매력 : " + GameManager.charm;*/
+
     }
 
     // Start is called before the first frame update
@@ -207,7 +246,7 @@ public class ItemLocker : MonoBehaviour
         }
         else
         {
-            Debug.Log("현재 버튼 null");
+            //Debug.Log("현재 버튼 null");
             maxCharm = maxEdit = 100;
         }
     }
