@@ -126,7 +126,7 @@ public class LiveBroadcast : MonoBehaviour
     {
         for(int i = 0 ; i < 20 ; i++)
         {
-            Debug.Log(GameManager.game_time);
+            //Debug.Log(GameManager.game_time);
 
             int rand = Random.Range(0, liveComments.Count);
             int rand2 = Random.Range(0, spriteArray.Length);
@@ -141,7 +141,7 @@ public class LiveBroadcast : MonoBehaviour
             huwonText.gameObject.SetActive(false);
 
             int rand3 = Random.Range(0, 4); 
-            Debug.Log(rand3);
+            //Debug.Log(rand3);
 
             if (rand3 == 0)
             {

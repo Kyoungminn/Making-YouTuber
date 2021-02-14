@@ -24,31 +24,36 @@ public class Nickname : MonoBehaviour
     {
         GameManager.nickname = nickname.text;
 
-         if (GameManager.subscriber >= 10000 && GameManager.charm >= 100)
+         if (GameManager.subscriber >= 10000 && GameManager.charm >= 100 && GameManager.membershipChk)
         {
+            GameManager.membershipChk = false;
             SoundManager._soundInstance.PopupAudio();
            Bronze.SetActive(true);
             
         }
-        if (GameManager.subscriber >= 100000 && GameManager.charm >= 300)
+        if (GameManager.subscriber >= 100000 && GameManager.charm >= 300 && !GameManager.membershipChk)
         {
+            GameManager.membershipChk = true;
             SoundManager._soundInstance.PopupAudio();
             Silver.SetActive(true);
             
         }
-        if (GameManager.subscriber >= 1000000 && GameManager.charm >= 500)
+        if (GameManager.subscriber >= 1000000 && GameManager.charm >= 500 && GameManager.membershipChk)
         {
+            GameManager.membershipChk = false;
             SoundManager._soundInstance.PopupAudio();
             Gold.SetActive(true);
             
         }
-        if (GameManager.subscriber >= 10000000 && GameManager.charm >= 700)
+        if (GameManager.subscriber >= 10000000 && GameManager.charm >= 700 && !GameManager.membershipChk)
         {
+            GameManager.membershipChk = true;
             SoundManager._soundInstance.PopupAudio();
             Diamond.SetActive(true);
         }
-        if (GameManager.subscriber >= 50000000 && GameManager.charm >= 1000)
+        if (GameManager.subscriber >= 50000000 && GameManager.charm >= 1000 && GameManager.membershipChk)
         {
+            GameManager.membershipChk = false;
             SoundManager._soundInstance.PopupAudio();
             Ruby.SetActive(true);
             

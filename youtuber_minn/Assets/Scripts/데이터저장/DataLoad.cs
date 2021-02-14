@@ -26,8 +26,10 @@ public class DataLoad : MonoBehaviour
         GameManager.money = DataController.Instance._gameData.GM_money;
         GameManager.subscriber = DataController.Instance._gameData.GM_subscriber;
         GameManager.youtubaButton = DataController.Instance._gameData.GM_youtubaButton;
+        GameManager.now_membership = DataController.Instance._gameData.GM_now_membership;
         GameManager.uploadChkLocker = DataController.Instance._gameData.GM_uploadChkLocker;
         GameManager.uploadChkMain = DataController.Instance._gameData.GM_uploadChkMain;
+        GameManager.membershipChk = DataController.Instance._gameData.GM_membershipChk;
         for(int i = 0; i < 8; i++)
         {
             GameManager.conceptCnt[i] = DataController.Instance._gameData.GM_conceptCnt[i];
@@ -95,6 +97,9 @@ public class DataLoad : MonoBehaviour
 
         //RandomEvent
         RandomEvent_appear.Time_before = DataController.Instance._gameData.RE_Time_before;
+
+        //LiveBroadcast
+        //LiveBroadcast.firstLive = DataController.Instance._gameData.LB_firstLive;
 
         //EndingController
         EndingController.gameEnding = DataController.Instance._gameData.EC_gameEnding.ToList();
