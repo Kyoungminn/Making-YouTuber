@@ -8,13 +8,13 @@ public class Shop : MonoBehaviour
     public int money, price;
     public Text moneyTxt, priceTxt, itemTxt;
     public string ItemName;
-    public static int panel, btn;
-    // Start is called before the first frame update
+    static int panel, btn;
+
 
     void Start()
     {
-        money = GameManager.money;
-        //money = 1000000;
+        //money = GameManager.money;
+        money = 1000000;
         string str = money.ToString();
         moneyTxt.text = (str);
     }
@@ -49,40 +49,63 @@ public class Shop : MonoBehaviour
             if (go.name.Equals(this.gameObject.name))
             {
                 btn = i;
+                Debug.Log("현재 panel, btn = " + panel + ", " + btn);
                 break;
             }
         }
-        for (int i = 0; i < 4; i++)
+        if ((panel >= 2 && panel < 7) || (panel == 7 && btn < 2))         //itemCode에 각각 저장([0]: 머리, [1]: 상의, [2]:하의, [3]: 신발)
         {
-            /*if (ShopButtonEvent.code[i].panel == panel && ShopButtonEvent.code[i].btn == btn)
+            if ((ShopButtonEvent.code[0].panel == panel && ShopButtonEvent.code[0].btn == btn) && (ShopButtonEvent.code[0].panel != 0))
             {
-                ShopButtonEvent.code[i].panel = 0;
-                ShopButtonEvent.code[i].btn = 0;
-            }*/
-            //else
-            //{
-                if (panel >= 2 && panel < 8)         //itemCode에 각각 저장([0]: 머리, [1]: 상의, [2]:하의, [3]: 신발)
-                {
-                    ShopButtonEvent.code[0].panel = panel;
-                    ShopButtonEvent.code[0].btn = btn;
-                }
-                else if ((panel >= 8 && panel < 13) || (panel == 7 && btn == 2) || (panel == 13 && btn == 0) || (panel >= 16 && panel < 20) )         //itemCode에 각각 저장([0]: 머리, [1]: 상의, [2]:하의, [3]: 신발)
-                {
-                    ShopButtonEvent.code[1].panel = panel;
-                    ShopButtonEvent.code[1].btn = btn;
-                }
-                else if (panel >= 20 && panel < 23)         //itemCode에 각각 저장([0]: 머리, [1]: 상의, [2]:하의, [3]: 신발)
-                {
-                    ShopButtonEvent.code[2].panel = panel;
-                    ShopButtonEvent.code[2].btn = btn;
-                }
-                else if ((panel >= 13 && panel < 16) || (panel == 16 && btn == 0))         //itemCode에 각각 저장([0]: 머리, [1]: 상의, [2]:하의, [3]: 신발)
-                {
-                    ShopButtonEvent.code[3].panel = panel;
-                    ShopButtonEvent.code[3].btn = btn;
-                    //Debug.Log("현재  ShopButtonEvent.code[3].panel : " + ShopButtonEvent.code[3].panel + ", ShopButtonEvent.code[3].btn : " + ShopButtonEvent.code[3].btn);
-                }
-            //}
+                ShopButtonEvent.code[0].panel = ShopButtonEvent.code[0].btn = 0;
+            }
+            else
+            {
+                ShopButtonEvent.code[0].panel = panel;
+                ShopButtonEvent.code[0].btn = btn;
+            }
+        }
+        else if ((panel >= 8 && panel < 13) || (panel == 7 && btn == 2) || (panel == 13 && btn == 0) || (panel == 16 && btn > 0) || (panel > 16 && panel < 20))         //상의
+        {
+            if ((ShopButtonEvent.code[1].panel == panel && ShopButtonEvent.code[1].btn == btn) && (ShopButtonEvent.code[1].panel != 0))
+            {
+                ShopButtonEvent.code[1].panel = ShopButtonEvent.code[1].btn = 0;
+            }
+            else
+            {
+                ShopButtonEvent.code[1].panel = panel;
+                ShopButtonEvent.code[1].btn = btn;
+            }
+        }
+        else if (panel >= 20 && panel < 23)         //하의
+        {
+            if ((ShopButtonEvent.code[2].panel == panel && ShopButtonEvent.code[2].btn == btn) && (ShopButtonEvent.code[2].panel != 0))
+            {
+                ShopButtonEvent.code[2].panel = ShopButtonEvent.code[2].btn = 0;
+            }
+            else
+            {
+                ShopButtonEvent.code[2].panel = panel;
+                ShopButtonEvent.code[2].btn = btn;
+            }
+        }
+        else if ((panel >= 13 && panel < 16) || (panel == 16 && btn == 0))         //신발
+        {
+            if ((ShopButtonEvent.code[3].panel == panel && ShopButtonEvent.code[3].btn == btn) && (ShopButtonEvent.code[3].panel != 0))
+            {
+                ShopButtonEvent.code[3].panel = ShopButtonEvent.code[3].btn = 0;
+            }
+            else
+            {
+                ShopButtonEvent.code[3].panel = panel;
+                ShopButtonEvent.code[3].btn = btn;
+            }
+            //Debug.Log("현재  ShopButtonEvent.code[3].panel : " + ShopButtonEvent.code[3].panel + ", ShopButtonEvent.code[3].btn : " + ShopButtonEvent.code[3].btn);
+        }
+        
+        for(int i = 0; i < 4; i++)
+        {
+            Debug.Log("현재  ShopButtonEvent.code["+i+"].panel : " + ShopButtonEvent.code[i].panel + ", ShopButtonEvent.code[" + i + "].btn : " + ShopButtonEvent.code[i].btn);
         }
     }
 
