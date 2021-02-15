@@ -68,6 +68,18 @@ public class SoundManager : MonoBehaviour
         }
 
     }
+
+    public void AudioOn()
+    {
+        EffectAudioChk = true;
+    }
+
+     public void AudioOff()
+    {
+        EffectAudioChk = false;
+    }
+
+
     // Update is called once per frame
     void Update()
     {

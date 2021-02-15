@@ -24,11 +24,11 @@ public class Nickname : MonoBehaviour
     {
         GameManager.nickname = nickname.text;
 
-         if (GameManager.subscriber >= 10000 && GameManager.charm >= 100 && GameManager.membershipChk)
+        if (GameManager.subscriber >= 10000 && GameManager.charm >= 100 && GameManager.membershipChk)
         {
             GameManager.membershipChk = false;
             SoundManager._soundInstance.PopupAudio();
-           Bronze.SetActive(true);
+            Bronze.SetActive(true);
             
         }
         if (GameManager.subscriber >= 100000 && GameManager.charm >= 300 && !GameManager.membershipChk)
