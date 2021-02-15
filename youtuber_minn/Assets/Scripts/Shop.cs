@@ -5,11 +5,10 @@ using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
-    public int money, price;
+    public int price;
     public Text moneyTxt, priceTxt, itemTxt;
     public string ItemName;
-    static int panel, btn;
-
+    static int panel, btn, stat, maxCharm, maxEdit, money;
 
     void Start()
     {
@@ -17,6 +16,38 @@ public class Shop : MonoBehaviour
         //money = 1000000;
         string str = money.ToString();
         moneyTxt.text = (str);
+        string mybutton;
+        if (GameManager.youtubaButton != null)
+        {
+            //Debug.Log("현재 버튼 정보 있음");
+            mybutton = GameManager.youtubaButton;
+            //Debug.Log("mybutton" + mybutton);
+            if (mybutton.Equals("bronze") || mybutton == null || mybutton == "")
+            {
+                maxCharm = maxEdit = 100;
+            }
+            else if (mybutton.Equals("silver"))
+            {
+                maxCharm = maxEdit = 300;
+            }
+            else if (mybutton.Equals("gold"))
+            {
+                maxCharm = maxEdit = 500;
+            }
+            else if (mybutton.Equals("diamond"))
+            {
+                maxCharm = maxEdit = 700;
+            }
+            else if (mybutton.Equals("ruby"))
+            {
+                maxCharm = maxEdit = 1000;
+            }
+        }
+        else
+        {
+            //Debug.Log("현재 버튼 null");
+            maxCharm = maxEdit = 100;
+        }
     }
 
     public void GetName_Beauty()    //매력탭에서 사용되는 아이템 이름 표시
@@ -49,7 +80,7 @@ public class Shop : MonoBehaviour
             if (go.name.Equals(this.gameObject.name))
             {
                 btn = i;
-                Debug.Log("현재 panel, btn = " + panel + ", " + btn);
+                //Debug.Log("현재 panel, btn = " + panel + ", " + btn);
                 break;
             }
         }
@@ -102,11 +133,6 @@ public class Shop : MonoBehaviour
             }
             //Debug.Log("현재  ShopButtonEvent.code[3].panel : " + ShopButtonEvent.code[3].panel + ", ShopButtonEvent.code[3].btn : " + ShopButtonEvent.code[3].btn);
         }
-        
-        for(int i = 0; i < 4; i++)
-        {
-            Debug.Log("현재  ShopButtonEvent.code["+i+"].panel : " + ShopButtonEvent.code[i].panel + ", ShopButtonEvent.code[" + i + "].btn : " + ShopButtonEvent.code[i].btn);
-        }
     }
 
     public void ItemInfo_Beauty()       //매력탭에서 사용되는 아이템 이름을 팝업에 띄우는 함수
@@ -139,8 +165,13 @@ public class Shop : MonoBehaviour
     {        
         string str;
         string[] spstring;
+        GameObject getStat = this.transform.GetChild(1).gameObject;
 
-         GameObject parent = transform.parent.gameObject;       //item의 index 구하기
+        str = getStat.GetComponentInChildren<Text>().text;   //버튼에 해당하는 item의 스탯 가져옴
+        spstring = str.Split('+');
+        stat = int.Parse(spstring[1]);
+
+        GameObject parent = transform.parent.gameObject;       //item의 index 구하기
          str = parent.gameObject.name;
          spstring = str.Split('-');
          str = spstring[1];
@@ -189,13 +220,31 @@ public class Shop : MonoBehaviour
             GameManager.money = money;
             if (go2 == null)
             {
-                ItemLocker.EditItems[panel, btn]++;      //편집 아이템 구매하면 개수++
+                
+                if (GameManager.edit < maxEdit)
+                {                    
+                    GameManager.edit += stat;
+                    if (GameManager.edit > maxEdit)
+                        GameManager.edit = maxEdit;
+                    ItemLocker.EditItems[panel, btn]++;      //편집 아이템 구매하면 개수++
+                    playSound("BuySound");
+                }
+                else
+                {
+                    GameObject.Find("Canvas").transform.Find("착용불가팝업").gameObject.SetActive(true);
+                }
             }
             if (go1 == null)
             {
                 ItemLocker.HealthItems[panel, btn]++;      //건강 아이템 구매하면 개수++
+                playSound("BuySound");
             }
         }       
+    }
+
+    void playSound(string str)
+    {
+        GameObject.Find(str).GetComponent<AudioSource>().Play();
     }
 
     public void Buy_Beauuty()
@@ -214,14 +263,26 @@ public class Shop : MonoBehaviour
             str = "" + money;
             moneyTxt.text = (str);
             GameManager.money = money;
-            for (int i = 0; i < 4; i++)
+            if (GameManager.charm < maxCharm)        //스탯최대 초과하면 팝업
             {
-                //Debug.Log("(2) 현재  ShopButtonEvent.code["+i+ "].panel : " + ShopButtonEvent.code[i].panel + ", ShopButtonEvent.code[" + i + "].btn : " + ShopButtonEvent.code[i].btn);
-                if (ShopButtonEvent.code[i].panel == 0 && ShopButtonEvent.code[i].btn == 0)
-                    continue;
-                ItemLocker.CharmItems[ShopButtonEvent.code[i].panel, ShopButtonEvent.code[i].btn]++;        //아이템 구매하면 개수++  
-                                                                                                            // Debug.Log("현재 CharmItemes[" + ShopButtonEvent.code[i].panel + "," + ShopButtonEvent.code[i].btn + "] : " + ItemLocker.CharmItems[ShopButtonEvent.code[i].panel, ShopButtonEvent.code[i].btn]);
+                GameManager.charm += ShopButtonEvent.charmTotal;
+                playSound("BuySound");
+                if (GameManager.charm > maxCharm)
+                    GameManager.charm = maxCharm;
+                for (int i = 0; i < 4; i++)
+                {
+                    //Debug.Log("(2) 현재  ShopButtonEvent.code["+i+ "].panel : " + ShopButtonEvent.code[i].panel + ", ShopButtonEvent.code[" + i + "].btn : " + ShopButtonEvent.code[i].btn);
+                    if (ShopButtonEvent.code[i].panel == 0 && ShopButtonEvent.code[i].btn == 0)
+                        continue;
+                    ItemLocker.CharmItems[ShopButtonEvent.code[i].panel, ShopButtonEvent.code[i].btn]++;        //아이템 구매하면 개수++  
+                    // Debug.Log("현재 CharmItemes[" + ShopButtonEvent.code[i].panel + "," + ShopButtonEvent.code[i].btn + "] : " + ItemLocker.CharmItems[ShopButtonEvent.code[i].panel, ShopButtonEvent.code[i].btn]);
+                }
             }
+            else
+            {
+                GameObject.Find("Canvas").transform.Find("착용불가팝업").gameObject.SetActive(true);
+            }           
+
             for (int i = 0; i < 4; i++)
             {
                 ShopButtonEvent.code[i].panel = ShopButtonEvent.code[i].btn = 0;    //아이템 사고나면 담아뒀던 code 초기화
@@ -247,11 +308,6 @@ public class Shop : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {
-
-    }
-
-    void buy()
     {
 
     }
