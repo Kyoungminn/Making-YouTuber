@@ -231,7 +231,7 @@ public class Shop : MonoBehaviour
                 }
                 else
                 {
-                    GameObject.Find("Canvas").transform.Find("착용불가팝업").gameObject.SetActive(true);
+                    GameObject.Find("Canvas").transform.Find("스탯초과").gameObject.SetActive(true);
                 }
             }
             if (go1 == null)
@@ -280,7 +280,7 @@ public class Shop : MonoBehaviour
             }
             else
             {
-                GameObject.Find("Canvas").transform.Find("착용불가팝업").gameObject.SetActive(true);
+                GameObject.Find("Canvas").transform.Find("스탯초과").gameObject.SetActive(true);
             }           
 
             for (int i = 0; i < 4; i++)
