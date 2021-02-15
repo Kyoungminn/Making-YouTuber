@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
 
     public static bool uploadChkLocker; //보관함에서 동영상업로드 여부 확인
     public static bool uploadChkMain; //메인에서 동영상 업로드 후 시간재기 위해 쓸 변수
-    public static bool membershipChk = true; //멤버십 한번만 실행되기 위해 쓸 변수
 
     //엔딩위한 컨셉개수저장;
     public static int[] conceptCnt = new int[8];

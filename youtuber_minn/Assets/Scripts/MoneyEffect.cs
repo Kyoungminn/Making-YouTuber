@@ -18,14 +18,14 @@ public class MoneyEffect : MonoBehaviour
 
     IEnumerator destroyThis()
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(3.0f);
         Destroy(this.gameObject);
     }
 
     public void OnMoneyButtonClick()
     {
         
-        GameManager.money += 1;
+        GameManager.money += 5;
         Debug.Log(GameManager.money);
         gameObject.SetActive(false);
     }

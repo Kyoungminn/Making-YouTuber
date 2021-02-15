@@ -95,7 +95,6 @@ public class DataController : MonoBehaviour
         gameData.GM_now_membership = GameManager.now_membership;
         gameData.GM_uploadChkLocker = GameManager.uploadChkLocker;
         gameData.GM_uploadChkMain = GameManager.uploadChkMain;
-        gameData.GM_membershipChk = GameManager.membershipChk;
         for(int i=0;i<8;i++)
         {
             gameData.GM_conceptCnt[i] = GameManager.conceptCnt[i];
@@ -162,6 +161,9 @@ public class DataController : MonoBehaviour
 
         //ChangeProfileImage
         gameData.CP_profileIdx = SetData.profileIdx;
+
+        //Nickname
+        gameData.NK_membershipIdx = Nickname.membershipIdx;
 
         //EndingController
         gameData.EC_gameEnding = EndingController.gameEnding.ToList();

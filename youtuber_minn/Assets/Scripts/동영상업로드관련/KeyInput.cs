@@ -76,28 +76,28 @@ public class KeyInput : MonoBehaviour
             scale.z = 1.0f;
         }
 
-        youtubaButton = GameManager.youtubaButton;
+        int _charm = GameManager.charm;
 
-        if (youtubaButton == "" || youtubaButton == null)
-        {
-            adsMaxCnt = 2;
-        }
-        else if (youtubaButton == "bronze")
-        {
-            adsMaxCnt = 6;
-        }
-        else if (youtubaButton == "silver")
-        {
-            adsMaxCnt = 10;
-        }
-        else if (youtubaButton == "gold")
-        {
-            adsMaxCnt = 14;
-        }
-        else if (youtubaButton == "diamond")
-        {
-            adsMaxCnt = 20;
-        }
+        if (_charm < 50) adsMaxCnt = 1;
+        else if (_charm < 100) adsMaxCnt = 2;
+        else if (_charm < 150) adsMaxCnt = 3;
+        else if (_charm < 200) adsMaxCnt = 4;
+        else if (_charm < 250) adsMaxCnt = 5;
+        else if (_charm < 300) adsMaxCnt = 6;
+        else if (_charm < 350) adsMaxCnt = 7;
+        else if (_charm < 400) adsMaxCnt = 8;
+        else if (_charm < 450) adsMaxCnt = 9;
+        else if (_charm < 500) adsMaxCnt = 10;
+        else if (_charm < 550) adsMaxCnt = 11;
+        else if (_charm < 600) adsMaxCnt = 12;
+        else if (_charm < 650) adsMaxCnt = 13;
+        else if (_charm < 700) adsMaxCnt = 14;
+        else if (_charm < 750) adsMaxCnt = 15;
+        else if (_charm < 800) adsMaxCnt = 16;
+        else if (_charm < 850) adsMaxCnt = 17;
+        else if (_charm < 900) adsMaxCnt = 18;
+        else if (_charm < 950) adsMaxCnt = 19;
+        else if (_charm < 1000) adsMaxCnt = 20;
 
         adsNumMax.text = "(최대  " + adsMaxCnt.ToString() + "개)";
         adsCnt = int.Parse(adsText);
