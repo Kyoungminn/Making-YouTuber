@@ -18,6 +18,7 @@ public class TutorialMainController : MonoBehaviour
         GameManager.health = 100;
         GameManager.subscriber = 100;
         GameManager.money = 1000;
+        //GameManager.charm = 300;
         GameObject.Find("Panel_Profile").transform.GetChild(5).gameObject.GetComponent<Text>().text = GameManager.money.ToString();
     }
 

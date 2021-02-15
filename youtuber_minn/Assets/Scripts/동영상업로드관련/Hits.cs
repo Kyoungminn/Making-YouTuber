@@ -21,7 +21,7 @@ public class Hits : MonoBehaviour
         //string youtubaButton = GameManager.youtubaButton;
         SoundManager._soundInstance.PopupAudio();
 
-        int adsProper = keyinput.adsMaxCnt / 2;
+        int adsProper = (keyinput.adsMaxCnt+1) / 2;
 
         int rand = Random.Range(0, 100);
         if (rand <= 80)

@@ -22,18 +22,18 @@ public class MoneyApear : MonoBehaviour
     {
         while(true)
         {
-            int numRand = Random.Range(1, 3);
-            float timeRand = Random.Range(6.0f, 10.0f);
+            //int numRand = Random.Range(1, 3);
+            float timeRand = Random.Range(4.5f, 5.0f);
 
-            for (int i = 0; i < numRand; i++)
-            {
+            //for (int i = 0; i < numRand; i++)
+            //{
                 Debug.Log("생성!");
                 Vector3 creatingPoint = new Vector3(Random.Range(-500f, 500f), Random.Range(-900f, 900f), 0f);
                 GameObject child = Instantiate(prefabMoney) as GameObject;
                 child.transform.SetParent(moneyParent.transform);
                 child.transform.localPosition = creatingPoint;
                 child.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-            }
+            //}
 
             yield return new WaitForSeconds(timeRand);
         }

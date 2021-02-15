@@ -12,7 +12,7 @@ public class Nickname : MonoBehaviour
     public GameObject Diamond;
     public GameObject Ruby;
 
-
+    public static int membershipIdx = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,36 +24,36 @@ public class Nickname : MonoBehaviour
     {
         GameManager.nickname = nickname.text;
 
-        if (GameManager.subscriber >= 10000 && GameManager.charm >= 100 && GameManager.membershipChk)
+        if (GameManager.subscriber >= 10000 && GameManager.charm >= 100 && membershipIdx == 1)
         {
-            GameManager.membershipChk = false;
+            membershipIdx++;
             SoundManager._soundInstance.PopupAudio();
             Bronze.SetActive(true);
             
         }
-        if (GameManager.subscriber >= 100000 && GameManager.charm >= 300 && !GameManager.membershipChk)
+        if (GameManager.subscriber >= 100000 && GameManager.charm >= 300 && membershipIdx == 2)
         {
-            GameManager.membershipChk = true;
+            membershipIdx++;
             SoundManager._soundInstance.PopupAudio();
             Silver.SetActive(true);
             
         }
-        if (GameManager.subscriber >= 1000000 && GameManager.charm >= 500 && GameManager.membershipChk)
+        if (GameManager.subscriber >= 1000000 && GameManager.charm >= 500 && membershipIdx == 3) 
         {
-            GameManager.membershipChk = false;
+            membershipIdx++;
             SoundManager._soundInstance.PopupAudio();
             Gold.SetActive(true);
             
         }
-        if (GameManager.subscriber >= 10000000 && GameManager.charm >= 700 && !GameManager.membershipChk)
+        if (GameManager.subscriber >= 10000000 && GameManager.charm >= 700 && membershipIdx == 4) 
         {
-            GameManager.membershipChk = true;
+            membershipIdx++;
             SoundManager._soundInstance.PopupAudio();
             Diamond.SetActive(true);
         }
-        if (GameManager.subscriber >= 50000000 && GameManager.charm >= 1000 && GameManager.membershipChk)
+        if (GameManager.subscriber >= 50000000 && GameManager.charm >= 1000 && membershipIdx == 5)
         {
-            GameManager.membershipChk = false;
+            membershipIdx++;
             SoundManager._soundInstance.PopupAudio();
             Ruby.SetActive(true);
             

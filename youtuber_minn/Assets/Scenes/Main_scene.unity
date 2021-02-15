@@ -2234,6 +2234,7 @@ GameObject:
   - component: {fileID: 53436115}
   - component: {fileID: 53436113}
   - component: {fileID: 53436114}
+  - component: {fileID: 53436116}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2289,6 +2290,21 @@ RectTransform:
   m_AnchoredPosition: {x: -482, y: -3453}
   m_SizeDelta: {x: 1080, y: 1920}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &53436116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53436112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 098c9330d303dea4c92c58f04831dcab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabMoney: {fileID: 6696343399837301219, guid: 75d4c606253ac7d4384c9b63a314ff22,
+    type: 3}
+  moneyParent: {fileID: 505091309}
 --- !u!1 &58050252
 GameObject:
   m_ObjectHideFlags: 0
@@ -4056,7 +4072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &115324624
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24486,7 +24502,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &729345550
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26757,7 +26773,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 729345549}
+      - m_Target: {fileID: 1023005002}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -26768,18 +26784,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 803178099}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1268152233}
         m_MethodName: OnButtonAudio
         m_Mode: 1
         m_Arguments:
@@ -27446,7 +27451,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1268152233}
         m_MethodName: OnButtonAudio
         m_Mode: 1
         m_Arguments:
@@ -28580,7 +28585,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1268152233}
         m_MethodName: OnButtonAudio
         m_Mode: 1
         m_Arguments:
@@ -33668,7 +33673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1013788086
 RectTransform:
   m_ObjectHideFlags: 0
@@ -37497,7 +37502,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2102925414}
+      - m_Target: {fileID: 1088993855}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -37508,18 +37513,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1111402493}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1268152233}
         m_MethodName: OnButtonAudio
         m_Mode: 1
         m_Arguments:
@@ -44543,7 +44537,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1971609989}
+      - m_Target: {fileID: 74560765}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -44554,18 +44548,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1285644210}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1268152233}
         m_MethodName: OnButtonAudio
         m_Mode: 1
         m_Arguments:
@@ -45741,7 +45724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1324150626
 RectTransform:
   m_ObjectHideFlags: 0
@@ -61741,7 +61724,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1013788085}
+      - m_Target: {fileID: 1017370307}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -61752,18 +61735,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1774955473}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1268152233}
         m_MethodName: OnButtonAudio
         m_Mode: 1
         m_Arguments:
@@ -69049,7 +69021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1971609990
 RectTransform:
   m_ObjectHideFlags: 0
@@ -71498,6 +71470,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1268152233}
+        m_MethodName: OnButtonAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2047686432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73229,7 +73212,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2102925415
 RectTransform:
   m_ObjectHideFlags: 0
