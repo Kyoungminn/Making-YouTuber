@@ -25,7 +25,7 @@ public class LiveBroadcast : MonoBehaviour
     {
         textFade = huwonText.GetComponent<TextFade>();
 
-        live_comment = "요즘 굴이 제철이래... " + GameManager.human_name + "얼굴…☆";
+        live_comment = "요즘 굴이 제철이래... " + GameManager.human_name + " 얼굴…☆";
         liveComments.Add(live_comment);
 
         live_comment = GameManager.human_name + " 그닥.. 내 마음속으로 다그닥";
@@ -34,7 +34,7 @@ public class LiveBroadcast : MonoBehaviour
         live_comment = "넌 베를린이야 내게 치명적인 독일 수도";
         liveComments.Add(live_comment);
 
-        live_comment = GameManager.human_name + "은(는) 사슴이야, 내마음을 녹용";
+        live_comment = GameManager.human_name + " 은(는) 사슴이야, 내마음을 녹용";
         liveComments.Add(live_comment);
 
         live_comment = "아 허전하네… 명불허전..";
@@ -58,13 +58,13 @@ public class LiveBroadcast : MonoBehaviour
         live_comment = "혼혈 아니야? 천국이랑 한국.";
         liveComments.Add(live_comment);
 
-        live_comment = "나 몰랐는데 " + GameManager.human_name + "좋아하네.";
+        live_comment = "나 몰랐는데 " + GameManager.human_name + " 좋아하네.";
         liveComments.Add(live_comment);
 
-        live_comment = "여기서 " + GameManager.human_name + "싫어하는 사람 있나? 탕 또 있나?";
+        live_comment = "여기서 " + GameManager.human_name + " 싫어하는 사람 있나? 탕 또 있나?";
         liveComments.Add(live_comment);
 
-        live_comment = GameManager.human_name + "야,,넌 돌잡이 때 내 심장을 잡았어,,,";
+        live_comment = GameManager.human_name + " 야,,넌 돌잡이 때 내 심장을 잡았어,,,";
         liveComments.Add(live_comment);
         CharacHair();
 
