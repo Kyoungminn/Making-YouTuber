@@ -14,12 +14,12 @@ public class GameData
     public string GM_human_name = ""; //사람이름
     public string GM_channel_name = ""; //채널이름
     public string GM_nickname; //구독자 애칭
-    public int GM_money = 0; //돈
+    public int GM_money = 100000; //돈
     public int GM_health = 100; //건강
     public int GM_charm = 0; //매력
     public int GM_edit = 0; //편집
-    public int GM_subscriber = 100; //구독자수
-    public string GM_youtubaButton; //현재 유저가 지닌 최고 버튼
+    public int GM_subscriber = 100000; //구독자수
+    public string GM_youtubaButton = ""; //현재 유저가 지닌 최고 버튼
     public string GM_now_membership; //유저가 선택한 멤버십 버튼 종류
     public bool GM_uploadChkLocker = false; //보관함에서 동영상업로드 여부 확인
     public bool GM_uploadChkMain = false; //메인에서 동영상 업로드 후 시간재기 위해 쓸 변수
@@ -71,6 +71,9 @@ public class GameData
 
     //LiveBroadcast
     public bool LB_firstLive = true;
+
+    //ChangeProfileImage
+    public int CP_profileIdx = 2;
 
     //EndingController
     public List<int> EC_gameEnding = new List<int>();

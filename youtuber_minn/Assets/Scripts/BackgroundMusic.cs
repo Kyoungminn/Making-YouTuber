@@ -28,12 +28,4 @@ public class BackgroundMusic : MonoBehaviour
 
     }
 
-    public void BackGroundMusicOffButton() //배경음악 키고 끄는 버튼
-    {
-        Bgm = GameObject.Find("BGM");
-        bgm = Bgm.GetComponent<AudioSource>(); //배경음악 저장해둠
-        if (bgm.isPlaying) bgm.Stop();
-        else bgm.Play();
-    }
-
 }

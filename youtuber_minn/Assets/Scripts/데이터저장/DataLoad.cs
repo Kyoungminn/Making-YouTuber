@@ -101,6 +101,9 @@ public class DataLoad : MonoBehaviour
         //LiveBroadcast
         LiveBroadcast.firstLive = DataController.Instance._gameData.LB_firstLive;
 
+        //ChangeProfileImage
+        SetData.profileIdx = DataController.Instance._gameData.CP_profileIdx;
+
         //EndingController
         EndingController.gameEnding = DataController.Instance._gameData.EC_gameEnding.ToList();
         EndingController.gameEnding_name = DataController.Instance._gameData.EC_gameEnding_name.ToList();
