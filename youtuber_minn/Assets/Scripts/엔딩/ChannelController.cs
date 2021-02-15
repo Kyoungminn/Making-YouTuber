@@ -18,7 +18,7 @@ public class ChannelController : MonoBehaviour
     void Start()
     {
         //test로 엔딩 넣어보기
-        //EndingController.gameEnding.Add(0);
+        //EndingController.gameEnding.Add(8);
         //EndingController.gameEnding_name.Add("배수아");
         //EndingController.gameEnding_channel.Add("엔딩테스트");
         //

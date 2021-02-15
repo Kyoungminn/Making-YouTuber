@@ -160,6 +160,9 @@ public class DataController : MonoBehaviour
         //LiveBroadcast
         gameData.LB_firstLive = LiveBroadcast.firstLive;
 
+        //ChangeProfileImage
+        gameData.CP_profileIdx = SetData.profileIdx;
+
         //EndingController
         gameData.EC_gameEnding = EndingController.gameEnding.ToList();
         gameData.EC_gameEnding_name = EndingController.gameEnding_name.ToList();

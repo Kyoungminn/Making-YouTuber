@@ -18,14 +18,14 @@ public class GameManager : MonoBehaviour
 
     public static int money; //돈
     public static int health; //건강
-    public static int charm = 95; //매력
+    public static int charm; //매력
     public static int edit; //편집
 
 
-    public static int subscriber = 9998; //구독자수
+    public static int subscriber = 100; //구독자수
     public static string youtubaButton; //현재 유저가 지닌 최고 버튼
     public static string now_membership; //유저가 선택한 멤버십 버튼 종류
-    public static List<string> button_name = new List<string>{"noButton","bronze","silver", "gold", "diamond","ruby"}; //노버튼,브론즈,실버,골드,다이아,루비
+    public static List<string> button_name = new List<string>{"","bronze","silver", "gold", "diamond","ruby"}; //노버튼,브론즈,실버,골드,다이아,루비
 
     public static bool uploadChkLocker; //보관함에서 동영상업로드 여부 확인
     public static bool uploadChkMain; //메인에서 동영상 업로드 후 시간재기 위해 쓸 변수

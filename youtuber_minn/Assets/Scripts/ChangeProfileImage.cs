@@ -19,5 +19,6 @@ public class ChangeProfileImage : MonoBehaviour
     public void ChangeImage()
     {
         test_middle.sprite = test_sprite;
+        SetData.profileIdx = gameObject.transform.GetSiblingIndex();
     }
 }

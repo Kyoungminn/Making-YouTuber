@@ -26,6 +26,9 @@ public class GameTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //건강 마이너스로 안떨어지게 하기
+        if (GameManager.health < 0) GameManager.health = 0;
+
         GameManager.game_time += (Time.deltaTime / 60.0f);
         GameManager.game_day += (Time.deltaTime / 60.0f);
 
@@ -41,6 +44,7 @@ public class GameTime : MonoBehaviour
         }
 
         //유투바멤버십계산
+        GameManager.now_membership = GameManager.youtubaButton; //일단 최고버튼을 멤버십으로 적용
         string membership = GameManager.now_membership;
         int pay = 0, membershipNum = 0, membershipPay = 0;
         if (membership == "bronze") pay = 50;

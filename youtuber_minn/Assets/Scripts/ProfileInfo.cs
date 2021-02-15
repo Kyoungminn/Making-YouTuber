@@ -21,6 +21,9 @@ public class ProfileInfo : MonoBehaviour
     //일정 값
     public Text day_Text;
 
+    public Image charProfile;
+    public Sprite[] profileImages = new Sprite[4];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +38,9 @@ public class ProfileInfo : MonoBehaviour
         edit_value.text = GameManager.edit.ToString();
         charm_value.text = GameManager.charm.ToString();
         health_value.text = GameManager.health.ToString();
+
+        charProfile.sprite = profileImages[SetData.profileIdx-2]; //프로필표시
+        Debug.Log(SetData.profileIdx - 2);
 
     }
 
