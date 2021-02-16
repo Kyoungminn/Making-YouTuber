@@ -11,7 +11,6 @@ public class ShopButtonEvent : MonoBehaviour
         public int btn;
     }
 
-
     public GameObject item, parent, button, itemCollection; //아이템이미지, 상위카테고리, 구매버튼, 최상위카테고리
     public int index;
     public static int charmTotal;

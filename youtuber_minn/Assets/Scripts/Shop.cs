@@ -8,14 +8,10 @@ public class Shop : MonoBehaviour
     public int price;
     public Text moneyTxt, priceTxt, itemTxt;
     public string ItemName;
-    static int panel, btn, stat, maxCharm, maxEdit, money;
+    static int panel, btn, stat, maxCharm, maxEdit, money = GameManager.money;
 
     void Start()
     {
-        money = GameManager.money;
-        //money = 1000000;
-        string str = money.ToString();
-        moneyTxt.text = (str);
         string mybutton;
         if (GameManager.youtubaButton != null)
         {
@@ -210,14 +206,13 @@ public class Shop : MonoBehaviour
         money -= price;
         if (money < 0)
         {
-            money += price; 
+            money += price;
             GameObject.Find("Canvas").transform.Find("구매불가능").gameObject.SetActive(true);
         }
         else
         {
             str = "" + money;
-            moneyTxt.text = (str);
-            GameManager.money = money;
+            moneyTxt.text = (str);            
             if (go2 == null)
             {
                 
@@ -231,6 +226,7 @@ public class Shop : MonoBehaviour
                 }
                 else
                 {
+                    money += price;
                     GameObject.Find("Canvas").transform.Find("스탯초과").gameObject.SetActive(true);
                 }
             }
@@ -239,7 +235,9 @@ public class Shop : MonoBehaviour
                 ItemLocker.HealthItems[panel, btn]++;      //건강 아이템 구매하면 개수++
                 playSound("BuySound");
             }
-        }       
+        }
+        Debug.Log("현재 money : " + money);
+        GameManager.money = money;
     }
 
     void playSound(string str)
@@ -252,19 +250,17 @@ public class Shop : MonoBehaviour
         GameObject PR = GameObject.Find("ItemPrice");
         string str = PR.GetComponent<Text>().text;
         price = int.Parse(str);
-        money -= price;
         if (money < 0)
-        {
-            money += price;
+        {            
             GameObject.Find("Canvas").transform.Find("구매불가능").gameObject.SetActive(true);
         }
         else
         {
             str = "" + money;
             moneyTxt.text = (str);
-            GameManager.money = money;
             if (GameManager.charm < maxCharm)        //스탯최대 초과하면 팝업
             {
+                money -= price;
                 GameManager.charm += ShopButtonEvent.charmTotal;
                 playSound("BuySound");
                 if (GameManager.charm > maxCharm)
@@ -281,7 +277,7 @@ public class Shop : MonoBehaviour
             else
             {
                 GameObject.Find("Canvas").transform.Find("스탯초과").gameObject.SetActive(true);
-            }           
+            }     
 
             for (int i = 0; i < 4; i++)
             {
@@ -305,10 +301,12 @@ public class Shop : MonoBehaviour
                 }
             }
         }
+        GameManager.money = money;
+        Debug.Log("현재 money : " + money);
     }
     // Update is called once per frame
     void Update()
     {
-
+        moneyTxt.text = money.ToString();
     }
 }
