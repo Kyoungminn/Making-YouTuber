@@ -224,7 +224,8 @@ public class Shop : MonoBehaviour
                     if (GameManager.edit > maxEdit)
                         GameManager.edit = maxEdit;
                     ItemLocker.EditItems[panel, btn]++;      //편집 아이템 구매하면 개수++
-                    playSound("BuySound");
+                    //playSound("BuySound");
+                    SoundManager._soundInstance.OnShopPayAudio();
                 }
                 else
                 {
@@ -235,17 +236,18 @@ public class Shop : MonoBehaviour
             if (go1 == null)
             {
                 ItemLocker.HealthItems[panel, btn]++;      //건강 아이템 구매하면 개수++
-                playSound("BuySound");
+                //playSound("BuySound");
+                SoundManager._soundInstance.OnShopPayAudio();
             }
         }
         //Debug.Log("현재 money : " + money);
         GameManager.money = money;
     }
 
-    void playSound(string str)
+    /*void playSound(string str)
     {
         GameObject.Find(str).GetComponent<AudioSource>().Play();
-    }
+    }*/
 
     public void Buy_Beauuty()
     {
@@ -265,7 +267,7 @@ public class Shop : MonoBehaviour
             if (GameManager.charm < maxCharm)        
             {
                 GameManager.charm += ShopButtonEvent.charmTotal;
-                playSound("BuySound");
+                SoundManager._soundInstance.OnShopPayAudio();
                 if (GameManager.charm > maxCharm)
                     GameManager.charm = maxCharm;
                 for (int i = 0; i < 4; i++)
