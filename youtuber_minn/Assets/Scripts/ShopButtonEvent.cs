@@ -54,6 +54,97 @@ public void itemActive()    //아이템 입혀보기
             button.GetComponent<Button>().interactable = false;
     }
 
+    public void itemActiveOnepiece()    //아이템 입혀보기
+    {
+        GameObject child, child2;
+        bool boolean = false;
+        for (int i = 0; i < parent.transform.childCount; i++)
+        {
+            child = parent.transform.GetChild(i).gameObject;
+            if (item.name.Equals(child.gameObject.name))
+            {
+                if (item.activeSelf == false)
+                {
+                    item.SetActive(true);
+                    button.GetComponent<Button>().interactable = true;
+                }
+                else
+                {
+                    item.SetActive(false);
+                }
+            }
+            else
+                child.SetActive(false);
+        }
+        GameObject pants = GameObject.Find("하의");
+        for (int i = 0; i < pants.transform.childCount; i++)
+        {
+            child = pants.transform.GetChild(i).gameObject;
+            child.SetActive(false);
+        }
+        pants = GameObject.Find("pants");
+        pants.GetComponent<Text>().text = "";
+        for (int i = 0; i < itemCollection.transform.childCount; i++)   //활성화된 아이템이 없으면 button false
+        {
+            child = itemCollection.transform.GetChild(i).gameObject;
+            for (int j = 0; j < child.transform.childCount; j++)
+            {
+                child2 = child.transform.GetChild(j).gameObject;
+                if (child2.activeSelf == true)
+                    boolean = true;
+            }
+        }
+        if (boolean == false)
+            button.GetComponent<Button>().interactable = false;
+    }
+
+    public void itemActivePants()    //아이템 입혀보기
+    {
+        GameObject child, child2;
+        bool boolean = false;
+        for (int i = 0; i < parent.transform.childCount; i++)
+        {
+            child = parent.transform.GetChild(i).gameObject;
+            if (item.name.Equals(child.gameObject.name))
+            {
+                if (item.activeSelf == false)
+                {
+                    item.SetActive(true);
+                    button.GetComponent<Button>().interactable = true;
+                }
+                else
+                {
+                    item.SetActive(false);
+                }
+            }
+            else
+                child.SetActive(false);
+        }
+        GameObject pants = GameObject.Find("상의");
+        for (int i = 18; i < pants.transform.childCount; i++)
+        {
+            child = pants.transform.GetChild(i).gameObject;
+            child.SetActive(false);
+        }
+        pants = GameObject.Find("T");
+        pants.GetComponent<Text>().text = "";
+        for (int i = 0; i < itemCollection.transform.childCount; i++)   //활성화된 아이템이 없으면 button false
+        {
+            child = itemCollection.transform.GetChild(i).gameObject;
+            for (int j = 0; j < child.transform.childCount; j++)
+            {
+                child2 = child.transform.GetChild(j).gameObject;
+                if (child2.activeSelf == true)
+                    boolean = true;
+            }
+        }
+        if (boolean == false)
+            button.GetComponent<Button>().interactable = false;
+    }
+
+
+
+
     public string GetTotal()
     {
         GameObject child, child2;

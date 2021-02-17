@@ -8,11 +8,12 @@ public class Shop : MonoBehaviour
     public int price;
     public Text moneyTxt, priceTxt, itemTxt;
     public string ItemName;
-    static int panel, btn, stat, maxCharm, maxEdit, money = GameManager.money;
+    static int panel, btn, stat, maxCharm, maxEdit, money;
 
     void Start()
     {
-        //money = GameManager.money;
+        money = GameManager.money;
+        //money = 10000;
         string mybutton;
         if (GameManager.youtubaButton != null)
         {
@@ -237,7 +238,7 @@ public class Shop : MonoBehaviour
                 playSound("BuySound");
             }
         }
-        Debug.Log("현재 money : " + money);
+        //Debug.Log("현재 money : " + money);
         GameManager.money = money;
     }
 
@@ -251,8 +252,10 @@ public class Shop : MonoBehaviour
         GameObject PR = GameObject.Find("ItemPrice");
         string str = PR.GetComponent<Text>().text;
         price = int.Parse(str);
+        money -= price;
         if (money < 0)
-        {            
+        {
+            money += price;
             GameObject.Find("Canvas").transform.Find("구매불가능").gameObject.SetActive(true);
         }
         else
@@ -261,7 +264,6 @@ public class Shop : MonoBehaviour
             moneyTxt.text = (str);
             if (GameManager.charm < maxCharm)        //스탯최대 초과하면 팝업
             {
-                money -= price;
                 GameManager.charm += ShopButtonEvent.charmTotal;
                 playSound("BuySound");
                 if (GameManager.charm > maxCharm)
@@ -277,6 +279,7 @@ public class Shop : MonoBehaviour
             }
             else
             {
+                money += price;
                 GameObject.Find("Canvas").transform.Find("스탯초과").gameObject.SetActive(true);
             }     
 
