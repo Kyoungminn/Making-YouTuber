@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public static string nickname; //구독자 애칭
 
     public static int money; //돈
-    public static int health; //건강
+    public static int health = 100; //건강
     public static int charm; //매력
     public static int edit; //편집
 
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        youtubaButton = button_name[0];
     }
 
     void Update()

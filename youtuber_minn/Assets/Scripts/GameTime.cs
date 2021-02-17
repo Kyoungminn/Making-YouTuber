@@ -22,7 +22,7 @@ public class GameTime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(GameManager.youtubaButton);
+        
     }
 
     // Update is called once per frame
@@ -32,9 +32,7 @@ public class GameTime : MonoBehaviour
         if (GameManager.health < 0) GameManager.health = 0;
         else if (GameManager.health > 100) GameManager.health = 100; //건강 최대치 100 안넘게 하기
 
-        MaxStat();
-        if (GameManager.edit > _stat) GameManager.edit = _stat;
-        if (GameManager.charm > _stat) GameManager.charm = _stat;
+        StartCoroutine(MaxStat());
 
         GameManager.game_time += (Time.deltaTime / 60.0f);
         GameManager.game_day += (Time.deltaTime / 60.0f);
@@ -149,8 +147,9 @@ public class GameTime : MonoBehaviour
         }
     }   
 
-    public void MaxStat()
+    IEnumerator MaxStat()
     {
+        yield return null;
         for(int i=0;i<5;i++)
         {
             if(GameManager.youtubaButton == GameManager.button_name[i])
@@ -159,6 +158,8 @@ public class GameTime : MonoBehaviour
                 break;
             }
         }
+        if (GameManager.edit > _stat) GameManager.edit = _stat;
+        if (GameManager.charm > _stat) GameManager.charm = _stat;
     }
 
     IEnumerator CountBackHit()
