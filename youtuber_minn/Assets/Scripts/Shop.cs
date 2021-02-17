@@ -12,29 +12,30 @@ public class Shop : MonoBehaviour
 
     void Start()
     {
+        //money = GameManager.money;
         string mybutton;
         if (GameManager.youtubaButton != null)
         {
             //Debug.Log("현재 버튼 정보 있음");
             mybutton = GameManager.youtubaButton;
             //Debug.Log("mybutton" + mybutton);
-            if (mybutton.Equals("bronze") || mybutton == null || mybutton == "")
+            if (mybutton == null || mybutton == "")
             {
                 maxCharm = maxEdit = 100;
             }
-            else if (mybutton.Equals("silver"))
+            else if (mybutton.Equals("bronze"))
             {
                 maxCharm = maxEdit = 300;
             }
-            else if (mybutton.Equals("gold"))
+            else if (mybutton.Equals("silver"))
             {
                 maxCharm = maxEdit = 500;
             }
-            else if (mybutton.Equals("diamond"))
+            else if (mybutton.Equals("gold"))
             {
                 maxCharm = maxEdit = 700;
             }
-            else if (mybutton.Equals("ruby"))
+            else if (mybutton.Equals("diamond"))
             {
                 maxCharm = maxEdit = 1000;
             }

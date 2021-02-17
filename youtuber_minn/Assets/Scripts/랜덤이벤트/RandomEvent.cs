@@ -27,6 +27,7 @@ public class RandomEvent : MonoBehaviour
 
     public void Question1()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         int rand;
         rand = Random.Range(0, 2);
         if (rand == 0)
@@ -44,6 +45,7 @@ public class RandomEvent : MonoBehaviour
     }
     public void Question2()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         int rand;
         rand = Random.Range(0, 2);
         if (rand == 0)
@@ -62,6 +64,7 @@ public class RandomEvent : MonoBehaviour
 
     public void Question3()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         int rand;
         rand = Random.Range(0, 2);
         if (rand == 0)
@@ -79,6 +82,7 @@ public class RandomEvent : MonoBehaviour
     }
     public void Question4()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         int rand;
         rand = Random.Range(0, 2);
         if (rand == 0)
@@ -97,6 +101,7 @@ public class RandomEvent : MonoBehaviour
 
     public void Question5()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         int rand;
         rand = Random.Range(0, 2);
         if (rand == 0)
@@ -115,6 +120,7 @@ public class RandomEvent : MonoBehaviour
 
     public void Question6()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         int rand;
         rand = Random.Range(0, 2);
         if (rand == 0)
@@ -132,6 +138,7 @@ public class RandomEvent : MonoBehaviour
     }
     public void Question7()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         GameManager.money -= 50000;
         GameManager.subscriber += (int)(GameManager.subscriber * 0.05f);
         Debug.Log(GameManager.money);
@@ -139,6 +146,7 @@ public class RandomEvent : MonoBehaviour
     }
     public void Question8()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         int rand;
         rand = Random.Range(0, 2);
         if (rand == 0)
@@ -156,6 +164,7 @@ public class RandomEvent : MonoBehaviour
     }
     public void Question9()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         int rand;
         rand = Random.Range(0, 2);
         if (rand == 0)
@@ -175,6 +184,7 @@ public class RandomEvent : MonoBehaviour
     }
     public void Question10()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         int rand;
         rand = Random.Range(0, 2);
         if (rand == 0)
@@ -194,6 +204,7 @@ public class RandomEvent : MonoBehaviour
     }
     public void Question11()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         int rand;
         rand = Random.Range(0, 2);
         if (rand == 0)
@@ -211,6 +222,7 @@ public class RandomEvent : MonoBehaviour
     }
     public void Question12()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         int rand;
         rand = Random.Range(0, 2);
         if (rand == 0)
@@ -228,6 +240,7 @@ public class RandomEvent : MonoBehaviour
     }
     public void Question13()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         int rand;
         rand = Random.Range(0, 2);
         if (rand == 0)
@@ -245,6 +258,7 @@ public class RandomEvent : MonoBehaviour
     }
     public void Question14()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         int rand;
         rand = Random.Range(0, 2);
         if (rand == 0)
@@ -262,11 +276,12 @@ public class RandomEvent : MonoBehaviour
     }
     public void Question15()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         int rand;
         rand = Random.Range(0, 2);
         if (rand == 0)
         {
-            GameManager.subscriber += (int)(GameManager.subscriber * 0.01f);
+            GameManager.subscriber += (int)(GameManager.subscriber / 100);
             Debug.Log(GameManager.subscriber);
             Result15[0].SetActive(true);
         }
@@ -279,6 +294,7 @@ public class RandomEvent : MonoBehaviour
     }
     public void Question16()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         int rand;
         rand = Random.Range(0, 2);
         if (rand == 0)
@@ -298,6 +314,7 @@ public class RandomEvent : MonoBehaviour
     }
     public void Question17()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         int rand;
         rand = Random.Range(0, 2);
         if (rand == 0)
@@ -315,6 +332,7 @@ public class RandomEvent : MonoBehaviour
     }
     public void Question18()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         int rand;
         rand = Random.Range(0, 2);
         if (rand == 0)
@@ -332,6 +350,7 @@ public class RandomEvent : MonoBehaviour
     }
     public void Question19()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         int rand;
         rand = Random.Range(0, 2);
         if (rand == 0)
@@ -349,6 +368,7 @@ public class RandomEvent : MonoBehaviour
     }
     public void Question20()
     {
+        SoundManager._soundInstance.OnButtonAudio();
         int rand;
         rand = Random.Range(0, 2);
         if (rand == 0)
@@ -365,6 +385,11 @@ public class RandomEvent : MonoBehaviour
             Debug.Log(GameManager.charm);
             Result20[1].SetActive(true);
         }
+    }
+
+    public void OnButtonPlay()
+    {
+        SoundManager._soundInstance.OnButtonAudio();
     }
 
     // Start is called before the first frame update
