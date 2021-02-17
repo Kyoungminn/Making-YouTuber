@@ -146,7 +146,7 @@ public class CalendarController : MonoBehaviour
         {
             int idx = i - startDayId + 1;
             _dateItems[i].transform.GetChild(1).gameObject.GetComponent<Text>().text = "";
-            if (GameTime.dayEvent[idx] != null)
+            if (GameTime.dayEvent[idx] != null && GameTime.dayEvent[idx] != "")
             { 
                 _dateItems[i].transform.GetChild(1).gameObject.GetComponent<Text>().text += GameTime.dayEvent[idx] + "\n";
                 Debug.Log(idx + " : " + GameTime.dayEvent[idx]);
@@ -156,10 +156,18 @@ public class CalendarController : MonoBehaviour
             {
                 _dateItems[i].transform.GetChild(2).gameObject.SetActive(true);
             }
+            else
+            {
+                _dateItems[i].transform.GetChild(2).gameObject.SetActive(false);
+            }
 
             if(GameTime.liveCalendar[idx])
             {
                 _dateItems[i].transform.GetChild(3).gameObject.SetActive(true);
+            }
+            else
+            {
+                _dateItems[i].transform.GetChild(3).gameObject.SetActive(false);
             }
         }
     }
