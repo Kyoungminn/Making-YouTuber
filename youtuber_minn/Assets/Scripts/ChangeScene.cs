@@ -41,5 +41,10 @@ public class ChangeScene : MonoBehaviour
         SceneManager.LoadScene("Channel_scene");
     }
 
+    public void EndingChange()
+    {
+        SceneManager.LoadScene("Ending_scene");
+    }
+
 
 }
