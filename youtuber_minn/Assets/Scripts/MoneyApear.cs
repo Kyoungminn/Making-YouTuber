@@ -27,7 +27,7 @@ public class MoneyApear : MonoBehaviour
 
             //for (int i = 0; i < numRand; i++)
             //{
-                Debug.Log("생성!");
+                //Debug.Log("생성!");
                 Vector3 creatingPoint = new Vector3(Random.Range(-500f, 500f), Random.Range(-900f, 900f), 0f);
                 GameObject child = Instantiate(prefabMoney) as GameObject;
                 child.transform.SetParent(moneyParent.transform);
