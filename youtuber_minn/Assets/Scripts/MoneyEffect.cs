@@ -27,6 +27,6 @@ public class MoneyEffect : MonoBehaviour
         
         GameManager.money += 5;
         Debug.Log(GameManager.money);
-        gameObject.SetActive(false);
+        Destroy(this.gameObject);
     }
 }

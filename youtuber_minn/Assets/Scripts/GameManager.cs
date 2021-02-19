@@ -36,161 +36,62 @@ public class GameManager : MonoBehaviour
     public static int[] conceptCnt = new int[8];
     public static Dictionary<string, int> EndingConcept = new Dictionary<string, int>{ {"토킹",0},{"게임",1},{"먹방",2},{"요리",3},{"브이로그",4},{"ASMR",5},{"노래",6},{"유행",7} };
 
-    public GameObject UploadPanel;
-
     public static float sub_time = 0;
 
    
-    public bool chk_sub = true;
-    public bool chk_sub1 = true;
-    public bool chk_sub2 = true;
-    public bool chk_sub3 = true;
+    //public bool chk_sub = true;
+    //public bool chk_sub1 = true;
+    //public bool chk_sub2 = true;
+    //public bool chk_sub3 = true;
+
+    public static GameObject GMS;
+    public GameObject prefabDownSubPop;
+
+    void Awake()
+    {
+        GMS = GameObject.Find("GameManagerScript");
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("gameManager");
+        if (objs.Length > 1) Destroy(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     void Start()
     {
-        youtubaButton = button_name[0];
+        Debug.Log("시작");
     }
 
     void Update()
     {
-        if (youtubaButton == button_name[0] && chk_sub3) //노버튼일때
+        if (uploadChkMain == true) //업로드하면 구독자 수 증가 실행
         {
-            chk_sub3 = false;
-
-            if (uploadChkMain == true && chk_sub) //업로드하면 10초 간격으로 구독자 수 증가
-            {
-                chk_sub = false;
-                InvokeRepeating ("up_subscriber", 10 ,10);
-                sub_time = 0;
-            }
-
-            sub_time += Time.deltaTime;
-
-            if(sub_time >= 600 && chk_sub1) //10분이 지나면 증가가 멈추고 10분 간격으로 감소 시작 
-            {
-                chk_sub1 = false;    
-                CancelInvoke("up_subscriber");
-                Debug.Log("현재구독자수 :" + subscriber);
-                uploadChkMain = false;
-      
-            }
-
-            if (uploadChkMain == false && chk_sub2)
-            {
-                chk_sub2 = false;
-                InvokeRepeating ("down_subscriber", 600 ,600); //아니면 10분 간격으로 구독자 수 감소
-    
-            }
-        }
-        
-        if (subscriber >= 10000 && charm >= 100 && !chk_sub3) //브론즈일때
-        {
-            chk_sub3 = true;
-            youtubaButton = button_name[1];
-
-            if (uploadChkMain == true && chk_sub) //업로드하면 10초 간격으로 구독자 수 증가
-            {
-                chk_sub = false;
-                InvokeRepeating ("up_subscriber", 20 ,20);
-                sub_time = 0;
-            }
-
-            sub_time += Time.deltaTime;
-
-            if(sub_time >= 600 && chk_sub1) //10분이 지나면 증가가 멈추고 10분 간격으로 감소 시작 
-            {
-                chk_sub1 = false;    
-                CancelInvoke("up_subscriber");
-                Debug.Log("현재구독자수 :" + subscriber);
-                uploadChkMain = false;
-      
-            }
-
-            if (uploadChkMain == false && chk_sub2)
-            {
-                chk_sub2 = false;
-                InvokeRepeating ("down_subscriber", 600 ,600); //아니면 10분 간격으로 구독자 수 감소
-    
-            }
+            CancelInvoke("down_subscriber");
+            uploadChkMain = false;
+            StartCoroutine(Up_subscriberStart()); //유투바버튼 받는거 기다려야하므로 코루틴함수로 실행
         }
 
-        if (subscriber >= 100000 && charm >= 300 && chk_sub3) //실버일때
+        if(!uploadChkMain && sub_time <= 600f && sub_time >= 0f) sub_time += Time.deltaTime;
+
+        //실버버튼 이상부터 10분이 지나면 증가가 멈추고 매일 감소 시작 
+        string yb = youtubaButton;
+        if (!yb.Equals("") && !yb.Equals("bronze") && (int)sub_time == 600 && !uploadChkMain) 
         {
-            chk_sub3 = false;
-            youtubaButton = button_name[2];
-            
-            if (uploadChkMain == true && chk_sub) //업로드하면 10초 간격으로 구독자 수 증가
-            {
-                chk_sub = false;
-                InvokeRepeating ("up_subscriber", 30 ,30);
-                sub_time = 0;
-            }
-
-            sub_time += Time.deltaTime;
-
-            if(sub_time >= 600 && chk_sub1) //10분이 지나면 증가가 멈추고 10분 간격으로 감소 시작 
-            {
-                chk_sub1 = false;    
-                CancelInvoke("up_subscriber");
-                Debug.Log("현재구독자수 :" + subscriber);
-                uploadChkMain = false;
-      
-            }
-
-            if (uploadChkMain == false && chk_sub2)
-            {
-                chk_sub2 = false;
-                InvokeRepeating ("down_subscriber", 600 ,600); //아니면 10분 간격으로 구독자 수 감소
-    
-            }
+            sub_time = -1; //한번만 실행되도록 하기 위해
+            InvokeRepeating("down_subscriber", 0.01f, 60f);
+            Debug.Log("구독자수감소시작");
         }
+    }
 
-        if (subscriber >= 1000000 && charm >= 500 && !chk_sub3) //골드 이상일때
-        {
-            chk_sub3 = true;
-            youtubaButton = button_name[3];
-            
-            if (uploadChkMain == true && chk_sub) //업로드하면 10초 간격으로 구독자 수 증가
-            {
-                chk_sub = false;
-                InvokeRepeating ("up_subscriber", 30 ,30);
-                sub_time = 0;
-            }
-
-            sub_time += Time.deltaTime;
-
-            if(sub_time >= 600 && chk_sub1) //10분이 지나면 증가가 멈추고 10분 간격으로 감소 시작 
-            {
-                chk_sub1 = false;    
-                CancelInvoke("up_subscriber");
-                Debug.Log("현재구독자수 :" + subscriber);
-                uploadChkMain = false;
-      
-            }
-
-            if (uploadChkMain == false && chk_sub2)
-            {
-                chk_sub2 = false;
-                InvokeRepeating ("down_subscriber", 600 ,600); //아니면 10분 간격으로 구독자 수 감소
-    
-            }
-        }
-
-        if (subscriber >= 10000000 && charm >= 700 && chk_sub3)
-        {
-            chk_sub3 = false;
-            youtubaButton = button_name[4];
-          
-        }
-        if (subscriber >= 50000000 && charm >= 1000 && !chk_sub3)
-        {
-            chk_sub3 = true;
-            youtubaButton = button_name[5];
-
-        }
-
-
-    
+    IEnumerator Up_subscriberStart()
+    {
+        yield return null; //한 프레임 기다림
+        string btName = youtubaButton;
+        Debug.Log(btName + "구독자증가");
+        float tm;
+        if (btName.Equals(button_name[0])) tm = 10f;
+        else if (btName.Equals(button_name[1])) tm = 20f;
+        else tm = 30f;
+        InvokeRepeating("up_subscriber", tm, tm);
+        sub_time = 0;
     }
 
     void change_sub()
@@ -200,8 +101,17 @@ public class GameManager : MonoBehaviour
     }
     void up_subscriber() 
     {
-        subscriber += subscriber/100;
-        Debug.Log("구독자 수 증가"+ subscriber);
+        if (youtubaButton == button_name[3] || youtubaButton == button_name[4])
+        {
+            subscriber += 5 * (subscriber / 1000);
+            Debug.Log("골드이상구독자 수 증가" + subscriber);
+        }
+        else
+        {
+            subscriber += subscriber / 100;
+            Debug.Log("구독자 수 증가" + subscriber);
+        }
+        Debug.Log(sub_time);
 
     }
     
@@ -209,6 +119,15 @@ public class GameManager : MonoBehaviour
     {
         subscriber -= 5 * (subscriber/100);
         Debug.Log("구독자 수 감소"+　subscriber);
+        Debug.Log(sub_time);
+
+        //팝업창 뜨게하기
+        SoundManager._soundInstance.PopupAudio();
+        GameObject par = GameObject.Find("Canvas");
+        GameObject child = Instantiate(prefabDownSubPop) as GameObject;
+        child.transform.SetParent(par.transform);
+        child.transform.localPosition = par.transform.position;
+        child.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
     }
     

@@ -29,34 +29,39 @@ public class Nickname : MonoBehaviour
             membershipIdx++;
             SoundManager._soundInstance.PopupAudio();
             Bronze.SetActive(true);
-            
+            GameManager.youtubaButton = GameManager.button_name[1];
+
         }
         if (GameManager.subscriber >= 100000 && GameManager.charm >= 300 && membershipIdx == 2)
         {
             membershipIdx++;
             SoundManager._soundInstance.PopupAudio();
             Silver.SetActive(true);
-            
+            GameManager.youtubaButton = GameManager.button_name[2];
+
         }
         if (GameManager.subscriber >= 1000000 && GameManager.charm >= 500 && membershipIdx == 3) 
         {
             membershipIdx++;
             SoundManager._soundInstance.PopupAudio();
             Gold.SetActive(true);
-            
+            GameManager.youtubaButton = GameManager.button_name[3];
+
         }
         if (GameManager.subscriber >= 10000000 && GameManager.charm >= 700 && membershipIdx == 4) 
         {
             membershipIdx++;
             SoundManager._soundInstance.PopupAudio();
             Diamond.SetActive(true);
+            GameManager.youtubaButton = GameManager.button_name[4];
         }
         if (GameManager.subscriber >= 50000000 && GameManager.charm >= 1000 && membershipIdx == 5)
         {
             membershipIdx++;
             SoundManager._soundInstance.PopupAudio();
             Ruby.SetActive(true);
-            
+            GameManager.youtubaButton = GameManager.button_name[5];
+
         }
     
     }
