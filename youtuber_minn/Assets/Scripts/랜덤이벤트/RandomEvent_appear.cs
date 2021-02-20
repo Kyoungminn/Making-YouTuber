@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class RandomEvent_appear : MonoBehaviour
 {
-    private IEnumerator coroutine;
-    public List<GameObject> QuestionAppear = new List<GameObject>();
+    //private IEnumerator coroutine;
+    //public List<GameObject> QuestionAppear = new List<GameObject>();
+    public GameObject QuestionPrefab; //랜덤이벤트캔버스프리팹
+    GameObject par; //랜덤이벤트프리팹나타날 부모
 
     public static int Time_before = 0;
 
-    public void Appear()
+    /*public void Appear()
     {
         SoundManager._soundInstance.PopupAudio();
         int rand;
@@ -39,11 +41,11 @@ public class RandomEvent_appear : MonoBehaviour
         }
 
 
-    }
+    }*/
     // Start is called before the first frame update
     void Start()
     {
-
+        par = GameObject.Find("Canvas");
     }
 
     // Update is called once per frame
@@ -53,13 +55,18 @@ public class RandomEvent_appear : MonoBehaviour
         if ((int)(GameManager.game_time - (float)Time_before) >= 7)
         {
             int rand = Random.Range(0, 10);
-
-            switch (rand) { case 0:case 1: case 2: case 3: case 4: case 5: case 6: Appear(); break;
+            Debug.Log("Random Evt rand " + rand);
+            switch (rand) { case 0:case 1: case 2: case 3: case 4: case 5: case 6:
+                    SoundManager._soundInstance.PopupAudio();
+                    GameObject child = Instantiate(QuestionPrefab) as GameObject;
+                    child.transform.SetParent(par.transform);
+                    child.transform.localPosition = par.transform.localPosition;
+                    child.transform.localScale = new Vector3(0.7f, 0.7f, 1.0f); break;
                 default: break;
             }
             
             Time_before = (int)GameManager.game_time;
-            Debug.Log(Time_before);
+            Debug.Log("Random TIme_before " + Time_before);
         }
     }
 }
