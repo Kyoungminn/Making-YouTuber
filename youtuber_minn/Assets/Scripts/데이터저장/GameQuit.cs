@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameQuit : MonoBehaviour
 {
     public GameObject prefabGameQuit;
-    GameObject par;
+    GameObject par, child;
+    public int clickCnt = 0;
 
     void Start()
     {
@@ -35,11 +36,17 @@ public class GameQuit : MonoBehaviour
         //한번 눌러도 뜨게하기
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SoundManager._soundInstance.PopupAudio();
-            GameObject child = Instantiate(prefabGameQuit) as GameObject;
-            child.transform.SetParent(par.transform);
-            child.transform.localPosition = par.transform.localPosition;
-            child.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            clickCnt++;
+
+            if(clickCnt == 1)
+            {
+                SoundManager._soundInstance.PopupAudio();
+                child = Instantiate(prefabGameQuit) as GameObject;
+                child.transform.SetParent(par.transform);
+                child.transform.localPosition = par.transform.localPosition;
+                child.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            }
+            
         }
 
 

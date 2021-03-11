@@ -31,6 +31,7 @@ public class PrefabDestroy : MonoBehaviour
 
     public void GameQuit_NoButton()
     {
+        GameObject.Find("GameQuit").GetComponent<GameQuit>().clickCnt = 0;
         SoundManager._soundInstance.OnButtonAudio();
         Destroy(gameObject);
     }

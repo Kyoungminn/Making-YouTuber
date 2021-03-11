@@ -20017,7 +20017,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631821290}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -26052,6 +26052,7 @@ MonoBehaviour:
   Result20:
   - {fileID: 997168169}
   - {fileID: 1214040865}
+  QuestionAppear: []
 --- !u!4 &835883591
 Transform:
   m_ObjectHideFlags: 0
@@ -34526,27 +34527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc730153ee1daed409d8044a24f88f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QuestionAppear:
-  - {fileID: 1042711843}
-  - {fileID: 1254826615}
-  - {fileID: 1287890376}
-  - {fileID: 2067612392}
-  - {fileID: 1873714090}
-  - {fileID: 1557887708}
-  - {fileID: 1207136458}
-  - {fileID: 1638313153}
-  - {fileID: 93890124}
-  - {fileID: 1560607363}
-  - {fileID: 311197655}
-  - {fileID: 1751885790}
-  - {fileID: 1628835760}
-  - {fileID: 1295257008}
-  - {fileID: 1307666581}
-  - {fileID: 822758254}
-  - {fileID: 1353627630}
-  - {fileID: 2121707177}
-  - {fileID: 180609945}
-  - {fileID: 418283467}
+  QuestionPrefab: {fileID: 0}
 --- !u!1 &1108170762
 GameObject:
   m_ObjectHideFlags: 0
@@ -62750,7 +62731,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d72852e5288e745b57c07ff317a46b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Popup: {fileID: 1875050782}
+  prefabGameQuit: {fileID: 0}
+  clickCnt: 0
 --- !u!4 &2039025097
 Transform:
   m_ObjectHideFlags: 0
