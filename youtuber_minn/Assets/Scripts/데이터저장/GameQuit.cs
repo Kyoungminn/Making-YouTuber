@@ -5,19 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class GameQuit : MonoBehaviour
 {
-    public GameObject Popup;
+    public GameObject prefabGameQuit;
+    GameObject par, child;
+    public int clickCnt = 0;
 
+    void Start()
+    {
+        par = GameObject.Find("Canvas");    
+    }
     // Update is called once per frame
-    int ClickCount = 0;
+    //int ClickCount = 0;
     void Update()
     {
-        /* press to start 
-        if (Input.GetMouseButtonDown(0))
-        {
-            SceneManager.LoadScene(SceneToLoad);
-        }
-        */
-
+        /* 더블클릭 누르면 뜨게하기
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ClickCount++;
@@ -31,15 +31,31 @@ public class GameQuit : MonoBehaviour
             CancelInvoke("DoubleClick");
             SoundManager._soundInstance.PopupAudio();
             Popup.SetActive(true);
+        }*/
+
+        //한번 눌러도 뜨게하기
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            clickCnt++;
+
+            if(clickCnt == 1)
+            {
+                SoundManager._soundInstance.PopupAudio();
+                child = Instantiate(prefabGameQuit) as GameObject;
+                child.transform.SetParent(par.transform);
+                child.transform.localPosition = par.transform.localPosition;
+                child.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            }
+            
         }
 
+
     }
 
-    void DoubleClick()
+    /*void DoubleClick()
     {
         ClickCount = 0;
-    }
-
+    
     public void YesButton()
     {
         Application.Quit();
@@ -50,5 +66,6 @@ public class GameQuit : MonoBehaviour
         SoundManager._soundInstance.OnButtonAudio();
         Popup.SetActive(false);
     }
+    */
 
 }

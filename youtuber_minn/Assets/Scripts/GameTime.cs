@@ -140,11 +140,6 @@ public class GameTime : MonoBehaviour
 
         //Debug.Log("현재시간: " + (int)GameManager.game_time);
         //Debug.Log(GameManager.game_month + "월" + (int)GameManager.game_day + "일");
-
-        if(VideoInfomation.hitChk)
-        {
-            StartCoroutine(CountBackHit());
-        }
     }   
 
     IEnumerator MaxStat()
@@ -162,10 +157,5 @@ public class GameTime : MonoBehaviour
         if (GameManager.charm > _stat) GameManager.charm = _stat;
     }
 
-    IEnumerator CountBackHit()
-    {
-        LockerVideo.current += (LockerVideo.offset * Time.deltaTime);
-        yield return null;
-    }
 }
 

@@ -8,12 +8,9 @@ public class LockerVideo : MonoBehaviour
     public Text info;
     public Image thumnail;
     public GameObject thumnailImage;
-    int hit;
+    int videoNum, hit;
     string title;
     int id; //동영상 번호
-
-    public static float current = 0.0f;
-    public static float offset = 0.0f;
 
     public void hitView(int ogHit)
     {
@@ -24,7 +21,7 @@ public class LockerVideo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int videoNum = Upload_sceneManager.uploadTitles.Count;
+        videoNum = Upload_sceneManager.uploadTitles.Count;
         int indexNum = gameObject.transform.GetSiblingIndex();
         id = videoNum - 1 - indexNum;
         title = Upload_sceneManager.uploadTitles[id];
@@ -48,11 +45,11 @@ public class LockerVideo : MonoBehaviour
         }
 
         //Debug.Log(VideoInfomation.hitChk);
-        if ((videoNum - 1) == id && (GameManager.uploadChkLocker || VideoInfomation.hitChk))
+        if ((videoNum - 1) == id && GameManager.uploadChkLocker)
         {
             VideoInfomation.hitChk = true;
             GameManager.uploadChkLocker = false;
-            StartCoroutine(CountHit());
+            HitCounting._hitCounting.BringHitId(hit, id);
         }
         else
         {
@@ -72,48 +69,23 @@ public class LockerVideo : MonoBehaviour
 
     }
 
-    IEnumerator CountHit()
-    {
-        float duration = 60.0f; //카운팅에 걸리는 시간
-        offset = hit / duration;
-
-        while (current < hit)
-        {
-            current += offset * Time.deltaTime;
-            if (current >= 10000)
-            {
-                hitView((int)current);
-            }
-            else
-            {
-                info.text = title + "\n조회수: " + ((int)current).ToString();
-            }
-            yield return null;
-        }
-
-        current = hit;
-        if (current >= 10000)
-        {
-            hitView((int)current);
-        }
-        else
-        {
-            info.text = title + "\n조회수: " + ((int)current).ToString();
-        }
-
-        VideoInfomation.hitChk = false;
-        current = 0.0f;
-
-        //동영상 수익 게임머니에 저장
-        GameManager.money += Upload_sceneManager.uploadPayoffs[id];
-
-        Debug.Log("조회수처리정보:" + VideoInfomation.hitChk);
-
-    }
+   
 
     // Update is called once per frame
     void Update()
     {
-        
+        if((videoNum - 1) == id && VideoInfomation.hitChk)
+        {
+            float hitcur = HitCounting._hitCounting.current;
+            if (hitcur >= 10000)
+            {
+                hitView((int)hitcur);
+            }
+            else
+            {
+                info.text = title + "\n조회수: " + ((int)hitcur).ToString();
+            }
+
+        }
     }
 }

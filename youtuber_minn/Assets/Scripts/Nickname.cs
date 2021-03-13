@@ -22,7 +22,7 @@ public class Nickname : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameManager.nickname = nickname.text;
+        //GameManager.nickname = nickname.text;
 
         if (GameManager.subscriber >= 10000 && GameManager.charm >= 100 && membershipIdx == 1)
         {
@@ -64,5 +64,10 @@ public class Nickname : MonoBehaviour
 
         }
     
+    }
+
+    public void OnNicnameComplete()
+    {
+        GameManager.nickname = nickname.text;
     }
 }
