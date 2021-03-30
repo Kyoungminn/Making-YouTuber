@@ -8,7 +8,6 @@ public class ProfileInfo : MonoBehaviour
     public Text name_value1;
     public Text sub_value1;
     public Text money_value1;
-    public Text channel_value;
 
     //프로필 팝업 값
     public Text name_value;
@@ -31,14 +30,13 @@ public class ProfileInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        name_value1.text = GameManager.human_name;
+        name_value1.text = GameManager.human_name + "  (" + GameManager.channel_name + ")";
         sub_value1.text = GameManager.subscriber.ToString();
-        money_value1.text = GameManager.money.ToString();
-        channel_value.text = GameManager.channel_name;
+        money_value1.text = GameManager.money.ToString("0,0");
 
         name_value.text = GameManager.human_name;
         sub_value.text = GameManager.subscriber.ToString();
-        money_value.text = GameManager.money.ToString();
+        money_value.text = GameManager.money.ToString("0,0");
         edit_value.text = GameManager.edit.ToString();
         charm_value.text = GameManager.charm.ToString();
         health_value.text = GameManager.health.ToString();
@@ -54,10 +52,10 @@ public class ProfileInfo : MonoBehaviour
     {
         //구독자수, 돈 변화하는 값이므로
         sub_value1.text = GameManager.subscriber.ToString();
-        money_value1.text = GameManager.money.ToString();
+        money_value1.text = GameManager.money.ToString("0,0");
 
         sub_value.text = GameManager.subscriber.ToString();
-        money_value.text = GameManager.money.ToString();
+        money_value.text = GameManager.money.ToString("0,0");
 
         for (int i=0;i<5;i++)
         {
