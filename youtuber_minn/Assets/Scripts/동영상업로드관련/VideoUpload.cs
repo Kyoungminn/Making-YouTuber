@@ -63,9 +63,12 @@ public class VideoUpload : MonoBehaviour
 
             //조회수 세는 오브젝트 계속 살아있게
             HitCount = GameObject.Find("HitCountingScript");
-            GameObject[] objs = GameObject.FindGameObjectsWithTag("hitCounting");
-            if (objs.Length > 1) Destroy(HitCount);
-            DontDestroyOnLoad(HitCount);
+            if(HitCount)
+            {
+                GameObject[] objs = GameObject.FindGameObjectsWithTag("hitCounting");
+                if (objs.Length > 1) Destroy(HitCount);
+                DontDestroyOnLoad(HitCount);
+            }
 
             StartCoroutine(Loading());
         }
