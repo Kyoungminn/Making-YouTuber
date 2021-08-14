@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
         if (uploadChkMain == true) //업로드하면 구독자 수 증가 실행
         {
             CancelInvoke("down_subscriber");
+            if (subscriber > 1000) CancelInvoke("up_subscriber");
             uploadChkMain = false;
             StartCoroutine(Up_subscriberStart()); //유투바버튼 받는거 기다려야하므로 코루틴함수로 실행
         }
@@ -94,11 +95,6 @@ public class GameManager : MonoBehaviour
         sub_time = 0;
     }
 
-    void change_sub()
-    {
-    
-
-    }
     void up_subscriber() 
     {
         if (youtubaButton == button_name[3] || youtubaButton == button_name[4])
