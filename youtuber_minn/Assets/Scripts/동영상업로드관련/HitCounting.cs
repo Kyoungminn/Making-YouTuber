@@ -9,15 +9,9 @@ public class HitCounting : MonoBehaviour
     public float offset, _hit;
     public int _id;
 
-    public static GameObject HitCount;
-
     void Awake()
     {
         _hitCounting = this;
-        HitCount = GameObject.Find("HitCountingScript");
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("hitCounting");
-        if (objs.Length > 1) Destroy(this.gameObject);
-        DontDestroyOnLoad(this.gameObject);
     }
 
     public void BringHitId(float hit, int id)

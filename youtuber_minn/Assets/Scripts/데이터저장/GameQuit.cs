@@ -43,7 +43,7 @@ public class GameQuit : MonoBehaviour
                 SoundManager._soundInstance.PopupAudio();
                 child = Instantiate(prefabGameQuit) as GameObject;
                 child.transform.SetParent(par.transform);
-                child.transform.localPosition = par.transform.localPosition;
+                child.transform.localPosition = new Vector3(0f, 0f, 0f);
                 child.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             }
             

@@ -60,7 +60,7 @@ public class RandomEvent_appear : MonoBehaviour
                     SoundManager._soundInstance.PopupAudio();
                     GameObject child = Instantiate(QuestionPrefab) as GameObject;
                     child.transform.SetParent(par.transform);
-                    child.transform.localPosition = par.transform.localPosition;
+                    child.transform.localPosition = new Vector3(0f, 0f, 0f);
                     child.transform.localScale = new Vector3(0.7f, 0.7f, 1.0f); break;
                 default: break;
             }

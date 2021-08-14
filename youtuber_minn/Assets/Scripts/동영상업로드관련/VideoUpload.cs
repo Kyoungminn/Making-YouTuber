@@ -11,10 +11,13 @@ public class VideoUpload : MonoBehaviour
     public Button conceptButton;
     public Button uploadButton;
     public Slider uploading;
+    public GameObject thumbnailcolor_lock;
 
     public GameObject noConcept; //컨셉 미선택시 뜨는 팝업
     public GameObject noTitle; //제목 미정시 뜨는 팝업
     public GameObject noAds; //광고 미정시 뜨는 팝업
+
+    public static GameObject HitCount;
 
 
     // Start is called before the first frame update
@@ -49,12 +52,20 @@ public class VideoUpload : MonoBehaviour
             noAds.SetActive(true);
         }
 
-        else
+        else //업로드 진행
         {
             deleteButton.enabled = false;
             conceptButton.enabled = false;
             uploadButton.gameObject.SetActive(false);
             uploading.gameObject.SetActive(true);
+            thumbnailcolor_lock.SetActive(true);
+            //GameObject.Find("GameManager").GetComponent<KeyInput>().enabled = false;
+
+            //조회수 세는 오브젝트 계속 살아있게
+            HitCount = GameObject.Find("HitCountingScript");
+            GameObject[] objs = GameObject.FindGameObjectsWithTag("hitCounting");
+            if (objs.Length > 1) Destroy(HitCount);
+            DontDestroyOnLoad(HitCount);
 
             StartCoroutine(Loading());
         }

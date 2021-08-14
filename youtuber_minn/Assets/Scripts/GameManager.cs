@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
         GameObject par = GameObject.Find("Canvas");
         GameObject child = Instantiate(prefabDownSubPop) as GameObject;
         child.transform.SetParent(par.transform);
-        child.transform.localPosition = par.transform.position;
+        child.transform.localPosition = new Vector3(0f, 0f, 0f);
         child.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
     }
